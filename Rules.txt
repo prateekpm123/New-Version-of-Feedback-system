@@ -1,0 +1,17 @@
+This document will provide some rules in order to make our code error and bug free
+
+**** Rules : To be applied in a class
+
+1. Include namespace, if a class is inside a particular file in the 'classes' folder
+
+**** Rules : For error and bug free coding
+
+    1. Always add a try-catch or if-else block for a code if you think, it might give some error in the future
+    2. Do a through and proper testing, once a code is written, and only then move on to the next part !!
+
+**** Rules : For understanding the functionality of a 'class' and a 'function'
+
+    1. Always write what the function does in this format: 
+    // **
+    // ** ( Write here the description )
+    // **

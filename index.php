@@ -19,25 +19,33 @@ include 'includes/class-autoLoad.inc.php';
 
     <?php 
 
-        try {
-            // $obj1 = new Person\Person('Pooja' , 20, 1999);
-            // $obj1->printHappyBirthday();
+        // try {
+        //     $obj1 = new Person\Person('Pooja' , 20, 1999);
+        //     $obj1->printHappyBirthday();
 
-        }
-        catch (TypeError $e) {
-            echo "Error!:  " .$e->getMessage();
-        }
+        // }
+        // catch (TypeError $e) {
+        //     echo "Error!:  " .$e->getMessage();
+        // }
        
-        try {
+        // try {
            
-            $obj2 = new Info\Question(' this is a question', 'answer is this');
-            $obj2->showQuestionAnswer();
+        //     $obj2 = new Info\Question(' this is a question', 'answer is this');
+        //     $obj2->showQuestionAnswer();
+        // }
+        // catch (TypeError $e) {
+        //     echo "Error!:  " .$e->getMessage();
+        // }
+
+        try {
+            
+            $questions = new View();
+            $questions->showQuestions();
+
         }
         catch (TypeError $e) {
             echo "Error!:  " .$e->getMessage();
         }
-
-        
     
     
     ?>

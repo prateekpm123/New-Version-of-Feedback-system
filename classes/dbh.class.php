@@ -5,7 +5,7 @@ class Dbh {
     private $host = "localhost";
     private $user = "root";
     private $pwd = "";
-    private $dbnName = "final_year_project";
+    private $dbName = "final_year_project";
 
     protected function connect() {
         $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->dbName;

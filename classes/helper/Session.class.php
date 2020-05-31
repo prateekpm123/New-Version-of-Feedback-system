@@ -1,5 +1,7 @@
 <?php
 
+namespace helper;
+
 class Session{
     /**
      * @return true if the session is active

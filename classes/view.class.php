@@ -4,19 +4,18 @@
 // ** This takes the datafrom the model.class.php and gives it to display in the front end
 // **
 
+include "Model.class.php";
+
 class View extends Model {
 
     // @param: formid  
-    public function showQuestions() {
-        $results = $this->getQuestionData();
-        echo "Questions <br>";
-        var_dump($results);
-
-        // echo "<h2>" .$results[4]['Questions']."</h2><br><br>";
-
-        // foreach ( $results as $result ) {
-        //     echo $result['Questions'] .'<br>';
-        // }
+    public function showAdminData() {
+        $results = $this->fetchAdminData();
+        return $results;
     }
 
+
 }
+
+
+?>

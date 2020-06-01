@@ -71,15 +71,3 @@ input[type=submit].btn-block {
     font-size: 12px;
     text-align: center;
 }
-
-/* .input-group>.input-group-append:last-child>.btn:not(:last-child):not(.dropdown-toggle),
-.input-group>.input-group-append:last-child>.input-group-text:not(:last-child),
-.input-group>.input-group-append:not(:last-child)>.btn,
-.input-group>.input-group-append:not(:last-child)>.input-group-text,
-.input-group>.input-group-prepend>.btn,
-.input-group>.input-group-prepend>.input-group-text {
-}
-
-element.style {
-    height: 100px;
-} */

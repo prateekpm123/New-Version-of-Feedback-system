@@ -4,17 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LOGIN</title>
+    <title>ADMIN LOGIN</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
     <link rel="stylesheet" href="jquery-ui-1.12.1.custom/jquery-ui.min.css">
     <link href="jquery-ui-1.12.1.custom/jquery-ui.css" rel="stylesheet">
-    <link rel="stylesheet" href="login.css">
-
-    <link rel="stylesheet" href="//brick.a.ssl.fastly.net/Roboto:400"/>
-
+    <link rel="stylesheet" href="Admin_login.css">
 
 </head>
 
@@ -79,8 +76,51 @@
 
     <div class="container">
         <div class="row">
-        <a class="push_button red" href="#">Take The Red Pill</a> 
-        <a class="push_button blue" href="#">Take The Blue Pill</a>
+            <div class="col"></div>
+
+            <div class="main">
+            <div class="col-lg-6 col-md-10 col-sm-12 form">
+                <div class="card mb-3">
+                    <div class="row no-gutters">
+                        <div class="col-md-6">
+                            <img src="4.jpg" class="card-img" alt="..." height="499px">
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card-body">
+                                <h3 class="card-title"><b>ADMIN LOGIN</b></h3>
+                                <hr>
+
+                                <form action="verification.php" method="post">
+                                    <div class="input-group flex-nowrap">
+                                        <input type="text" class="form-control" placeholder="Username" aria-label="Username"
+                                        aria-describedby="addon-wrapping" name="uname">
+                                    </div>
+
+                                    <div class="input-group flex-nowrap">
+                                        <input type="password" class="form-control" placeholder="Password" aria-label="Password"
+                                            aria-describedby="addon-wrapping" name="pwd">
+                                    </div>
+                                
+                                    <div class="custom-control custom-checkbox my-1 mr-sm-2">
+                                        <input type="checkbox" class="custom-control-input" id="customControlInline">
+                                        <label class="custom-control-label" for="customControlInline">Remember me</label>
+                                    </div>
+
+                                    <br>
+                                    <input type="submit" class="btn btn-primary btn-lg btn-block submit" name="login" value="Login">
+
+                                    <p class="forgot"><a href="www.google.com"><u>Forgot password?</u></a></p>
+
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            <div class="col"></div>
         </div>
     </div>
 

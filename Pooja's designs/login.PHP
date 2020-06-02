@@ -75,10 +75,10 @@
 
     <div class="container">
         <div class="row">
-        <a class="push_button red" href="Admin.php" style="color:#FFF;
+        <a class="push_button red" href="Admin_login.php" style="color:#FFF;
             text-decoration: none;">ADMIN LOGIN</a>
 
-        <a class="push_button blue" href="User.php" style="color:#FFF;
+        <a class="push_button blue" href="User_login.php" style="color:#FFF;
             text-decoration: none;">USER LOGIN</a>
 
         </div>

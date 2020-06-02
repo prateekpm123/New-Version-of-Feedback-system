@@ -33,10 +33,14 @@
                         <input type="email" class="form-control" placeholder="Admin Email" aria-label="email" id="email"
                         aria-describedby="addon-wrapping" name="admin_email">
                     </div>
+                    <div id="email-warning">
+                    </div>
 
                     <div class="input-group flex-nowrap">
                         <input type="password" class="form-control" placeholder="Password" aria-label="Password" id="pwd"
                             aria-describedby="addon-wrapping" name="password">
+                    </div>
+                    <div id="password-warning">
                     </div>
                 
                     <div class="custom-control custom-checkbox my-1 mr-sm-2">
@@ -65,28 +69,35 @@
         include_once __DIR__.'/../../includes/constants/bootstrapjs.php';
         include_once __DIR__.'/../../includes/constants/jqueryLinks.php';
     ?>
-    <script scr="admin_login.js"></script>
     <script>
         function validate() {
 
             let email = $('#email').val();
             let password = $('#pwd').val();
-            // console.log(email, password);
-            $.ajax({
-                url: "backend/validate_admin.php",
-                type: "post", 
-                data : {
-                    email : email,
-                    password : password,
-                },
-                success: function(data, status) {
-                    console.log(data);
-                }
-                
-            });
+            // console.log(email, password)
+            
+            if(password.length > 8)
+            {
+                $.ajax({
+                    url: "backend/validate_admin.php",
+                    type: "post", 
+                    data : {
+                        email : email,
+                        password : password,
+                    },
+                    success: function(data, status) {
+                        console.log(data);
+                    }    
+                });
+            } else {
+                $('#password-warning').html('<p class="warning">Enter password length more than 8 letters</p>'); 
+            }
+            
 
         }
     </script>
+    <script scr="admin_login.js"></script>
+
 </body>
 
 </html>

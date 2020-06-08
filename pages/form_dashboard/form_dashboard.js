@@ -18,14 +18,14 @@ function loadFormdata() {
     });
 }
 
-function getFormVersions(Form_name) {
+function getFormVersions(F_id) {
     console.log('dynamic button is working');
 
     $.ajax({
         url: "backend/renderFormVersionData.php",
         method: "post",
         data: {
-            Form_name : Form_name,
+            F_id: F_id,
         },
         success: function(data, success) {
             console.log(" in renderformversion data ajax");

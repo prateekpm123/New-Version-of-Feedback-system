@@ -30,8 +30,8 @@ class View extends Model {
         }
     }
 
-    public function getFormVersionData($Form_name) {
-        $formVersionData = $this->fetchFormVersions($Form_name);
+    public function getFormVersionData($F_id) {
+        $formVersionData = $this->fetchFormVersions($F_id);
         if($formVersionData == false ) {
             // $empty =  "OOPS got nothing to show";
             return null;

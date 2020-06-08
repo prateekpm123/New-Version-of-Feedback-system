@@ -13,9 +13,9 @@ class FormInfo {
         return $formsData;
     }
 
-    public function giveFormVersionToRender($Form_name) {
+    public function giveFormVersionToRender($F_id) {
         $viewClassObj = new View();
-        $formVersionData = $viewClassObj->getFormVersionData($Form_name);
+        $formVersionData = $viewClassObj->getFormVersionData($F_id);
         return $formVersionData;
     }
 

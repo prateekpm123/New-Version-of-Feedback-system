@@ -2,18 +2,51 @@
 
 require "getFormDetails.php";
 
-
-// $form_name = $_POST['Form_name'];
-
-
 renderFormVersionData();
 
 function renderFormVersionData() {
 
-    $form_name = $_POST['Form_name'];
+    $F_id = $_POST['F_id'];
     
-    echo 'just cjeco';
     $formInfoObj = new FormInfo();
-    $formData = $formInfoObj->giveFormVersionToRender($form_name);
-    echo var_dump($formData);
+    $formVersionData = $formInfoObj->giveFormVersionToRender($F_id);
+
+
+    $data = '<table class="table table-bordered table-striped">
+				<tr>
+					<th>No.</th>
+					<th>Form Name</th>
+					<th>Form Version</th>
+					<th>Update Details</th>
+					<th>Edit Form</th>
+					<th>Delete Form</th>
+				</tr>';
+
+	if(!empty($formVersionData)){
+		$number = 1;
+		foreach($formVersionData as $row ){
+
+			$data .= '<tr>
+				<td>'.$number.'</td>
+				<td>'.$row['Form_name'].'</td>
+				<td>'.$row['Form_version'].'</td>
+				<td>
+					<button onclick="GetFormDetails('.$row['F_id'].')"
+					class="btn btn-info">Update</button>
+				</td>
+				<td>
+					<button class="btn btn-warning">Edit</button>
+				</td>
+				<td>
+					<button onclick="DeleteForm('.$row['F_id'].')" class="btn
+						btn-danger">Delete</button>
+				</td>
+				</tr>';
+				$number++;
+		}
+	}
+
+	$data .= '</table>';
+	echo $data;
+
 }

@@ -66,11 +66,23 @@ class Model extends Dbh {
         
     }
 
-    protected function fetchFormVersions($Form_name) {
+    protected function fetchFormVersions($F_id) {
         $query = "SELECT * FROM `form` WHERE `F_id`= ? ";
 
         try{
             $stmt = $this->connect()->prepare($query);
+            $stmt->execute([$F_id]);
+            $formIdName = $stmt->FetchAll();
+        }
+        catch(Exception $e) {
+            echo "Fetching Forms Version Data was not successfull ".$e->message();
+        }
+        
+        $Form_name = $formIdName[0]['Form_name'];
+
+        $query2 = "SELECT * FROM `form` WHERE `Form_name`= ?";
+        try{
+            $stmt = $this->connect()->prepare($query2);
             $stmt->execute([$Form_name]);
             $formVersionsData = $stmt->FetchAll();
             return $formVersionsData ?? false;
@@ -78,7 +90,6 @@ class Model extends Dbh {
         catch(Exception $e) {
             return "Fetching Forms Version Data was not successfull ".$e->message();
         }
-        
     }
 
 }

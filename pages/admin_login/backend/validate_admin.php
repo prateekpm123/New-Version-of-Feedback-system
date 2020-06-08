@@ -17,21 +17,29 @@ if(isset($_POST['email']) && isset($_POST['password'])) {
 
 
 $admin = new View();
-$adminData = $admin->getAdminValidationResults($admin_email, $password);
+$result = $admin->getAdminValidationResults($admin_email, $password);
 
+
+if($result == true) {
+    echo true;
+} else if ( $result == false ) {
+    echo false;
+} else {
+    echo "More than one user with same credentails found";
+}
 // echo $admin_email;
 // echo $password;
 // var_dump($adminData);
-$count = count($adminData);
+// $count = count($adminData);
 // echo "count is ".$count;
 
-if($count == 1) {
-    // echo '../../form_dashboard/test.php';
-    header('../../form_dashboard/test.php');
-    // echo "<script>location.href='../../form_dashboard/test.php'</script>";
-    // echo "<script>alert('let sel')</script>";
-    // echo "<script>location.href='../admin_login.php'</script>";
+// if($count == 1) {
+//     // echo '../../form_dashboard/test.php';
+//     header('../../form_dashboard/test.php');
+//     // echo "<script>location.href='../../form_dashboard/test.php'</script>";
+//     // echo "<script>alert('let sel')</script>";
+//     // echo "<script>location.href='../admin_login.php'</script>";
 
-}
+// }
 
 // echo $count;

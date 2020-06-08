@@ -42,7 +42,8 @@
                     </div>
                     <div id="password-warning">
                     </div>
-                
+                    <div id="validation-warning">
+                    </div>
                     <div class="custom-control custom-checkbox my-1 mr-sm-2">
                         <input type="checkbox" class="custom-control-input" id="customControlInline">
                         <label class="custom-control-label" for="customControlInline">Remember me</label>
@@ -76,8 +77,9 @@
             let password = $('#pwd').val();
             // console.log(email, password)
             
-            if(password.length > 4)
+            if(password.length >= 8)
             {
+                $('#password-warning').html(''); 
                 $.ajax({
                     url: "backend/validate_admin.php",
                     type: "post", 
@@ -87,9 +89,12 @@
                     },
                     success: function(data, status) {
                         // console.log(data);
-                        data;
+                        if(data == 1) {
+                            window.location.href = "../form_dashboard/form_dashboard.php";
+                        } else {
+                            $('#validation-warning').html('<p class="warning">Wrong email or password</p>'); 
+                        }
                         
-                        // window.location.href = data;
                     }    
                 });
             } else {

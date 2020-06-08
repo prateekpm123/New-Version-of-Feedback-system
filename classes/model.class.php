@@ -60,10 +60,10 @@ class Model extends Dbh {
 
             if($rowCount > 1) {
                 $ans = [$rowCount, $results];
-                return $ans ?? 'TWO OR MORE ADMINS WITH SAME CREDENTIALS';
+                return true ?? 'TWO OR MORE ADMINS WITH SAME CREDENTIALS';
             }
             else if($rowCount = 0) {
-                return null;
+                return false;
             }
             else {
                 return $results ?? null;

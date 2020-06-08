@@ -1,7 +1,9 @@
 <?php 
 
-$con = mysqli_connect('localhost','root','','form_details');
+
 extract($_POST);
+//include 'view.class.php';
+//include 'details.class.php';
 
 	if(isset($_POST['readrecord'])){
 
@@ -47,98 +49,17 @@ extract($_POST);
 
 }
 
-// get userid for update
-// if(isset($_POST['id']))
-// {
-// 	$formid = $_POST['id'];
-// 	include 'views.class.php';
-// 	$view1 = new View();
-// 	$rows1 = $view1->getFormId($formid);
+	if(isset($_POST['id']) && isset($_POST['id']) != "")
+		{
+			$form_id = $_POST['id'];
+			include 'details.class.php';
+			$view1 = new View();
+			$result = $view1->getFormId($form_id);
+			
 
-// 	$response = array();
-
-// 	if(!empty($rows1)){
-// 		$response = $rows1 ;
-// 	}
-
-// 	echo json_encode($response);
-	
-
-
-	//$response = array();
-
-	//if(!empty($rows)) {
-
-	// 	//foreach($rows as $row){
-	//$response = $rows;
-	//}
-	// }
-	// else
-	// {
-	// 	$response['status'] = 200;
-	// 	$response['message'] = "Data not found!";
-	// }
-
-	
-//}
-
-if(isset($_POST['id']) && isset($_POST['id']) != "")
-{
-	$form_id = $_POST['id'];
-	$query = "SELECT * FROM form_table WHERE id = '$form_id'";
-	if (!$result = mysqli_query($con,$query)) {
-		exit(mysqli_error());
-	}
-
-	$response = array();
-
-	if(mysqli_num_rows($result) > 0) {
-		while ($array = mysqli_fetch_assoc($result)) {
-			$response = $array;
+			echo json_encode($result);
 		}
-	}
-	else
-	{
-		$response['status'] = 200;
-		$response['message'] = "Data not found!";
-	}
 
-	echo json_encode($response);
-}
-else
-{
-	$response['status'] = 200;
-	$response['message'] = "Invalid Request!";
-}
-	// include 'view.class.php';
-	// $view1 = new View();
-	// $result = $view1->getFormId($form_id);
-
-
-	 //$response = array();
-
-	 //$response = $result;
-	
-		// while($row = $result){
-		//  echo json_encode($row);
-		// }
-	
-
-	// if(!empty($result)) {
-	//  	 while ($row = $result){
-	// 		$response = $row;
-	//  	}
- // 	echo json_encode($response);
-	//  }
-	
-
-	//echo json_encode($response);
-
-// else
-// {
-// 	$response['status'] = 200;
-// 	$response['message'] = "Invalid Request!";
-// }
 
 
 

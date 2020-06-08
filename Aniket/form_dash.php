@@ -159,11 +159,13 @@
 
         $.post("load_data.php", {
           id:id
-        }, function(data,status){
-          var form = JSON.parse(data);
+        }, function(response){
+          var form = JSON.parse(response);
+          
+
           $('#update_formname').val(form.form_name);
           $('#update_formsession').val(form.form_session);
-          //console.log(data);
+          console.log(form);
         }
         );
 

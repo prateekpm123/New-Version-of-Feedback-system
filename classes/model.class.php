@@ -7,9 +7,33 @@ include 'Dbh.class.php';
 
 class Model extends Dbh {
 
+    // Gives the latest version number for a Form name
+    protected function getVersionNumber(string $formName) {
+        return null;
+    }
+
+    // generate a form code for a Form name
+    public function generateFormCode() {
+        $query = "SELECT * FROM form";
+
+        try {
+            $stmt = $this->connect()->prepare($query);
+            $stmt->execute();
+            $forms = $stmt->FetchAll();
+            // return $forms ?? false;
+            $rowCount = $stmt->rowCount();
+            $rowCount = $rowCount + 1;
+            $rowCount = (string)$rowCount;  
+            return $rowCount;
+        } 
+        catch(Exception $e ) {
+            echo "Fetching Forms data was not successfull ".$e->message();
+        }
+    }
+
     protected function fetchAdminData() {
 
-        $sql = "SELECT * FROM user";
+        $sql = "SELECT * FROM user WHERE `DELETED`=0 ";
 
         try {
             $stmt = $this->connect()->prepare($sql);
@@ -25,7 +49,7 @@ class Model extends Dbh {
     }
 
     protected function validateAdminLogin(string $admin_email, string $password) {
-        $sql = "SELECT * FROM admin_credentials WHERE Admin_email =? AND Admin_Password=? ";
+        $sql = "SELECT * FROM admin_credentials WHERE Admin_email =? AND Admin_Password=? AND `DELETED`=0 ";
 
         try {
             $stmt = $this->connect()->prepare($sql);
@@ -52,7 +76,7 @@ class Model extends Dbh {
     }
 
     protected function fetchForms() {
-        $query = "SELECT * FROM form WHERE Form_version=1";
+        $query = "SELECT * FROM form WHERE Form_version=1 AND `DELETED`=0 ";
 
         try {
             $stmt = $this->connect()->prepare($query);
@@ -67,7 +91,7 @@ class Model extends Dbh {
     }
 
     protected function fetchFormVersions($F_id) {
-        $query = "SELECT * FROM `form` WHERE `F_id`= ? ";
+        $query = "SELECT * FROM `form` WHERE `F_id`= ? AND `DELETED`=0 ";
 
         try{
             $stmt = $this->connect()->prepare($query);
@@ -92,10 +116,29 @@ class Model extends Dbh {
         }
     }
 
+    // Insert forms
+    protected function insetNewForm(string $formName, string $formdesc) {
+        $query = "INSERT INTO `form`(`Admin_id`, `Form_code`, `Form_name`, `Form_version`, `Form_details`, `DELETED`) VALUES ('PRA', :formCount, :formName, 1,1,0)";
+        $rowCount = $this->generateFormCode();        // convert integer to a string
+        try {
+            $stmt = $this->connect()->prepare($query);
+            $stmt->execute([
+                'formCount' =>$rowCount,
+                'formName' => $formName,
+            ]);
+            return true;
+        } 
+        catch(Exception $e ) {
+            echo "Fetching Forms data was not successfull ".$e->message();
+        }
+
+    }
+
 }
 
 
 
 // $obj = new Model();
-// $results = $obj->validateAdminLogin('prateek.manta@sakec.ac.in','1234567');
-// var_dump($results);
+// $results = $obj->generateFormCode();
+// // echo var_dump($results);
+// echo (string)$results;

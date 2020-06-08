@@ -19,9 +19,17 @@
         <div class="row">
         <div class="col-lg-2"></div>
         <div class="col-lg-8">
-            <h2 class="text-primary">Your Forms</h2>
-            <!-- <button class="btn btn-primary" onclick="test()">Test</button> -->
-
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2 class="">Your Forms</h2>
+                </div>
+                <div class="col-lg-6">
+                    <!-- <button class="btn btn-primary" onclick="createForm()"><b>Create before</b></button> -->
+                    <button id="modal-button" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg"><b>Create</b></button>
+                    <div id="modal-area">
+                    </div>
+                </div>
+            </div>
             <div id="form-content"></div>
             <h2>Versions</h2>
             <div id="form-version-content">

@@ -1,6 +1,6 @@
 <?php
 
-require "getFormDetails.php";
+require "../backend/getFormDetails.php";
 
 renderData();
 
@@ -20,7 +20,7 @@ function renderData() {
 		foreach($formData as $row ){
             $Form_name = $row['Form_name'];
 			$data .= '<tr>
-				<td contenteditable="true">'.$number.'</td>
+				<td>'.$number.'</td>
 				<td contenteditable="true">'.$Form_name.'</td>
 				<td>
 					<button onclick="getFormVersions('.$row['F_id'].')" class="btn btn-info">View</button>
@@ -30,7 +30,7 @@ function renderData() {
 		}
     }
     else {
-        echo "<h2>OOPS! YOU ARE A SUCKER</h2>";
+        echo "<h2>OOPS! You have no Forms to work with wanna create one ?</h2>";
     }
     $data .= '</table>';
     echo $data;

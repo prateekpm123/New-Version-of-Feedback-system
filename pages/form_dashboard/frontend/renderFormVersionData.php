@@ -1,6 +1,7 @@
 <?php 
 
-require "getFormDetails.php";
+require "../backend/getFormDetails.php";
+
 
 renderFormVersionData();
 
@@ -28,7 +29,7 @@ function renderFormVersionData() {
 
 			$data .= '<tr>
 				<td>'.$number.'</td>
-				<td>'.$row['Form_name'].'</td>
+				<td contenteditable="true">'.$row['Form_name'].'</td>
 				<td>'.$row['Form_version'].'</td>
 				<td>
 					<button onclick="GetFormDetails('.$row['F_id'].')"

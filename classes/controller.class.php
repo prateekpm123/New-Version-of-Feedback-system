@@ -7,6 +7,9 @@ require "Model.class.php";
 
 class Controller extends Model {
 
-    
+    public function insertNewForm(string $formName, string $formdesc) {
+        $result = $this->insetNewForm($formName, $formdesc);
+        return $result;
+    }
 
 }

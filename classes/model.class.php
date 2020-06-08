@@ -19,7 +19,7 @@ class Model extends Dbh {
             return $results ?? false;
         }
         catch(Exception $e) {
-            echo "Database action was not successfull".$e->message();
+            echo "Database action was not successfull ".$e->message();
         }
         
     }
@@ -51,7 +51,39 @@ class Model extends Dbh {
         
     }
 
+    protected function fetchForms() {
+        $query = "SELECT * FROM form WHERE Form_version=1";
+
+        try {
+            $stmt = $this->connect()->prepare($query);
+            $stmt->execute();
+            $forms = $stmt->FetchAll();
+            return $forms ?? false;
+        } 
+        catch(Exception $e ) {
+            echo "Fetching Forms data was not successfull ".$e->message();
+        }
+        
+    }
+
+    protected function fetchFormVersions($Form_name) {
+        $query = "SELECT * FROM `form` WHERE `F_id`= ? ";
+
+        try{
+            $stmt = $this->connect()->prepare($query);
+            $stmt->execute([$Form_name]);
+            $formVersionsData = $stmt->FetchAll();
+            return $formVersionsData ?? false;
+        }
+        catch(Exception $e) {
+            return "Fetching Forms Version Data was not successfull ".$e->message();
+        }
+        
+    }
+
 }
+
+
 
 // $obj = new Model();
 // $results = $obj->validateAdminLogin('prateek.manta@sakec.ac.in','1234567');

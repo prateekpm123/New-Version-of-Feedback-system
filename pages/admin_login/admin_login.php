@@ -28,7 +28,7 @@
             <div class="card-body">
                 <h3 class="card-title"><b>ADMIN LOGIN</b></h3>
                 <hr>
-                <!-- <form action="validate_admin.php" method="post"> -->
+                <!-- <form action="backend/validate_admin.php" method="post"> -->
                     <div class="input-group flex-nowrap">
                         <input type="email" class="form-control" placeholder="Admin Email" aria-label="email" id="email"
                         aria-describedby="addon-wrapping" name="admin_email">
@@ -49,7 +49,7 @@
                     </div>
 
                     <br>
-                    <!-- <input type="submit" class="btn btn-primary btn-lg btn-block submit" name="login" value="Login"> -->
+                    <!-- <input type="submit" class="btn btn-primary btn-lg btn-block submit" name="login" value="Login" onclick="validate()"> -->
                     <button class="btn btn-primary form-control" onclick="validate()">Login</button>
 
                     <p class="forgot"><a href="www.google.com"><u>Forgot password?</u></a></p>
@@ -76,7 +76,7 @@
             let password = $('#pwd').val();
             // console.log(email, password)
             
-            if(password.length > 8)
+            if(password.length > 4)
             {
                 $.ajax({
                     url: "backend/validate_admin.php",
@@ -86,7 +86,10 @@
                         password : password,
                     },
                     success: function(data, status) {
-                        console.log(data);
+                        // console.log(data);
+                        data;
+                        
+                        // window.location.href = data;
                     }    
                 });
             } else {

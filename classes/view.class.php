@@ -19,5 +19,27 @@ class View extends Model {
         return $results;
     }
 
+    public function getFormData() {
+        $forms = $this->fetchForms();
+        if($forms == false ) {
+            // $empty =  "OOPS got nothing to show";
+            return null;
+        }
+        else {
+            return $forms;
+        }
+    }
+
+    public function getFormVersionData($F_id) {
+        $formVersionData = $this->fetchFormVersions($F_id);
+        if($formVersionData == false ) {
+            // $empty =  "OOPS got nothing to show";
+            return null;
+        }
+        else {
+            return $formVersionData;
+        }
+    }
+
 }
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 08, 2020 at 08:55 AM
+-- Generation Time: Jun 10, 2020 at 11:59 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.1.32
 
@@ -21,6 +21,41 @@ SET time_zone = "+00:00";
 --
 -- Database: `feedback_system`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `access`
+--
+
+CREATE TABLE `access` (
+  `Access_id` int(16) NOT NULL,
+  `F_id` int(16) NOT NULL,
+  `Admin_id` varchar(64) NOT NULL,
+  `access_giver` varchar(255) NOT NULL,
+  `access_receiver` varchar(255) NOT NULL,
+  `priviliges` varchar(255) NOT NULL,
+  `created_on` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `DELETED` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `access`
+--
+
+INSERT INTO `access` (`Access_id`, `F_id`, `Admin_id`, `access_giver`, `access_receiver`, `priviliges`, `created_on`, `updated_on`, `DELETED`) VALUES
+(1, 2, 'PRA', 'prateek.manta@sakec.ac.in', 'pooja.tripathi@sakec.ac.in', 'edit', '2020-06-09 05:19:34', '2020-06-09 05:34:57', 0),
+(2, 3, 'PRA', 'prateek.manta@sakec.ac.in', 'pooja.tripathi@sakec.ac.in', 'edit', '2020-06-09 05:36:18', '2020-06-09 05:36:18', 0),
+(3, 1, 'PRA', 'prateek.manta@sakec.ac.in', 'prateek.manta@sakec.ac.in', 'master', '2020-06-09 15:41:05', '2020-06-09 15:41:05', 0),
+(4, 3, 'PRA', 'prateek.manta@sakec.ac.in', 'prateek.manta@sakec.ac.in', 'master', '2020-06-09 15:44:01', '2020-06-09 15:44:01', 0),
+(5, 4, 'PRA', 'prateek.manta@sakec.ac.in', 'prateek.manta@sakec.ac.in', 'master', '2020-06-09 15:44:01', '2020-06-09 15:44:01', 0),
+(6, 5, 'PRA', 'prateek.manta@sakec.ac.in', 'prateek.manta@sakec.ac.in', 'master', '2020-06-09 15:44:46', '2020-06-09 15:44:46', 0),
+(7, 6, 'PRA', 'prateek.manta@sakec.ac.in', 'prateek.manta@sakec.ac.in', 'master', '2020-06-09 15:44:46', '2020-06-09 15:44:46', 0),
+(8, 7, 'PRA', 'prateek.manta@sakec.ac.in', 'prateek.manta@sakec.ac.in', 'master', '2020-06-09 15:45:29', '2020-06-09 15:45:29', 0),
+(9, 8, 'PRA', 'prateek.manta@sakec.ac.in', 'prateek.manta@sakec.ac.in', 'master', '2020-06-09 15:45:29', '2020-06-09 15:45:29', 0),
+(10, 9, 'PRA', 'prateek.manta@sakec.ac.in', 'prateek.manta@sakec.ac.in', 'master', '2020-06-09 15:45:53', '2020-06-09 15:45:53', 0),
+(11, 2, 'PRA', 'prateek.manta@sakec.ac.in', 'prateek.manta@sakec.ac.in', 'master', '2020-06-09 15:47:04', '2020-06-09 15:47:04', 0);
 
 -- --------------------------------------------------------
 
@@ -46,7 +81,40 @@ CREATE TABLE `admin_credentials` (
 --
 
 INSERT INTO `admin_credentials` (`A_id`, `Admin_id`, `Admin_name`, `Admin_email`, `created_on`, `updated_on`, `Admin_Password`, `re_enter_password`, `U_id`, `DELETED`) VALUES
-(1, 'PRA', 'Prateek', 'prateek.manta@sakec.ac.in', '2020-05-31 11:04:35', '2020-05-31 11:04:35', '1234567', '1234567', 1, 0);
+(3, 'ANI', 'aniket', 'aniketkumar.singh@sakec.ac.in', '2020-06-09 05:33:52', '2020-06-09 05:33:52', '345678901', '345678901', 3, 0),
+(2, 'POO', 'Pooja', 'pooja.tripathi@sakec.ac.in', '2020-06-09 05:28:51', '2020-06-09 05:28:51', '234567890', '234567890', 2, 0),
+(1, 'PRA', 'Prateek', 'prateek.manta@sakec.ac.in', '2020-05-31 11:04:35', '2020-06-09 05:29:16', '123456789', '123456789', 1, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin_form_access`
+--
+
+CREATE TABLE `admin_form_access` (
+  `Admin_form_id` int(16) NOT NULL,
+  `Access_id` int(16) NOT NULL,
+  `F_id` int(16) NOT NULL,
+  `Admin_id` varchar(64) NOT NULL,
+  `DELETED` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `admin_form_access`
+--
+
+INSERT INTO `admin_form_access` (`Admin_form_id`, `Access_id`, `F_id`, `Admin_id`, `DELETED`) VALUES
+(3, 1, 2, 'PRA', 0),
+(4, 2, 3, 'PRA', 0),
+(5, 3, 1, 'PRA', 0),
+(6, 4, 3, 'PRA', 0),
+(7, 5, 4, 'PRA', 0),
+(8, 6, 5, 'PRA', 0),
+(9, 7, 6, 'PRA', 0),
+(10, 8, 7, 'PRA', 0),
+(11, 9, 8, 'PRA', 0),
+(12, 10, 9, 'PRA', 0),
+(13, 11, 2, 'PRA', 0);
 
 -- --------------------------------------------------------
 
@@ -78,6 +146,7 @@ CREATE TABLE `form` (
   `Form_code` varchar(255) NOT NULL,
   `Form_name` varchar(255) NOT NULL,
   `Form_version` varchar(255) NOT NULL,
+  `Form_Desc` varchar(255) NOT NULL,
   `created_on` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `Form_details` int(16) NOT NULL,
@@ -88,16 +157,16 @@ CREATE TABLE `form` (
 -- Dumping data for table `form`
 --
 
-INSERT INTO `form` (`F_id`, `Admin_id`, `Form_code`, `Form_name`, `Form_version`, `created_on`, `updated_on`, `Form_details`, `DELETED`) VALUES
-(1, 'PRA', '1', 'TEst form 1', '1', '2020-06-07 14:37:55', '2020-06-08 06:16:00', 1, 0),
-(2, 'PRA', '2', 'TEst form 2', '1', '2020-06-07 14:39:16', '2020-06-07 14:39:16', 1, 0),
-(3, 'PRA', '3', 'TEst form 2', '2', '2020-06-07 14:41:46', '2020-06-07 14:41:46', 1, 0),
-(4, 'PRA', '4', 'TEst form 2', '3', '2020-06-07 14:41:46', '2020-06-07 14:41:46', 1, 0),
-(5, 'PRA', '5', 'TEst form 2', '4', '2020-06-07 14:41:46', '2020-06-07 14:41:46', 1, 0),
-(6, 'PRA', '6', 'TEst form 3', '1', '2020-06-07 14:41:46', '2020-06-07 14:41:46', 1, 0),
-(7, 'PRA', '7', 'TEst form 3', '2', '2020-06-07 14:41:46', '2020-06-07 14:41:46', 1, 0),
-(8, 'PRA', '8', 'TEst form 3', '3', '2020-06-07 14:41:47', '2020-06-07 14:41:47', 1, 0),
-(9, 'PRA', '9', 'TEst form 4', '1', '2020-06-07 14:41:47', '2020-06-07 14:41:47', 1, 0);
+INSERT INTO `form` (`F_id`, `Admin_id`, `Form_code`, `Form_name`, `Form_version`, `Form_Desc`, `created_on`, `updated_on`, `Form_details`, `DELETED`) VALUES
+(1, 'PRA', '1', 'TEst form 1', '1', '', '2020-06-07 14:37:55', '2020-06-08 06:16:00', 1, 0),
+(2, 'PRA', '2', 'TEst form 2', '1', '', '2020-06-07 14:39:16', '2020-06-07 14:39:16', 1, 0),
+(3, 'PRA', '3', 'TEst form 2', '2', '', '2020-06-07 14:41:46', '2020-06-07 14:41:46', 1, 0),
+(4, 'PRA', '4', 'TEst form 2', '3', '', '2020-06-07 14:41:46', '2020-06-07 14:41:46', 1, 0),
+(5, 'PRA', '5', 'TEst form 2', '4', '', '2020-06-07 14:41:46', '2020-06-07 14:41:46', 1, 0),
+(6, 'PRA', '6', 'TEst form 3', '1', '', '2020-06-07 14:41:46', '2020-06-07 14:41:46', 1, 0),
+(7, 'PRA', '7', 'TEst form 3', '2', '', '2020-06-07 14:41:46', '2020-06-07 14:41:46', 1, 0),
+(8, 'PRA', '8', 'TEst form 3', '3', '', '2020-06-07 14:41:47', '2020-06-07 14:41:47', 1, 0),
+(9, 'PRA', '9', 'TEst form 4', '1', '', '2020-06-07 14:41:47', '2020-06-07 14:41:47', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -169,7 +238,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`U_id`, `User_id`, `User_name`, `User _email`, `Role`, `created_on`, `updated_on`, `Details_id`, `Password_id`, `DELETED`) VALUES
-(1, 'PRA', 'prateek', 'prateek.manta@sakec.ac.in', 'Admin', '2020-05-31 11:03:21', '2020-05-31 11:03:21', 1, 1, 0);
+(3, 'ANI', 'aniket', 'aniketkumar.singh@sakec.ac.in', 'admin', '2020-06-09 05:32:43', '2020-06-09 05:32:43', 3, 3, 0),
+(2, 'POO', 'Pooja', 'pooja.tripathi@sakec.ac.in', 'admin', '2020-06-09 05:21:22', '2020-06-09 10:32:47', 2, 2, 0),
+(1, 'PRA', 'prateek', 'prateek.manta@sakec.ac.in', 'Admin', '2020-05-31 11:03:21', '2020-06-09 05:25:40', 1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -194,7 +265,8 @@ CREATE TABLE `user_details` (
 
 INSERT INTO `user_details` (`Details_id`, `First_name`, `Middle_name`, `Last_name`, `Phone`, `created_on`, `updated_on`, `DELETED`) VALUES
 (1, 'Prateek', 'Prakash', 'Manta', 9923433423, '2020-05-31 10:57:25', '2020-05-31 10:57:25', 0),
-(2, 'Pooja', 'Jitendra', 'Tripathi', 9829342232, '2020-05-31 10:58:43', '2020-05-31 10:58:43', 0);
+(2, 'Pooja', 'Jitendra', 'Tripathi', 9829342232, '2020-05-31 10:58:43', '2020-05-31 10:58:43', 0),
+(3, 'Aniket', 'Kumar', 'Singh', 8934982332, '2020-06-09 05:31:21', '2020-06-09 05:31:21', 0);
 
 -- --------------------------------------------------------
 
@@ -216,11 +288,21 @@ CREATE TABLE `user_password` (
 --
 
 INSERT INTO `user_password` (`Password_id`, `password`, `re_enter_password`, `created_on`, `updated_on`, `DELETED`) VALUES
-(1, '1234567', '1234567', '2020-05-31 11:01:18', '2020-05-31 11:02:21', 0);
+(1, '123456789', '123456789', '2020-05-31 11:01:18', '2020-06-09 05:24:16', 0),
+(2, '234567890', '234567890', '2020-06-09 05:22:32', '2020-06-09 05:24:23', 0),
+(3, '345678901', '345678901', '2020-06-09 05:23:30', '2020-06-09 05:24:43', 0);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `access`
+--
+ALTER TABLE `access`
+  ADD PRIMARY KEY (`Access_id`),
+  ADD KEY `F_id` (`F_id`),
+  ADD KEY `Admin_id` (`Admin_id`);
 
 --
 -- Indexes for table `admin_credentials`
@@ -229,6 +311,15 @@ ALTER TABLE `admin_credentials`
   ADD PRIMARY KEY (`Admin_id`),
   ADD KEY `a_id` (`A_id`),
   ADD KEY `u_id` (`U_id`);
+
+--
+-- Indexes for table `admin_form_access`
+--
+ALTER TABLE `admin_form_access`
+  ADD PRIMARY KEY (`Admin_form_id`),
+  ADD KEY `Access_id` (`Access_id`),
+  ADD KEY `Admin_id` (`Admin_id`),
+  ADD KEY `Form_id` (`F_id`);
 
 --
 -- Indexes for table `answers`
@@ -288,10 +379,22 @@ ALTER TABLE `user_password`
 --
 
 --
+-- AUTO_INCREMENT for table `access`
+--
+ALTER TABLE `access`
+  MODIFY `Access_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
 -- AUTO_INCREMENT for table `admin_credentials`
 --
 ALTER TABLE `admin_credentials`
-  MODIFY `A_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `A_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `admin_form_access`
+--
+ALTER TABLE `admin_form_access`
+  MODIFY `Admin_form_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `answers`
@@ -321,29 +424,44 @@ ALTER TABLE `questions`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `U_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `U_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user_details`
 --
 ALTER TABLE `user_details`
-  MODIFY `Details_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Details_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user_password`
 --
 ALTER TABLE `user_password`
-  MODIFY `Password_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1262236;
+  MODIFY `Password_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1262239;
 
 --
 -- Constraints for dumped tables
 --
 
 --
+-- Constraints for table `access`
+--
+ALTER TABLE `access`
+  ADD CONSTRAINT `access_ibfk_1` FOREIGN KEY (`F_id`) REFERENCES `form` (`F_id`),
+  ADD CONSTRAINT `access_ibfk_2` FOREIGN KEY (`Admin_id`) REFERENCES `form` (`Admin_id`);
+
+--
 -- Constraints for table `admin_credentials`
 --
 ALTER TABLE `admin_credentials`
   ADD CONSTRAINT `admin_credentials_ibfk_1` FOREIGN KEY (`U_id`) REFERENCES `user` (`U_id`);
+
+--
+-- Constraints for table `admin_form_access`
+--
+ALTER TABLE `admin_form_access`
+  ADD CONSTRAINT `admin_form_access_ibfk_1` FOREIGN KEY (`Access_id`) REFERENCES `access` (`Access_id`),
+  ADD CONSTRAINT `admin_form_access_ibfk_2` FOREIGN KEY (`F_id`) REFERENCES `access` (`F_id`),
+  ADD CONSTRAINT `admin_form_access_ibfk_3` FOREIGN KEY (`Admin_id`) REFERENCES `access` (`Admin_id`);
 
 --
 -- Constraints for table `answers`

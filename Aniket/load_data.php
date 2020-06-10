@@ -12,7 +12,6 @@ extract($_POST);
 					<th>No.</th>
 					<th>Form Name</th>
 					<th>Form Session</th>
-					<th>Update Details</th>
 					<th>Edit Form</th>
 					<th>Delete Form</th>
 				</tr>';
@@ -26,12 +25,8 @@ extract($_POST);
 
 			$data .= '<tr>
 				<td>'.$number.'</td>
-				<td>'.$row['form_name'].'</td>
-				<td>'.$row['form_session'].'</td>
-				<td>
-					<button onclick="GetFormDetails('.$row['id'].')"
-					class="btn btn-info">Update</button>
-				</td>
+				<td contenteditable="true" onBlur="updateValue(this,1,'.$row['id'].')">'.$row['form_name'].'</td>
+				<td contenteditable="true" onBlur="updateValue(this,2,'.$row['id'].')">'.$row['form_session'].'</td>
 				<td>
 					<button class="btn btn-warning">Edit</button>
 				</td>

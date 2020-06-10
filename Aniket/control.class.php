@@ -8,11 +8,11 @@ Class Control extends Dbh {
 		$result->execute([$formid]);
 	}
 
-	public function updateRecord($formnameupdate, $formsessionupdate, $hidden_form_id_update){
-		$query = " UPDATE `form_table` SET `form_name`= ? ,`form_session`= ? WHERE id= ? ";
-		$result = $this->connect()->prepare($query);
-		$result->execute([$formnameupdate, $formsessionupdate, $hidden_form_id_update]);
-	}
+	// public function updateRecord($formnameupdate, $formsessionupdate, $hidden_form_id_update){
+	// 	$query = " UPDATE `form_table` SET `form_name`= ? ,`form_session`= ? WHERE id= ? ";
+	// 	$result = $this->connect()->prepare($query);
+	// 	$result->execute([$formnameupdate, $formsessionupdate, $hidden_form_id_update]);
+	// }
 
 	public function updateFormName($value, $id){
 		$query = "UPDATE form_table SET form_name = '$value' WHERE id = '$id'";

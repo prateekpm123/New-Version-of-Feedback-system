@@ -13,6 +13,18 @@ Class Control extends Dbh {
 		$result = $this->connect()->prepare($query);
 		$result->execute([$formnameupdate, $formsessionupdate, $hidden_form_id_update]);
 	}
+
+	public function updateFormName($value, $id){
+		$query = "UPDATE form_table SET form_name = '$value' WHERE id = '$id'";
+		$result = $this->connect()->prepare($query);
+		$result->execute([$value, $id]);
+	}
+
+	public function updateFormSession($value, $id){
+		$query = "UPDATE form_table SET form_session = '$value' WHERE id = '$id'";
+		$result = $this->connect()->prepare($query);
+		$result->execute([$value, $id]);
+	}
 }
 
 

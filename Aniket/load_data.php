@@ -49,18 +49,32 @@ extract($_POST);
 
 }
 
-	if(isset($_POST['id']) && isset($_POST['id']) != "")
-		{
-			$form_id = $_POST['id'];
-			include 'details.class.php';
-			$view1 = new View();
-			$result = $view1->getFormId($form_id);
+	// if(isset($_POST['id']) && isset($_POST['id']) != "")
+	// 	{
+	// 		$form_id = $_POST['id'];
+	// 		include 'details.class.php';
+	// 		$view1 = new View();
+	// 		$result = $view1->getFormId($form_id);
 			
 
-			echo json_encode($result);
-		}
+	// 		echo json_encode($result);
+	// 	}
 
-
+	if(isset($_POST['id']) && isset($_POST['value']) && isset($_POST['column'])) {
+		$id = $_POST['id'];
+		$value = $_POST['value'];
+		$column = $_POST['column'];
+	include 'control.class.php';	
+	if($column == 1){	
+		$update = new Control();
+		$update->updateFormName($value, $id);
+	}
+	else if($column == 2){
+		$update1 = new Control();
+		$update1->updateFormSession($value, $id);
+	}	
+	}
+	
 
 
 

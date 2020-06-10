@@ -154,43 +154,60 @@
         }
       }
 
-      function GetFormDetails(id){
-        $('#hidden_form_id').val(id);
+      // function GetFormDetails(id){
+      //   $('#hidden_form_id').val(id);
 
-        $.post("load_data.php", {
-          id:id
-        }, function(response){
-          var form = JSON.parse(response);
+      //   $.post("load_data.php", {
+      //     id:id
+      //   }, function(response){
+      //     var form = JSON.parse(response);
           
 
-          $('#update_formname').val(form.form_name);
-          $('#update_formsession').val(form.form_session);
-          console.log(form);
-        }
-        );
+      //     $('#update_formname').val(form.form_name);
+      //     $('#update_formsession').val(form.form_session);
+      //     console.log(form);
+      //   }
+      //   );
 
-        $('#update_form_modal').modal("show");
-      }
+      //   $('#update_form_modal').modal("show");
+      // }
 
-      function updateformdetail(){
-        var formnameupdate = $('#update_formname').val();
-        var formsessionupdate = $('#update_formsession').val();
+      // function updateformdetail(){
+      //   var formnameupdate = $('#update_formname').val();
+      //   var formsessionupdate = $('#update_formsession').val();
 
-        var hidden_form_id_update = $('#hidden_form_id').val();
+      //   var hidden_form_id_update = $('#hidden_form_id').val();
 
-        $.post("send_data.php",{
+      //   $.post("send_data.php",{
 
-          hidden_form_id_update:hidden_form_id_update,
-          formnameupdate:formnameupdate,
-          formsessionupdate:formsessionupdate
-        },
-        function(data,status){
-          $('#update_form_modal').modal("hide");
-          readRecords();
-        }
+      //     hidden_form_id_update:hidden_form_id_update,
+      //     formnameupdate:formnameupdate,
+      //     formsessionupdate:formsessionupdate
+      //   },
+      //   function(data,status){
+      //     $('#update_form_modal').modal("hide");
+      //     readRecords();
+      //   }
           
 
-          );
+      //     );
+      //   }
+
+        function updateValue(element,column,id){
+          var value = element.innerText;
+          //console.log(value+column+id);
+          $.ajax({
+            url:'load_data.php',
+            type:'post',
+            data: {
+              value: value,
+              column: column,
+              id: id
+            },
+            success:function(data,status){
+               readRecords();
+            }
+          });
         }
         
       

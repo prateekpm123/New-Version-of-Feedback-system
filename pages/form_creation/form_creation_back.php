@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="form_creation_back.css">
+</head>
+<body>
+
+
 <?php 
 	$con = mysqli_connect('localhost','root','','form_creation');
 	extract($_POST);
@@ -16,18 +27,18 @@
 			$data .= '<div class="row">
 						<div class="content container-fluid">
 						<label>'.$number.'</label>
-						<textarea style="height:100px;width:500px">'.$row['question'].'</textarea>
+						<textarea class="questionarea" style="height:100px;width:500px">'.$row['question'].'</textarea>
 						<div>
-							<label>Option 1:</label>
-	    					<textarea style="width:300px">'.$row['option1'].'</textarea><br>
-				    		<label>Option 2:</label>
-				    		<textarea style="width:300px">'.$row['option2'].'</textarea><br>
-				    		<label>Option 3:</label>
-				    		<textarea style="width:300px">'.$row['option3'].'</textarea><br>
-				    		<label>Option 4:</label>
-				    		<textarea style="width:300px">'.$row['option4'].'</textarea><br>
-				    		<label>Option 5:</label>
-				    		<textarea style="width:300px">'.$row['option5'].'</textarea><br>
+							// <label>Option 1:</label>
+	    					<textarea style="width:300px" class="input-choice" placeholder="Option 1">'.$row['option1'].'</textarea><br>
+				    		// <label>Option 2:</label>
+				    		<textarea style="width:300px" class="input-choice" placeholder="Option 2">'.$row['option2'].'</textarea><br>
+				    		// <label>Option 3:</label>
+				    		<textarea style="width:300px" class="input-choice" placeholder="Option 3">'.$row['option3'].'</textarea><br>
+				    		// <label>Option 4:</label>
+				    		<textarea style="width:300px" class="input-choice" placeholder="Option 4">'.$row['option4'].'</textarea><br>
+				    		// <label>Option 5:</label>
+				    		<textarea style="width:300px" class="input-choice" placeholder="Option 5">'.$row['option5'].'</textarea><br>
 						</div>
 						</div>
 						</div>';
@@ -48,3 +59,7 @@ if(isset($_POST['question']) && isset($_POST['option1']) && isset($_POST['option
 }
 
  ?>
+
+ 	
+</body>
+</html>

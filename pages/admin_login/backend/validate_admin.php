@@ -17,19 +17,28 @@ if(isset($_POST['email']) && isset($_POST['password'])) {
 
 
 $admin = new View();
-$result = $admin->getAdminValidationResults($admin_email, $password);
+$result = $admin->getAdminValidationResults("prateek.manta@sakec.ac.in", "123456789");
+// $result = $admin->getAdminValidationResults($admin_email, $password);
 
 
-if($result == true) {
-    echo true;
-} else if ( $result == false ) {
-    echo false;
+
+if($result != null) {
+    // echo "<br>";
+    // echo $result;
+    // echo "<br>";
+
+    echo 1;
+    session_start();
+    $_SESSION["username"] = $result['0']['Admin_email'];
+    // echo "<br>";
+} else if ( $result == null ) {
+    echo "";
 } else {
-    echo "More than one user with same credentails found";
+    echo "" ?? "More than one user with same credentails found";
 }
 // echo $admin_email;
 // echo $password;
-// var_dump($adminData);
+// var_dump($result);
 // $count = count($adminData);
 // echo "count is ".$count;
 
@@ -41,5 +50,5 @@ if($result == true) {
 //     // echo "<script>location.href='../admin_login.php'</script>";
 
 // }
-
-// echo $count;
+// echo "<br>";
+// echo($result['0']['Admin_email']);

@@ -16,7 +16,9 @@
 
 <body> 
 <div class="container-fluid">
-    
+    <?php  
+        $username = "nothing";
+     ?>
     <!-- NAVBAR -->
     <?php 
         include_once __DIR__.'/../../includes/constants/navbar.php';
@@ -88,10 +90,10 @@
                         password : password,
                     },
                     success: function(data, status) {
-                        // console.log(data);
+                        console.log(data);
                         if(data == 1) {
                             window.location.href = "../form_dashboard/form_dashboard.php";
-                        } else {
+                        } else  {
                             $('#validation-warning').html('<p class="warning">Wrong email or password</p>'); 
                         }
                         

@@ -27,6 +27,9 @@
                 <li class="nav-item dropdown" id="user_dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <?php 
+                            echo $username; 
+                        ?>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" id="dropdown">
                         <a class="dropdown-item" href="#">Logout</a>

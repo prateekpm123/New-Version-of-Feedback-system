@@ -37,8 +37,13 @@ class View extends Model {
             return null;
         }
         else {
-            return $formVersionData;
+            return $formVersionData ?? null;
         }
+    }
+
+    public function getFormVersionQuestionData($F_id) {
+        $formQuestionData = $this->getFormQuestionData($F_id);
+        return $formQuestionData;
     }
 
 }

@@ -78,3 +78,20 @@ function insertNewForm() {
         }
     })
 }
+
+function GetFormDetails(F_id) {
+    $.ajax({
+        url: "backend/setFormId.php",
+        method: "post",
+        data: {
+            F_id: F_id,
+        },
+        success: function(data, success) {
+            if(success == "success") {
+                window.location.href = "../form_creation/form_creation.php";
+            }
+        }
+    })
+}
+
+

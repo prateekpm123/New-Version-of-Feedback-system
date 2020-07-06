@@ -60,12 +60,12 @@ class Model extends Dbh {
 
             if($rowCount > 1) {
                 $ans = [$rowCount, $results];
-                return true ?? 'TWO OR MORE ADMINS WITH SAME CREDENTIALS';
+                return null;
             }
             else if($rowCount = 0) {
-                return false;
+                return null;
             }
-            else {
+            else if($rowCount = 1 ) {
                 return $results ?? null;
             }
         }
@@ -119,7 +119,6 @@ class Model extends Dbh {
     // Insert forms
     protected function insetNewForm(string $formName, string $formdesc) {
         $query = "INSERT INTO `form`(`Admin_id`, `Form_code`, `Form_name`, `Form_version`, `Form_details`, `DELETED`) VALUES ('PRA', :formCount, :formName, 1,1,0)";
-        $rowCount = $this->generateFormCode();        // convert integer to a string
         try {
             $stmt = $this->connect()->prepare($query);
             $stmt->execute([
@@ -134,11 +133,25 @@ class Model extends Dbh {
 
     }
 
+    protected function getFormQuestionData($F_id) {
+        $query = "SELECT * FROM `questions` WHERE `F_id`=$F_id";
+        try {
+            $stmt = $this->connect()->prepare($query);
+            $stmt->execute();
+            $formData = $stmt->FetchAll();
+            return $formData;
+        } 
+        catch(Exception $e ) {
+            echo "Fetching Forms data was not successfull ".$e->message();
+            return null;
+        }
+    }
+
 }
 
 
 
 // $obj = new Model();
-// $results = $obj->generateFormCode();
-// // echo var_dump($results);
+// $results = $obj->getFormQuestionData(1);
+// echo var_dump($results);
 // echo (string)$results;   

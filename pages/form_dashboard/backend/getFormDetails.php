@@ -19,6 +19,12 @@ class FormInfo {
         return $formVersionData;
     }
 
+    public function getFormVersionQuestionData($F_id) {
+        $viewClassObj = new View();
+        $formQuestionData = $viewClassObj->getFormVersionQuestionData($F_id);
+        return $formQuestionData;
+    }
+
 }
 
 

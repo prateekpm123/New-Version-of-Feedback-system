@@ -1,15 +1,7 @@
 <?php
 
-// extract($_POST);
-// if(isset($_REQUEST['F_id'])) {
-//     $test = $_REQUEST['F_id'];
-//     echo $test;
-// } else {
-//     echo "not working";
-// }
-
-
-$test = $_REQUEST['F_id'];
-    echo $test;
+$F_id = $_POST['F_id'];
+session_start();
+$_SESSION['F_id'] = $F_id;
 
 ?>

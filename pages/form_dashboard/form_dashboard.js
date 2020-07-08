@@ -109,7 +109,7 @@ function sendFormDetails(F_id) {
         },
         success: function(data, success) {
             if(success == "success") {
-                window.location.href = "test.php";
+                window.location.href = "../form_creation/form_creation.php";
                 console.log(data);
             }
         }

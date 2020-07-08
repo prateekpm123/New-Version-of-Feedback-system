@@ -17,8 +17,8 @@ if(isset($_POST['email']) && isset($_POST['password'])) {
 
 
 $admin = new View();
-$result = $admin->getAdminValidationResults("prateek.manta@sakec.ac.in", "123456789");
-// $result = $admin->getAdminValidationResults($admin_email, $password);
+// $result = $admin->getAdminValidationResults("prateek.manta@sakec.ac.in", "123456789");
+$result = $admin->getAdminValidationResults($admin_email, $password);
 
 
 

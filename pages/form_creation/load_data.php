@@ -56,7 +56,7 @@ if(isset($_POST['id']) && isset($_POST['value']) && isset($_POST['column'])) {
 	$value = $_POST['value'];
 	$column = $_POST['column'];
 
-	include 'control.class.php';	
+	include 'database-connection/control.class.php';	
 	if($column == 1){	
 		$update = new Control();
 		$update->updateQuestion($value, $id);

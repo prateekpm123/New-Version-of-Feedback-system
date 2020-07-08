@@ -100,11 +100,12 @@ function insertNewForm() {
 
 function sendFormDetails(F_id) {
     let test = F_id
+    // alert(test)
     $.ajax({
         url: "test.php",
         method: "post",
         data: {
-            test: test
+            F_id: test
         },
         success: function(data, success) {
             if(success == "success") {

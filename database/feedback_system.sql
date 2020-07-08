@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.1
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 10, 2020 at 11:59 AM
--- Server version: 10.4.8-MariaDB
--- PHP Version: 7.1.32
+-- Generation Time: Jul 08, 2020 at 03:01 PM
+-- Server version: 10.4.10-MariaDB
+-- PHP Version: 7.1.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -159,6 +159,7 @@ CREATE TABLE `form` (
 
 INSERT INTO `form` (`F_id`, `Admin_id`, `Form_code`, `Form_name`, `Form_version`, `Form_Desc`, `created_on`, `updated_on`, `Form_details`, `DELETED`) VALUES
 (1, 'PRA', '1', 'TEst form 1', '1', '', '2020-06-07 14:37:55', '2020-06-08 06:16:00', 1, 0),
+(10, 'PRA', '10', 'TEacher form', '1', '', '2020-07-06 10:33:28', '2020-07-06 10:33:28', 1, 0),
 (2, 'PRA', '2', 'TEst form 2', '1', '', '2020-06-07 14:39:16', '2020-06-07 14:39:16', 1, 0),
 (3, 'PRA', '3', 'TEst form 2', '2', '', '2020-06-07 14:41:46', '2020-06-07 14:41:46', 1, 0),
 (4, 'PRA', '4', 'TEst form 2', '3', '', '2020-06-07 14:41:46', '2020-06-07 14:41:46', 1, 0),
@@ -203,16 +204,40 @@ CREATE TABLE `questions` (
   `Breakpoints` varchar(255) NOT NULL,
   `created_on` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `type` varchar(255) NOT NULL,
   `Question_desc` mediumtext NOT NULL,
   `Option1` varchar(1000) NOT NULL DEFAULT 'NULL',
   `Option2` varchar(1000) NOT NULL DEFAULT 'NULL',
   `Option3` varchar(1000) NOT NULL DEFAULT 'NULL',
   `Option4` varchar(1000) NOT NULL DEFAULT 'NULL',
   `Option5` varchar(1000) NOT NULL DEFAULT 'NULL',
-  `Option6` varchar(1000) NOT NULL DEFAULT 'NULL',
   `Default_Option` varchar(1000) NOT NULL DEFAULT 'NULL',
-  `DELETED` tinyint(1) NOT NULL
+  `DELETED` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `questions`
+--
+
+INSERT INTO `questions` (`Q_id`, `Q_no`, `F_id`, `Breakpoints`, `created_on`, `updated_on`, `type`, `Question_desc`, `Option1`, `Option2`, `Option3`, `Option4`, `Option5`, `Default_Option`, `DELETED`) VALUES
+(1, 1, 1, '', '2020-07-06 10:53:49', '2020-07-08 10:55:07', '', 'Lets see what do we have here', 'nothing much', 'lset have look', 'lets not see muhc', '3', 'asdfNULL', 'asfas', 1),
+(2, 2, 1, '', '2020-07-06 10:54:39', '2020-07-08 10:55:08', '', 'Lets see what do we have here', 'nothing much', 'lset have look', 'lets not see muhc', '3', 'asdfNULL', 'asfas', 1),
+(3, 3, 1, '', '2020-07-06 10:54:39', '2020-07-08 10:55:10', '', 'Lets see what do we have here', 'nothing much', 'lset have look', 'lets not see muhc', '3', 'asdfNULL', 'asfas', 1),
+(4, 4, 1, '', '2020-07-06 10:54:39', '2020-07-08 10:55:13', '', 'Lets see what do we have here', 'nothing much', 'lset have look', 'lets not see muhc', '3', 'asdfNULL', 'asfas', 1),
+(5, 5, 1, '', '2020-07-06 10:54:39', '2020-07-08 10:55:44', '', 'Lets see what do we have here', 'nothing much', 'lset have look', 'lets not see muhc', '3', 'asdfNULL', 'asfas', 1),
+(7, 1, 2, '', '2020-07-06 11:03:11', '2020-07-08 10:53:31', '', 'Which is your favourite anime ?', 'Naruto ', 'One piece', 'Bleach', 'NULL', 'NULL', 'NULL', 1),
+(8, 2, 2, '', '2020-07-06 11:04:46', '2020-07-08 10:55:46', '', 'Which your favourite character', 'Lucy', 'Elizabeth', 'Alice', 'Erina', 'Asuna', 'NULL', 1),
+(9, 3, 2, '', '2020-07-06 11:05:25', '2020-07-08 10:55:48', '', 'Which your favourite character', 'Lucy', 'Elizabeth', 'Alice', 'Erina', 'Asuna', 'NULL', 1),
+(10, 4, 2, '', '2020-07-06 11:05:26', '2020-07-08 10:55:50', '', 'Which your favourite character', 'Lucy', 'Elizabeth', 'Alice', 'Erina', 'Asuna', 'NULL', 1),
+(11, 5, 2, '', '2020-07-06 11:05:26', '2020-07-08 10:52:58', '', 'Which your favourite character', 'Lucy', 'Elizabeth', 'Alice', 'Erina', 'Asuna', 'NULL', 1),
+(12, 6, 2, '', '2020-07-06 11:05:26', '2020-07-08 10:55:52', '', 'Which your favourite character', 'Lucy', 'Elizabeth', 'Alice', 'Erina', 'Asuna', 'NULL', 1),
+(13, 7, 2, '', '2020-07-06 11:05:26', '2020-07-08 10:56:37', '', 'Which your favourite character', 'Lucy', 'Elizabeth', 'Alice', 'Erina', 'Asuna', 'NULL', 1),
+(21, 0, 1, '', '2020-07-08 10:48:24', '2020-07-08 10:53:06', 'radio', 'asdfasf', 'asdf', 'asdf', 'asdf', 'asdfasdf', 'asfd', 'NULL', 1),
+(22, 0, 1, '', '2020-07-08 10:48:47', '2020-07-08 10:48:47', 'text', 'asdfasdfsf', '', '', '', '', '', 'NULL', 0),
+(23, 0, 1, '', '2020-07-08 10:56:10', '2020-07-08 12:30:59', 'text', 'Just to test how are how are you doing ?', '', '', '', '', '', 'NULL', 1),
+(24, 0, 1, '', '2020-07-08 10:57:20', '2020-07-08 10:57:20', 'radio', 'Who you wanna make you waifu', 'Lucy ', 'Elizabeth', 'Alice', 'Erina', '', 'NULL', 0),
+(25, 0, 1, '', '2020-07-08 12:30:53', '2020-07-08 12:30:53', 'text', 'test', '', '', '', '', '', 'NULL', 0),
+(26, 0, 1, '', '2020-07-08 12:33:20', '2020-07-08 12:33:20', 'multiplechoice', 'rest', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'NULL', 0);
 
 -- --------------------------------------------------------
 
@@ -349,7 +374,7 @@ ALTER TABLE `form_details`
 -- Indexes for table `questions`
 --
 ALTER TABLE `questions`
-  ADD PRIMARY KEY (`Q_no`),
+  ADD PRIMARY KEY (`Q_id`),
   ADD KEY `Q_id` (`Q_id`),
   ADD KEY `FOREIGN KEY` (`F_id`);
 
@@ -406,7 +431,7 @@ ALTER TABLE `answers`
 -- AUTO_INCREMENT for table `form`
 --
 ALTER TABLE `form`
-  MODIFY `F_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `F_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `form_details`
@@ -418,7 +443,7 @@ ALTER TABLE `form_details`
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `Q_id` int(16) NOT NULL AUTO_INCREMENT;
+  MODIFY `Q_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `user`

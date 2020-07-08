@@ -10,7 +10,7 @@ Class Control extends Dbh {
 	}
 
 	public function updateType($value, $id){
-		$query = "UPDATE questions SET type = '$value', Option1 = '', Option2 = '', Option3 = '', Option4 = '', Option5 = '' WHERE Q_id = '$id'";
+		$query = "UPDATE questions SET `type` = '$value', Option1 = '', Option2 = '', Option3 = '', Option4 = '', Option5 = '' WHERE Q_id = '$id'";
 		$result = $this->connect()->prepare($query);
 		$result->execute([$value, $id]);
 	}

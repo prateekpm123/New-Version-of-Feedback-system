@@ -5,7 +5,7 @@ Class Dbh {
     private $host = "localhost";
     private $user = "root";
     private $pwd = "";
-    private $dbName = "form_creation";
+    private $dbName = "feedback_system";
 
     protected function connect() {
         $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->dbName;

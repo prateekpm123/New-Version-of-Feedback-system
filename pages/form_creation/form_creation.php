@@ -204,7 +204,7 @@
      function formSubmit() {
      	var frm = document.getElementsByName("create-question")[0];
      	frm.reset();
-     	preventDefault();
+     	// preventDefault();
      }
 	</script>
 </body>

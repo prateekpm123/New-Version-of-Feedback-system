@@ -79,19 +79,40 @@ function insertNewForm() {
     })
 }
 
-function GetFormDetails(F_id) {
+// function GetFormDetails(F_id) {
+//     alert(F_id)
+//     let Form_id = F_id
+//     $.ajax({
+//         url: "backend/set_form_id.php",
+//         method: "post",
+//         data: {
+//             F_id : Form_id,
+//         },
+//         success: function(data, success) {
+//             if(success == "success") {
+//                 // window.location.href = "../form_creation/form_creation.php";
+//                 window.location.href = "backend/set_form_id.php";
+
+//             }
+//         }
+//     });
+// }
+
+function sendFormDetails(F_id) {
+    let test = F_id
     $.ajax({
-        url: "backend/setFormId.php",
+        url: "test.php",
         method: "post",
         data: {
-            F_id: F_id,
+            test: test
         },
         success: function(data, success) {
             if(success == "success") {
-                window.location.href = "../form_creation/form_creation.php";
+                window.location.href = "test.php";
+                console.log(data);
             }
         }
-    })
+    });
 }
 
 

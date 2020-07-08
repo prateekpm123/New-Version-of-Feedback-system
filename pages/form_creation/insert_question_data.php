@@ -11,14 +11,14 @@ if(isset($_POST['question']) && isset($_POST['type']) && isset($_POST['option1']
 			$option3 = $_POST['option3'];
 			$option4 = $_POST['option4'];
 			$option5 = $_POST['option5'];
-			include 'model.class.php';
+			include 'database-connection/model.class.php';
 			$model = new Model();
 			$model->insertRecord($question, $type, $option1, $option2, $option3, $option4, $option5);
 	}
 
 	if(isset($_POST['deleteid'])){
 	$question_id = $_POST['deleteid'];
-	include 'control.class.php';
+	include 'database-connection/control.class.php';
 	$control = new Control();
 	$control->deleteQuestion($question_id);
 }

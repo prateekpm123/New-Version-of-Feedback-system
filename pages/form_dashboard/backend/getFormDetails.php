@@ -3,8 +3,6 @@
 require_once "../../../classes/View.class.php";
 
 
-
-
 class FormInfo {
 
     public function giveFormDataToRender() {

@@ -29,7 +29,7 @@ if($result != null) {
 
     echo 1;
     session_start();
-    $_SESSION["username"] = $result['0']['Admin_email'];
+    $_SESSION["admin_username"] = $result['0']['Admin_email'];
     // echo "<br>";
 } else if ( $result == null ) {
     echo "";

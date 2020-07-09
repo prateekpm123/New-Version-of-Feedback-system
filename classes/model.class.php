@@ -13,7 +13,7 @@ class Model extends Dbh {
     }
 
     // generate a form code for a Form name
-    public function generateFormCode() {
+    protected function generateFormCode() {
         $query = "SELECT * FROM form";
 
         try {
@@ -75,12 +75,12 @@ class Model extends Dbh {
         
     }
 
-    protected function fetchForms() {
-        $query = "SELECT * FROM form WHERE Form_version=1 AND `DELETED`=0 ";
+    protected function fetchForms($access_reciever) {
+        $query = "SELECT * FROM form WHERE `F_id` IN (SELECT F_id from access WHERE `access_receiver`= ? ORDER BY `F_id` ASC) AND `Form_version`=1";
 
         try {
             $stmt = $this->connect()->prepare($query);
-            $stmt->execute();
+            $stmt->execute([$access_reciever]);
             $forms = $stmt->FetchAll();
             return $forms ?? false;
         } 
@@ -116,20 +116,48 @@ class Model extends Dbh {
         }
     }
 
-    // Insert forms
-    protected function insetNewForm(string $formName, string $formdesc) {
-        $query = "INSERT INTO `form`(`Admin_id`, `Form_code`, `Form_name`, `Form_version`, `Form_details`, `DELETED`) VALUES ('PRA', :formCount, :formName, 1,1,0)";
+    
+    // Insert forms based on who is logged in
+    protected function insetNewForm(string $formName, string $formDesc) {
+        $query =  "INSERT INTO `form`(`Admin_id`, `Form_name`, `Form_version`,`Form_Desc`, `Form_details`, `DELETED`) VALUES ('PRA',?, 1,? ,1,0)";
         try {
             $stmt = $this->connect()->prepare($query);
-            $stmt->execute([
-                'formCount' =>$rowCount,
-                'formName' => $formName,
-            ]);
+            $stmt->execute([$formName, $formDesc]);
+            $query2 = "SELECT `F_id` FROM form ORDER by F_id DESC LIMIT 1";
+            $stmt2 = $this->connect()->prepare($query2);
+            $stmt2->execute();
+            $newInsertedF_id = $stmt2->fetchAll();
+
+            $thisF_id = $newInsertedF_id[0]['F_id'];
+
+
+            // ADDING THE DATA INTO THE ACCESS TABLE
+            $this->addTheEntryOfTheNewFormInAccessTable($thisF_id);
             return true;
         } 
         catch(Exception $e ) {
             echo "Fetching Forms data was not successfull ".$e->message();
+            return false;
         }
+
+        
+
+    }
+
+    // Inserting into the access table !!
+    private function addTheEntryOfTheNewFormInAccessTable($newInsertedF_id) {
+        session_start();
+        $admin_username = $_SESSION['admin_username'];
+        try{
+            $query2 = "INSERT INTO `access`(`F_id`, `Admin_id`, `access_giver`, `access_receiver`, `priviliges`, `DELETED`) VALUES (?, 'PRA', ? , ?, 'master', 0)";
+            $stmt = $this->connect()->prepare($query2);
+            $stmt->execute([$newInsertedF_id, $admin_username, $admin_username]);
+            return true;
+        } 
+        catch(Exception $e) {
+            return "Inserting into the access table failed".$e->message();
+        }
+        
 
     }
 
@@ -152,6 +180,6 @@ class Model extends Dbh {
 
 
 // $obj = new Model();
-// $results = $obj->getFormQuestionData(1);
+// $results = $obj->insetNewForm("1", "nothing");
 // echo var_dump($results);
 // echo (string)$results;   

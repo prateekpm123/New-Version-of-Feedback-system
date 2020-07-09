@@ -2,12 +2,15 @@
 
 require "../backend/getFormDetails.php";
 
-renderData();
 
-function renderData() {
+session_start();
+renderData($_SESSION['admin_username']);
+
+
+function renderData($username) {
     $formInfoObj = new FormInfo();
-    $formData = $formInfoObj->giveFormDataToRender();
-
+    $formData = $formInfoObj->giveFormDataToRender($username);
+    
     $data = '<table class="table table-bordered table-striped">
                     <tr>
                         <th>No.</th>

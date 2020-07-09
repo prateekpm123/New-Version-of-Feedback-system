@@ -19,8 +19,8 @@ class View extends Model {
         return $results;
     }
 
-    public function getFormData() {
-        $forms = $this->fetchForms();
+    public function getFormData($access_reciever) {
+        $forms = $this->fetchForms($access_reciever);
         if($forms == false ) {
             // $empty =  "OOPS got nothing to show";
             return null;

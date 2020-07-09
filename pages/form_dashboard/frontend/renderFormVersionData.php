@@ -32,11 +32,11 @@ function renderFormVersionData() {
 				<td contenteditable="true">'.$row['Form_name'].'</td>
 				<td>'.$row['Form_version'].'</td>
 				<td>
-					<button onclick="sendFormDetails('.$row['F_id'].')"
+					<button 
 					class="btn btn-info">Update</button>
 				</td>
 				<td>
-					<button class="btn btn-warning">Edit</button>
+					<button class="btn btn-warning" onclick="sendFormDetails('.$row['F_id'].')">Edit</button>
 				</td>
 				<td>
 					<button onclick="DeleteForm('.$row['F_id'].')" class="btn

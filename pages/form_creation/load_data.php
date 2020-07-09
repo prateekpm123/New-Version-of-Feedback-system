@@ -14,9 +14,9 @@
 
 		{
 
-			$data .= '<div class="content container-fluid">
+			$data .= '<div class="content container-fluid" id="'.$row['Q_id'].'">
 						<label>'.$number.'.</label>
-						<input type="text" id="questionarea'.$number.'" value="'.$row['Question_desc'].'"
+						<input type="text" class="questionclass" id="questionarea'.$number.'" value="'.$row['Question_desc'].'"
 						style="width: 50%;padding: 12px 20px;margin: 8px 0;box-sizing: border-box;
                  				 border: 3px solid #ccc; -webkit-transition: 0.5s; transition: 0.5s;
                   					outline: none;" onChange="updatetheparticularchange(this,1,'.$row['Q_id'].')">
@@ -28,18 +28,20 @@
 			    			<option value="multiplechoice">multiplechoice</option>
 			    		</select>
 			    		<button class="btn material-icons"
-			    		style="padding-left:10px;padding-bottom:10px;" onclick="deleteQuestion('.$row['Q_id'].')">delete</button>		  
+							style="padding-left:10px;padding-bottom:10px;" onclick="deleteQuestion('.$row['Q_id'].')">delete</button>
+							<button class="btn material-icons" style="padding-bottom:10px" 
+			    		onclick="duplicate1('.$row['Q_id'].')">content_copy</button>		  
 							<div id="select'.$number.'" class="optionarea" name="optionarea" style="padding-left: 30px;">
 							<label>1.</label>
-	    					<input type="text" style="width:300px;height:30px" value="'.$row['Option1'].'" onChange="updatetheparticularchange(this,3,'.$row['Q_id'].')"><br>
+	    					<input type="text" class="optionclass" style="width:300px;height:30px" value="'.$row['Option1'].'" onChange="updatetheparticularchange(this,3,'.$row['Q_id'].')"><br>
 				    		<label>2.</label>
-				    		<input type="text" style="width:300px;height:30px" value="'.$row['Option2'].'" onChange="updatetheparticularchange(this,4,'.$row['Q_id'].')"><br>
+				    		<input type="text" class="optionclass" style="width:300px;height:30px" value="'.$row['Option2'].'" onChange="updatetheparticularchange(this,4,'.$row['Q_id'].')"><br>
 				    		<label>3.</label>
-				    		<input type="text" style="width:300px;height:30px" value="'.$row['Option3'].'" onChange="updatetheparticularchange(this,5,'.$row['Q_id'].')"><br>
+				    		<input type="text" class="optionclass" style="width:300px;height:30px" value="'.$row['Option3'].'" onChange="updatetheparticularchange(this,5,'.$row['Q_id'].')"><br>
 				    		<label>4.</label>
-				    		<input type="text" style="width:300px;height:30px" value="'.$row['Option4'].'" onChange="updatetheparticularchange(this,6,'.$row['Q_id'].')"><br>
+				    		<input type="text" class="optionclass" style="width:300px;height:30px" value="'.$row['Option4'].'" onChange="updatetheparticularchange(this,6,'.$row['Q_id'].')"><br>
 				    		<label>5.</label>
-				    		<input type="text" style="width:300px;height:30px" value="'.$row['Option5'].'" onChange="updatetheparticularchange(this,7,'.$row['Q_id'].')"><br>
+				    		<input type="text" class="optionclass" style="width:300px;height:30px" value="'.$row['Option5'].'" onChange="updatetheparticularchange(this,7,'.$row['Q_id'].')"><br>
 						    </div>
 						</div>';
 						$number++;

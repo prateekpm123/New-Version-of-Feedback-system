@@ -17,6 +17,19 @@ Class View extends Dbh {
         }
         return $data;
     }
+
+    public function fetchparticularquestion($copyid) {
+        $data = null;
+
+        $query = " SELECT * FROM `questions` WHERE Q_id = '$copyid' ";
+        $result = $this->connect()->prepare($query);
+        if ($result->execute()){
+            while ($row = $result->fetch()){
+                $data[] = $row;
+            }
+        }
+        return $data;
+    }
 }
 
  ?>

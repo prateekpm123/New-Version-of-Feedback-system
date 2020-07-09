@@ -175,6 +175,32 @@
         }
       }
 
+      function duplicate1(copyid){
+        var copyquestion = document.getElementById(copyid).querySelector(".questionclass").value;
+        var copytype = document.getElementById(copyid).querySelector(".selectarea").value;
+        var copyoption1 = document.getElementById(copyid).querySelectorAll(".optionclass")[0].value;
+        var copyoption2 = document.getElementById(copyid).querySelectorAll(".optionclass")[1].value;
+        var copyoption3 = document.getElementById(copyid).querySelectorAll(".optionclass")[2].value;
+        var copyoption4 = document.getElementById(copyid).querySelectorAll(".optionclass")[3].value;
+        var copyoption5 = document.getElementById(copyid).querySelectorAll(".optionclass")[4].value;
+
+        $.ajax({
+            url:"send_data.php",
+            type:"post",
+            data: { copyquestion:copyquestion,
+                    copytype:copytype,
+                    copyoption1:copyoption1,
+                    copyoption2:copyoption2,
+                    copyoption3:copyoption3,
+                    copyoption4:copyoption4,
+                    copyoption5:copyoption5},
+            success:function(data,status){
+              readRecords();
+              alert("The Question has been added to the bottom");
+            }
+          });
+      }
+
      function optionhidefortext() {
      	var value = document.getElementById("type").value;
      	var a = document.getElementById("option");

@@ -79,8 +79,8 @@
             let password = $('#pwd').val();
             // console.log(email, password)
             
-            if(password.length >= 8)
-            {
+            // if(password.length >= 8)
+            // {
                 $('#password-warning').html(''); 
                 $.ajax({
                     url: "backend/validate_admin.php",
@@ -99,9 +99,9 @@
                         
                     }    
                 });
-            } else {
-                $('#password-warning').html('<p class="warning">Enter password length more than 8 letters</p>'); 
-            }
+            // } else {
+            //     // $('#password-warning').html('<p class="warning">Enter password length more than 8 letters</p>'); 
+            // }
             
 
         }

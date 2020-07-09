@@ -13,7 +13,7 @@ class Model extends Dbh {
     }
 
     // generate a form code for a Form name
-    public function generateFormCode() {
+    protected function generateFormCode() {
         $query = "SELECT * FROM form";
 
         try {
@@ -76,7 +76,7 @@ class Model extends Dbh {
     }
 
     protected function fetchForms() {
-        $query = "SELECT * FROM form WHERE Form_version=1 AND `DELETED`=0 ";
+        $query = "SELECT * FROM form WHERE Form_version=1 AND `DELETED`=0 ORDER BY `F_id` ASC";
 
         try {
             $stmt = $this->connect()->prepare($query);

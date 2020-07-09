@@ -5,9 +5,9 @@ require_once "../../../classes/View.class.php";
 
 class FormInfo {
 
-    public function giveFormDataToRender() {
+    public function giveFormDataToRender($access_reciever) {
         $viewClassObj = new View();
-        $formsData = $viewClassObj->getFormData();
+        $formsData = $viewClassObj->getFormData($access_reciever);
         return $formsData;
     }
 

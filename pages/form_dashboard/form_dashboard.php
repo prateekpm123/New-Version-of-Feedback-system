@@ -18,7 +18,7 @@ session_start();
 <body>
     <!-- NAVBAR -->
     <?php 
-        $username = $_SESSION['username'];
+        $username = $_SESSION['admin_username'];
     ?>
     <?php 
         include_once __DIR__.'/../../includes/constants/navbar.php';

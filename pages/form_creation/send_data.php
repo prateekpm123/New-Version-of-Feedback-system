@@ -23,6 +23,22 @@ if(isset($_POST['question']) && isset($_POST['type']) && isset($_POST['option1']
 	$control->deleteQuestion($question_id);
 }
 
+if(isset($_POST['copyquestion']) && isset($_POST['copytype']) && isset($_POST['copyoption1']) && isset($_POST['copyoption2']
+	) && isset($_POST['copyoption3']) && isset($_POST['copyoption4']) && isset($_POST['copyoption5'])) {
+
+	$copyquestion = $_POST['copyquestion'];
+	$copytype = $_POST['copytype'];
+	$copyoption1 = $_POST['copyoption1'];
+	$copyoption2 = $_POST['copyoption2'];
+	$copyoption3 = $_POST['copyoption3'];
+	$copyoption4 = $_POST['copyoption4'];
+	$copyoption5 = $_POST['copyoption5'];
+	include 'database-connection/model.class.php';
+	$model1 = new Model();
+	$model1->insertRecord($copyquestion, $copytype, $copyoption1, $copyoption2, $copyoption3, $copyoption4, 
+		$copyoption5);
+	}
+
  ?>
 
  

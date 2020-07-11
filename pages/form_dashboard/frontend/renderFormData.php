@@ -25,7 +25,7 @@ function renderData($username) {
             $Form_name = $row['Form_name'];
 			$data .= '<tr>
 				<td>'.$number.'</td>
-				<td contenteditable="true" onkeyup="updateFormName(this,'.$row['F_id'].')">'.$Form_name.'</td>
+				<td contenteditable="true" onBlur="updateFormName(this,1,'.$row['F_id'].')">'.$Form_name.'</td>
 				<td>
 					<button onclick="getFormVersions('.$row['F_id'].')" class="btn btn-info">View</button>
                 </td>

@@ -39,7 +39,7 @@ function renderFormVersionData() {
 					<button class="btn btn-warning" onclick="sendFormDetails('.$row['F_id'].')">Edit</button>
 				</td>
 				<td>
-					<button onclick="DeleteForm('.$row['F_id'].')" class="btn
+					<button onclick="" class="btn
 						btn-danger">Delete</button>
 				</td>
 				</tr>';

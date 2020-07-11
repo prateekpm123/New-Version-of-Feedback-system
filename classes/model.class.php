@@ -105,7 +105,7 @@ class Model extends Dbh {
         
         try{
             $Form_name = $formIdName[0]['Form_name'];
-            $query2 = "SELECT * FROM `form` WHERE `Form_name`= ? AND `Admin_id`=?";
+            $query2 = "SELECT * FROM `form` WHERE `Form_name`= ? AND `Admin_id`=? AND  `DELETED`=0 ";
         }
         catch(Exception $e) {
             return false;
@@ -182,7 +182,7 @@ class Model extends Dbh {
         }
     }
 
-    protected function updateFormName($F_id, $FormName) {
+    protected function updateFormName($F_id, $Form_name) {
         try {
             $query = "UPDATE `form` SET `Form_name`=? WHERE F_id= ? ";
             $stmt = $this->connect()->prepare($query);

@@ -18,7 +18,7 @@ class Controller extends Model {
     }
 
     public function updateFormNameControl($F_id, $FormName ) {
-        $result = $this->updateFormName($F_id, $formName );
+        $result = $this->updateFormName($F_id, $FormName );
         return $result;
     }
 

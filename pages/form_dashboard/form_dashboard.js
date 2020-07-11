@@ -98,26 +98,28 @@ function deleteForms(F_id) {
     }
 }
 
-// function updateFormName(element, F_id) {
-//     console.log('its running');
-//     console.log(element.value);
-    
-//     $.ajax({
-//         url: "backend/updateFormName.php",
-//         method: "post",
-//         data: {
-//             F_id : F_id,
-//             FormName : FormName,
-//         },
-//         success: function(data, success) {
-//             console.log(data);
-//             if(success== "success") {
-//                 loadFormdata();
-//             }
-//         }
-//     })
+function updateFormName(element, column, F_id) {
+    console.log('its running');
+    let value = element.innerText;
+    console.log(value, column);
 
-// }
+    $.ajax({
+        url: "backend/updateFormDetails.php",
+        method: "post",
+        data: {
+            F_id : F_id,
+            FormName : value,
+            column: column
+        },
+        success: function(data, success) {
+            console.log(data);
+            if(success== "success") {
+                loadFormdata();
+                getFormVersions(F_id);
+            }
+        }
+    })
+}
 
 // function GetFormDetails(F_id) {
 //     alert(F_id)

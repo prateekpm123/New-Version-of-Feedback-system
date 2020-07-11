@@ -30,6 +30,7 @@ if($result != null) {
     echo 1;
     session_start();
     $_SESSION["admin_username"] = $result['0']['Admin_email'];
+    $_SESSION["admin_id"] = $result['0']['Admin_id'];
     // echo "<br>";
 } else if ( $result == null ) {
     echo "";

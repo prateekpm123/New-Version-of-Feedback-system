@@ -76,7 +76,7 @@ class Model extends Dbh {
     }
 
     protected function fetchForms($access_reciever) {
-        $query = "SELECT * FROM form WHERE `F_id` IN (SELECT F_id from access WHERE `access_receiver`= ? ORDER BY `F_id` ASC) AND `Form_version`=1";
+        $query = "SELECT * FROM form WHERE `F_id` IN (SELECT F_id from access WHERE `access_receiver`= ? ORDER BY `F_id` ASC) AND `Form_version`=1 AND `DELETED`=0";
 
         try {
             $stmt = $this->connect()->prepare($query);
@@ -91,23 +91,29 @@ class Model extends Dbh {
     }
 
     protected function fetchFormVersions($F_id) {
-        $query = "SELECT * FROM `form` WHERE `F_id`= ? AND `DELETED`=0 ";
+        session_start();
+        $query = "SELECT * FROM `form` WHERE `F_id`= ? AND `DELETED`=0 AND `Admin_id`= ?";
 
         try{
             $stmt = $this->connect()->prepare($query);
-            $stmt->execute([$F_id]);
+            $stmt->execute([$F_id, $_SESSION['admin_id'] ]);
             $formIdName = $stmt->FetchAll();
         }
         catch(Exception $e) {
             echo "Fetching Forms Version Data was not successfull ".$e->message();
         }
         
-        $Form_name = $formIdName[0]['Form_name'];
-
-        $query2 = "SELECT * FROM `form` WHERE `Form_name`= ?";
+        try{
+            $Form_name = $formIdName[0]['Form_name'];
+            $query2 = "SELECT * FROM `form` WHERE `Form_name`= ? AND `Admin_id`=?";
+        }
+        catch(Exception $e) {
+            return false;
+        }
+       
         try{
             $stmt = $this->connect()->prepare($query2);
-            $stmt->execute([$Form_name]);
+            $stmt->execute([$Form_name, $_SESSION['admin_id']]);
             $formVersionsData = $stmt->FetchAll();
             return $formVersionsData ?? false;
         }
@@ -119,16 +125,20 @@ class Model extends Dbh {
     
     // Insert forms based on who is logged in
     protected function insetNewForm(string $formName, string $formDesc) {
-        $query =  "INSERT INTO `form`(`Admin_id`, `Form_name`, `Form_version`,`Form_Desc`, `Form_details`, `DELETED`) VALUES ('PRA',?, 1,? ,1,0)";
+        session_start();
+        
+        $query =  "INSERT INTO `form`(`Admin_id`, `Form_name`, `Form_version`,`Form_Desc`, `Form_details`, `DELETED`) VALUES (?,?, 1, ? ,1,0)";
         try {
             $stmt = $this->connect()->prepare($query);
-            $stmt->execute([$formName, $formDesc]);
-            $query2 = "SELECT `F_id` FROM form ORDER by F_id DESC LIMIT 1";
+            $stmt->execute([$_SESSION['admin_id'], $formName, $formDesc]);
+
+
+            $query2 = "SELECT `F_id` FROM form WHERE `Admin_id`= ? ORDER by F_id DESC LIMIT 1";
             $stmt2 = $this->connect()->prepare($query2);
-            $stmt2->execute();
+            $stmt2->execute([$_SESSION['admin_id']]);
             $newInsertedF_id = $stmt2->fetchAll();
 
-            $thisF_id = $newInsertedF_id[0]['F_id'];
+            $thisF_id = $newInsertedF_id['0']['F_id'];
 
 
             // ADDING THE DATA INTO THE ACCESS TABLE
@@ -146,7 +156,6 @@ class Model extends Dbh {
 
     // Inserting into the access table !!
     private function addTheEntryOfTheNewFormInAccessTable($newInsertedF_id) {
-        session_start();
         $admin_username = $_SESSION['admin_username'];
         try{
             $query2 = "INSERT INTO `access`(`F_id`, `Admin_id`, `access_giver`, `access_receiver`, `priviliges`, `DELETED`) VALUES (?, 'PRA', ? , ?, 'master', 0)";
@@ -159,6 +168,30 @@ class Model extends Dbh {
         }
         
 
+    }
+
+    protected function deleteForm($F_id) {
+        try {
+            $query = "UPDATE `form` SET DELETED=1 WHERE F_id= ? ";
+            $stmt = $this->connect()->prepare($query);
+            $stmt->execute([$F_id]);
+            return true;
+        }
+        catch(Exception $e) {
+            return "Error in deleting the form due to :".$e->message();
+        }
+    }
+
+    protected function updateFormName($F_id, $FormName) {
+        try {
+            $query = "UPDATE `form` SET `Form_name`=? WHERE F_id= ? ";
+            $stmt = $this->connect()->prepare($query);
+            $stmt->execute([$Form_name, $F_id]);
+            return "Update successfull";
+        }
+        catch(Exception $e) {
+            return "Error in updating the form due to :".$e->message();
+        }
     }
 
     protected function getFormQuestionData($F_id) {
@@ -180,6 +213,6 @@ class Model extends Dbh {
 
 
 // $obj = new Model();
-// $results = $obj->insetNewForm("1", "nothing");
+// $results = $obj->deleteForm(39);
 // echo var_dump($results);
 // echo (string)$results;   

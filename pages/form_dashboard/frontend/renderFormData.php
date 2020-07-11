@@ -16,6 +16,7 @@ function renderData($username) {
                         <th>No.</th>
                         <th>Form Name</th>
                         <th>Check Versions</th>
+                        <th>Delete forms</th>
                     </tr>';
 
     if(!empty($formData)){
@@ -24,9 +25,12 @@ function renderData($username) {
             $Form_name = $row['Form_name'];
 			$data .= '<tr>
 				<td>'.$number.'</td>
-				<td contenteditable="true">'.$Form_name.'</td>
+				<td contenteditable="true" onkeyup="updateFormName(this,'.$row['F_id'].')">'.$Form_name.'</td>
 				<td>
 					<button onclick="getFormVersions('.$row['F_id'].')" class="btn btn-info">View</button>
+                </td>
+                <td>
+					<button onclick="deleteForms('.$row['F_id'].')" class="btn btn-danger">Delete</button>
 				</td>
 				</tr>';
 				$number++;

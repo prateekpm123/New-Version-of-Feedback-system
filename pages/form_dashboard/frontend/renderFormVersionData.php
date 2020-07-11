@@ -45,6 +45,8 @@ function renderFormVersionData() {
 				</tr>';
 				$number++;
 		}
+	} else {
+		$data .= '<h4 style="color: red;"> Admin id is empty, so try creating a new form !</h4>';
 	}
 
 	$data .= '</table>';

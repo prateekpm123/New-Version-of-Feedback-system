@@ -11,56 +11,56 @@
     	
 </head>
 <body>
-  			<div class="container">
-  				<div class="row">
-  		<div id="records_content" class="col-8">
-    		
-  		</div>
-  		<div class="col-4">
-  			<div class="sticky-top">
-  				<h4 align="center">Create Question</h4>
-  				<form name="create-question">
-  				<div class="form-group">
-		          	<input type="text" autocomplete="off" name="" id="question" class="form-control" placeholder="Enter the question">
-	        	 </div>
-	        	<div class="form-group">
-		        	<label for="type">Type:</label>
-	    			<select name="type" id="type" onchange="optionhidefortext()" >
-	    			<option value="radio">radio</option>
-	    			<option value="text" >text</option>
-	    			<option value="multiplechoice">multiplechoice</option>
-	    			</select>
-	        	</div>
-	        	<div id="option" name="option">
-			        <div class="form-group">
-			          <input type="text" autocomplete="off"  id="option1" class="form-control" placeholder="Enter option 1">
-			        </div>
-			        <div class="form-group">
-			          <input type="text" autocomplete="off"  id="option2" class="form-control" placeholder="Enter option 2">
-			        </div>
-			        <div class="form-group">
-			          <input type="text" autocomplete="off"  id="option3" class="form-control" placeholder="Enter option 3">
-			        </div>
-			        <div class="form-group">
-			          <input type="text" autocomplete="off"  id="option4" class="form-control" placeholder="Enter option 4">
-			        </div>
-			        <div class="form-group">
-			          <input type="text" autocomplete="off"  id="option5" class="form-control" placeholder="Enter option 5">
-			        </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div id="records_content" class="col-8">
+        
+      </div>
+      <div class="col-4">
+        <div class="sticky-top">
+          <h4 align="center">Create Question</h4>
+          <form name="create-question">
+          <div class="form-group">
+                <input type="text" autocomplete="off" name="" id="question" class="form-control" placeholder="Enter the question">
+            </div>
+            <div class="form-group">
+              <label for="type">Type:</label>
+            <select name="type" id="type" onchange="optionhidefortext()" >
+            <option value="radio">radio</option>
+            <option value="text" >text</option>
+            <option value="multiplechoice">multiplechoice</option>
+            </select>
+            </div>
+            <div id="option" name="option">
+              <div class="form-group">
+                <input type="text" autocomplete="off"  id="option1" class="form-control" placeholder="Enter option 1">
+              </div>
+              <div class="form-group">
+                <input type="text" autocomplete="off"  id="option2" class="form-control" placeholder="Enter option 2">
+              </div>
+              <div class="form-group">
+                <input type="text" autocomplete="off"  id="option3" class="form-control" placeholder="Enter option 3">
+              </div>
+              <div class="form-group">
+                <input type="text" autocomplete="off"  id="option4" class="form-control" placeholder="Enter option 4">
+              </div>
+              <div class="form-group">
+                <input type="text" autocomplete="off"  id="option5" class="form-control" placeholder="Enter option 5">
+              </div>
 
-	    	</div>
-	    	<div class="footer">
-	        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="addRecord()">Save
-	        </button>
-	        <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="formSubmit()">Clear
-	        </button>
-	        </div>
-	  		</form>
-	      </div>
-  			</div>
-  		</div>
-  	</div>
-  </div>
+            </div>
+        <div class="footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="addRecord()">Save
+          </button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="formSubmit()">Clear
+          </button>
+          </div>
+        </form>
+        </div>
+        </div>
+      </div>
+    </div>
+  <!-- </div> -->
 
   		
  

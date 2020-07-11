@@ -12,4 +12,14 @@ class Controller extends Model {
         return $result;
     }
 
+    public function deleteFormControl($F_id) {
+        $result = $this->deleteForm($F_id);
+        return $result;
+    }
+
+    public function updateFormNameControl($F_id, $FormName ) {
+        $result = $this->updateFormName($F_id, $formName );
+        return $result;
+    }
+
 }

@@ -15,6 +15,12 @@ Class Control extends Dbh {
 		$result->execute([$value, $id]);
 	}
 
+	public function updateTypeWithScale($value, $id){
+		$query = "UPDATE create_form SET type = '$value', rating_scale = '5' , Option1 = '', Option2 = '', Option3 = '', Option4 = '', Option5 = '' WHERE Q_id = '$id'";
+		$result = $this->connect()->prepare($query);
+		$result->execute([$value, $id]);
+	}
+
 	public function updateOption1($value, $id){
 		$query = "UPDATE questions SET Option1 = '$value' WHERE Q_id = '$id'";
 		$result = $this->connect()->prepare($query);

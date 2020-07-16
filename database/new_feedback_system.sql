@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 11, 2020 at 05:45 PM
+-- Generation Time: Jul 16, 2020 at 04:26 PM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.1.33
 
@@ -109,7 +109,7 @@ CREATE TABLE `form` (
 --
 
 INSERT INTO `form` (`F_id`, `Admin_id`, `Admin_email`, `Form_code`, `Form_name`, `Form_version`, `Form_Desc`, `created_on`, `updated_on`, `Form_details`, `DELETED`) VALUES
-(63, 'POO', 'pooja.tripathi@sakec.ac.in', 'abcd2020', 'abcd', '1', '-', '2020-07-11 11:44:31', '2020-07-11 15:36:40', 1, 0);
+(100, 'POO', 'pooja.tripathi@sakec.ac.in', '', 'Teacher feedback', '1', 'Just a form for taking teachers feedback', '2020-07-16 13:36:29', '2020-07-16 13:36:29', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -129,6 +129,13 @@ CREATE TABLE `form_allotment` (
   `updated_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `DELETED` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `form_allotment`
+--
+
+INSERT INTO `form_allotment` (`form_allotment_id`, `F_id`, `Admin_id`, `Admin_email`, `access_giver`, `access_receiver`, `priviliges`, `created_on`, `updated_on`, `DELETED`) VALUES
+(47, 100, 'POO', 'pooja.tripathi@sakec.ac.in', 'pooja.tripathi@sakec.ac.in', 'pooja.tripathi@sakec.ac.in', 'master', '2020-07-16 13:36:29', '2020-07-16 13:36:29', 0);
 
 -- --------------------------------------------------------
 
@@ -176,6 +183,13 @@ CREATE TABLE `questions` (
   `Default_Option` varchar(1000) NOT NULL DEFAULT 'NULL',
   `DELETED` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `questions`
+--
+
+INSERT INTO `questions` (`Q_id`, `Q_no`, `F_id`, `Breakpoints`, `created_on`, `updated_on`, `rating_scale`, `type`, `Question_desc`, `Option1`, `Option2`, `Option3`, `Option4`, `Option5`, `Default_Option`, `DELETED`) VALUES
+(44, 0, 100, '', '2020-07-16 14:21:39', '2020-07-16 14:21:39', '', 'rating', 'I dont know bro', '1', '2', '3', '', '', 'NULL', 0);
 
 -- --------------------------------------------------------
 
@@ -375,13 +389,13 @@ ALTER TABLE `answers`
 -- AUTO_INCREMENT for table `form`
 --
 ALTER TABLE `form`
-  MODIFY `F_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `F_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
 -- AUTO_INCREMENT for table `form_allotment`
 --
 ALTER TABLE `form_allotment`
-  MODIFY `form_allotment_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `form_allotment_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `form_details`
@@ -393,7 +407,7 @@ ALTER TABLE `form_details`
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `Q_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `Q_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `user`

@@ -76,7 +76,7 @@ class Model extends Dbh {
     }
 
     protected function fetchForms($access_reciever) {
-        $query = "SELECT * FROM form WHERE `F_id` IN (SELECT F_id from access WHERE `access_receiver`= ? ORDER BY `F_id` ASC) AND `Form_version`=1 AND `DELETED`=0";
+        $query = "SELECT * FROM form WHERE `F_id` IN (SELECT F_id from form_allotment WHERE `access_receiver`= ? ORDER BY `F_id` ASC) AND `Form_version`=1 AND `DELETED`=0";
 
         try {
             $stmt = $this->connect()->prepare($query);
@@ -90,7 +90,7 @@ class Model extends Dbh {
         
     }
 
-    protected function fetchFormVersions($F_id) {
+    public function fetchFormVersions($F_id) {
         session_start();
         $query = "SELECT * FROM `form` WHERE `F_id`= ? AND `DELETED`=0 AND `Admin_id`= ?";
 
@@ -127,10 +127,10 @@ class Model extends Dbh {
     protected function insetNewForm(string $formName, string $formDesc) {
         session_start();
         
-        $query =  "INSERT INTO `form`(`Admin_id`, `Form_name`, `Form_version`,`Form_Desc`, `Form_details`, `DELETED`) VALUES (?,?, 1, ? ,1,0)";
+        $query =  "INSERT INTO `form`(`Admin_id`,`Admin_email`, `Form_name`, `Form_version`,`Form_Desc`, `Form_details`, `DELETED`) VALUES (?,?,?, 1, ? ,1,0)";
         try {
             $stmt = $this->connect()->prepare($query);
-            $stmt->execute([$_SESSION['admin_id'], $formName, $formDesc]);
+            $stmt->execute([ $_SESSION['admin_id'], $_SESSION['admin_username'], $formName, $formDesc]);
 
 
             $query2 = "SELECT `F_id` FROM form WHERE `Admin_id`= ? ORDER by F_id DESC LIMIT 1";
@@ -140,7 +140,7 @@ class Model extends Dbh {
 
             $thisF_id = $newInsertedF_id['0']['F_id'];
 
-
+            echo $thisF_id;
             // ADDING THE DATA INTO THE ACCESS TABLE
             $this->addTheEntryOfTheNewFormInAccessTable($thisF_id);
             return true;
@@ -157,10 +157,11 @@ class Model extends Dbh {
     // Inserting into the access table !!
     private function addTheEntryOfTheNewFormInAccessTable($newInsertedF_id) {
         $admin_username = $_SESSION['admin_username'];
+        $admin_id = $_SESSION['admin_id'];
         try{
-            $query2 = "INSERT INTO `access`(`F_id`, `Admin_id`, `access_giver`, `access_receiver`, `priviliges`, `DELETED`) VALUES (?, 'PRA', ? , ?, 'master', 0)";
+            $query2 = "INSERT INTO `form_allotment`(`F_id`, `Admin_id`,`Admin_email`, `access_giver`, `access_receiver`, `priviliges`, `DELETED`) VALUES (?, ?, ?, ? , ?, 'master', 0)";
             $stmt = $this->connect()->prepare($query2);
-            $stmt->execute([$newInsertedF_id, $admin_username, $admin_username]);
+            $stmt->execute([$newInsertedF_id, $admin_id, $admin_username, $admin_username, $admin_username]);
             return true;
         } 
         catch(Exception $e) {
@@ -213,6 +214,6 @@ class Model extends Dbh {
 
 
 // $obj = new Model();
-// $results = $obj->deleteForm(39);
+// $results = $obj->fetchFormVersions(100);
 // echo var_dump($results);
 // echo (string)$results;   

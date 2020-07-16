@@ -1,18 +1,18 @@
 <?php 
 	extract($_POST);
-
+	session_start();
 	if(isset($_POST['readrecord'])) {
 
 		$data = '<div class="container-fluid flex-container">
 						<div class="header container-fluid">
 						<div class="row titlerow">
 						<div class="col-8 md-form">
-							<input type="text" class="title" value="" placeholder="Form Name">
+							<input type="text" class="title" value="'.$_SESSION['Form_name'].'" placeholder="Form Name">
 						</div>
 						</div>
 						<div class="row descrow">
 						<div class="col-8 md-form">
-							<input type="text" class="desc" value="" placeholder="Form Description">
+							<input type="text" class="desc" value="'.$_SESSION['Form_desc'].'" placeholder="Form Description">
 						</div>
 						</div>
 						</div>

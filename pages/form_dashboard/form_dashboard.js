@@ -151,8 +151,10 @@ function sendFormDetails(F_id) {
         },
         success: function(data, success) {
             if(success == "success") {
-                window.location.href = "../form_creation/form_creation.php";
                 console.log(data);
+
+                alert("nothing delte");
+                window.location.href = "../form_creation/form_creation.php";
             }
         }
     });

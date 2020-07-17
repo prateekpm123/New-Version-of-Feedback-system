@@ -98,6 +98,25 @@ function deleteForms(F_id) {
     }
 }
 
+function deleteFormVersion(F_id) {
+    const conf = confirm("Are you sure you wanna delete the form ?"); 
+    if(conf == true) {
+        $.ajax({
+            url: "backend/deleteFormVersion.php",
+            method: "post",
+            data: {
+                F_id : F_id,
+            },
+            success: function(data, success) {
+                console.log(data);
+                if(success== "success") {
+                    loadFormdata();
+                }
+            }
+        })
+    }
+}
+
 function updateFormName(element, column, F_id) {
     console.log('its running');
     let value = element.innerText;
@@ -153,7 +172,7 @@ function sendFormDetails(F_id) {
             if(success == "success") {
                 console.log(data);
 
-                alert("nothing delte");
+                // alert("nothing delte");
                 window.location.href = "../form_creation/form_creation.php";
             }
         }

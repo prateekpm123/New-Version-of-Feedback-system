@@ -17,6 +17,7 @@ function renderData($username) {
                         <th>Form Name</th>
                         <th>Check Versions</th>
                         <th>Delete forms</th>
+                        <th>Other Option</th>
                     </tr>';
 
     if(!empty($formData)){
@@ -31,7 +32,20 @@ function renderData($username) {
                 </td>
                 <td>
 					<button onclick="deleteForms('.$row['F_id'].')" class="btn btn-danger">Delete</button>
-				</td>
+                </td>
+                <td>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Options
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <button class="dropdown-item" onclick="getFormVersions('.$row['F_id'].')" >View</button>
+                            <button class="dropdown-item" onclick="deleteForms('.$row['F_id'].')" >Delete</button>
+                            <button class="dropdown-item" >Something else here</button>
+                        </div>
+                    </div>
+                </td>
+                
 				</tr>';
 				$number++;
 		}

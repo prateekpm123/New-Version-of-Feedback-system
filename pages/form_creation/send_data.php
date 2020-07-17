@@ -1,11 +1,11 @@
 <?php 
 
 
-if(isset($_POST['question']) && isset($_POST['type']) && isset($_POST['option1']) && isset($_POST['option2']
-	) && isset($_POST['option3']) && isset($_POST['option4']) && isset($_POST['option5'])) {
+if(isset($_POST['question']) && isset($_POST['type']) && isset($_POST['rating']) && isset($_POST['option1']) && isset($_POST['option2']) && isset($_POST['option3']) && isset($_POST['option4']) && isset($_POST['option5'])) {
 	
 			$question = $_POST['question'];
 			$type = $_POST['type'];
+			$rating = $_POST['rating'];
 			$option1 = $_POST['option1'];
 			$option2 = $_POST['option2'];
 			$option3 = $_POST['option3'];
@@ -13,7 +13,7 @@ if(isset($_POST['question']) && isset($_POST['type']) && isset($_POST['option1']
 			$option5 = $_POST['option5'];
 			include 'database-connection/model.class.php';
 			$model = new Model();
-			$model->insertRecord($question, $type, $option1, $option2, $option3, $option4, $option5);
+			$model->insertRecord($question, $type, $rating, $option1, $option2, $option3, $option4, $option5);
 	}
 
 	if(isset($_POST['deleteid'])){

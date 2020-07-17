@@ -16,7 +16,6 @@ function renderData($username) {
                         <th>No.</th>
                         <th>Form Name</th>
                         <th>Check Versions</th>
-                        <th>Delete forms</th>
                         <th>Other Option</th>
                     </tr>';
 
@@ -29,9 +28,6 @@ function renderData($username) {
 				<td contenteditable="true" onBlur="updateFormName(this,1,'.$row['F_id'].')">'.$Form_name.'</td>
 				<td>
 					<button onclick="getFormVersions('.$row['F_id'].')" class="btn btn-info">View</button>
-                </td>
-                <td>
-					<button onclick="deleteForms('.$row['F_id'].')" class="btn btn-danger">Delete</button>
                 </td>
                 <td>
                     <div class="dropdown">

@@ -10,8 +10,8 @@
     	<link rel="stylesheet" href="form_creation.css">
 </head>
 <body>
-  			<div class="container-fluid">
-  				<div class="row">
+  <div class="container-fluid">
+    <div class="row">
   		<div class="col-sm-4">
   			<div class="sticky-top">
   				<h4 align="center">Create Question</h4>

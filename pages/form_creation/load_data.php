@@ -1,7 +1,7 @@
 <?php 
 	extract($_POST);
-	session_start();
 	if(isset($_POST['readrecord'])) {
+		session_start();
 
 		$data = '<div class="container-fluid flex-container">
 						<div class="header container-fluid">

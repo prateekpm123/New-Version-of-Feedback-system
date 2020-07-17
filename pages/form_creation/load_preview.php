@@ -1,6 +1,8 @@
 <?php 
 extract($_POST);
 if(isset($_POST['readrecord'])){
+
+	session_start();
 $data = '<div class="container-fluid flex-container">
 			<div class="header container-fluid">				
 						<div class="col-8 md-form title">Form Name

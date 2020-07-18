@@ -23,7 +23,7 @@
 	        	</div>
 	        	<div class="form-group">
 		        	<label for="type">Type:</label>
-	    			<select name="type" id="type" onchange="optionhidefortext()" >
+	    			<select name="type" id="type" class="browser-default custom-select" onchange="optionhidefortext()" >
 	    			<option value="radio">radio</option>
 	    			<option value="text" >text</option>
 	    			<option value="multiplechoice">multiplechoice</option>
@@ -32,7 +32,7 @@
 	        	</div>
             <div class="form-group" id="ratings">
               <label for="createratingscale">Rating Scale:</label>
-              <select name="createratingscale" id="createratingscale" onchange="optionmanipulate()">
+              <select name="createratingscale" id="createratingscale" class="browser-default custom-select" onchange="optionmanipulate()">
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>

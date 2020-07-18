@@ -113,7 +113,18 @@
   padding-left: 10px;
 }
 
-.selectarea {
-  border: 1px solid #dadce0;
-  border-radius: 4px;
+.custom-select {
+  width: 150px;
+}
+
+#createratingscale {
+  width: 50px;
+}
+
+.selectbox {
+  padding-bottom: 15px;
+}
+
+.ratingscalearea {
+  width: 50px;
 }

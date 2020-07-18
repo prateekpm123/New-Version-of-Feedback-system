@@ -48,9 +48,9 @@
 			    		</div>
 
 			    		<div class="row secondrow">
-              <div class="col-6">
+              <div class="col-6 selectbox">
               <label for="type">Type:</label>
-			    		<select name="select'.$number.'" onChange="updatetheparticularchange(this,2,'.$row['Q_id'].')" class="selectarea">
+			    		<select name="select'.$number.'" onChange="updatetheparticularchange(this,2,'.$row['Q_id'].')" class="selectarea browser-default custom-select">
 			    			<option value="'.$row['type'].'" selected hidden>'.$row['type'].'</option>
 			    			<option value="text" >text</option>
 			    			<option value="radio">radio</option>
@@ -60,7 +60,7 @@
 			    		</div>
 			    		<div class="col-6" class="ratingdisplay" name="ratingdisplay">
 				    		<label for="rating">Rating Scale:</label>
-				    		<select id="rating" onChange="updatetheparticularchange(this,8,'.$row['Q_id'].')" class="ratingscalearea">
+				    		<select id="rating" onChange="updatetheparticularchange(this,8,'.$row['Q_id'].')" class="ratingscalearea browser-default custom-select">
 				    		<option value="'.$row['rating_scale'].'" selected hidden>'.$row['rating_scale'].'</option>
 				    		<option value="2">2</value>
 				    		<option value="3">3</option>

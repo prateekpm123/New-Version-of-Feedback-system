@@ -5,9 +5,9 @@ if(isset($_POST['readrecord'])){
 	session_start();
 $data = '<div class="container-fluid flex-container">
 			<div class="header container-fluid">				
-						<div class="col-8 md-form title">Form Name
+						<div class="col-8 md-form title">'.$_SESSION['Form_name'].'
 						</div>				
-						<div class="col-8 md-form desc">Form Description
+						<div class="col-8 md-form desc">'.$_SESSION['Form_desc'].'
 						</div>				
 			</div>
 			<br>'; 

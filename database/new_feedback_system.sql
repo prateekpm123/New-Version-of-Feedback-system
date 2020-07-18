@@ -242,8 +242,11 @@ CREATE TABLE `user` (
   `User_name` varchar(255) NOT NULL,
   `User _email` varchar(255) NOT NULL,
   `Role` text NOT NULL,
-  `created_on` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `Mentor` varchar(255) NOT NULL,
+  `Department` varchar(255) NOT NULL,
+  `Year` varchar(255) NOT NULL,
+  `Division` int(16) NOT NULL,
+  `Roll-no` int(16) NOT NULL,
   `Details_id` int(16) NOT NULL,
   `Password_id` int(16) NOT NULL,
   `DELETED` tinyint(1) NOT NULL
@@ -253,11 +256,17 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`U_id`, `User_id`, `User_name`, `User _email`, `Role`, `created_on`, `updated_on`, `Details_id`, `Password_id`, `DELETED`) VALUES
-(3, 'ANI', 'aniket', 'aniketkumar.singh@sakec.ac.in', 'admin', '2020-06-09 05:32:43', '2020-06-09 05:32:43', 3, 3, 0),
-(4, 'JAYA', 'Jaya', 'jayatripathi@gmail.com', 'student', '2020-07-11 08:12:02', '2020-07-11 08:12:02', 4, 4, 0),
-(2, 'POO', 'Pooja', 'pooja.tripathi@sakec.ac.in', 'admin', '2020-06-09 05:21:22', '2020-06-09 10:32:47', 2, 2, 0),
-(1, 'PRA', 'prateek', 'prateek.manta@sakec.ac.in', 'Admin', '2020-05-31 11:03:21', '2020-06-09 05:25:40', 1, 1, 0);
+INSERT INTO `user` (`U_id`, `User_id`, `User_name`, `User _email`, `Role`, `Mentor`, `Department`, `Year`, `Division`, `Roll-no`, `Details_id`, `Password_id`, `DELETED`) VALUES
+(3, 'ANI', 'aniket', 'aniketkumar.singh@sakec.ac.in', 'student', 'Mr. Lukesh kadu', 'IT', 'FE', 5, 1, 3, 3, 0),
+(4, 'JAYA', 'Jaya', 'jayatripathi@gmail.com', 'student', 'Ms. Ashwini Deshmukh', 'CN', 'SE', 3, 2, 4, 4, 0),
+(7, 'NID', 'Nidhi', 'nidhi@gmailcom', 'Student', 'Ms. Nilakshi', 'CN', 'TE', 4, 68, 7, 7, 0),
+(2, 'POO', 'Pooja', 'pooja.tripathi@sakec.ac.in', 'student', 'Ms. Nilakshi Jain', 'EXTC', 'TE', 1, 34, 2, 2, 0),
+(1, 'PRA', 'prateek', 'prateek.manta@sakec.ac.in', 'student', 'Ms. Pramila Shinde', 'ETRX', 'BE', 7, 50, 1, 1, 0),
+(9, 'PRAM', 'Pramila', 'pramila@gmail.com', 'Teacher', '-', '-', '-', 0, 0, 9, 9, 0),
+(5, 'ROH', 'Rohit', 'rohit_tripathi@gmail.com', 'student', 'Ms. Shwetambari Pawar', 'IT', 'FE', 6, 25, 5, 5, 0),
+(6, 'SAN', 'Sanchi', 'sanchi@gmail.com', 'student', 'Ms. Swati', 'EXTC', 'BE', 2, 41, 6, 6, 0),
+(8, 'SHR', 'Shreya', 'shreya@gmail.com', 'student', 'Mr. Lukesh KAdu', 'ETRX', 'SE', 2, 56, 8, 8, 0),
+(10, 'SHWE', 'Shwetambari', 'shwetambari@gmail.com', 'Teacher', '-', '-', '-', 0, 0, 10, 10, 0);
 
 -- --------------------------------------------------------
 
@@ -271,6 +280,7 @@ CREATE TABLE `user_details` (
   `Middle_name` varchar(255) NOT NULL,
   `Last_name` varchar(255) NOT NULL,
   `Phone` bigint(20) NOT NULL,
+  `Password_id` int(16) NOT NULL,
   `created_on` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `DELETED` tinyint(1) NOT NULL
@@ -280,11 +290,17 @@ CREATE TABLE `user_details` (
 -- Dumping data for table `user_details`
 --
 
-INSERT INTO `user_details` (`Details_id`, `First_name`, `Middle_name`, `Last_name`, `Phone`, `created_on`, `updated_on`, `DELETED`) VALUES
-(1, 'Prateek', 'Prakash', 'Manta', 9923433423, '2020-05-31 10:57:25', '2020-05-31 10:57:25', 0),
-(2, 'Pooja', 'Jitendra', 'Tripathi', 9829342232, '2020-05-31 10:58:43', '2020-05-31 10:58:43', 0),
-(3, 'Aniket', 'Kumar', 'Singh', 8934982332, '2020-06-09 05:31:21', '2020-06-09 05:31:21', 0),
-(4, 'Jaya', 'Jitendra', 'Tripathi', 9653118977, '2020-07-11 08:08:06', '2020-07-11 08:08:23', 0);
+INSERT INTO `user_details` (`Details_id`, `First_name`, `Middle_name`, `Last_name`, `Phone`, `Password_id`, `created_on`, `updated_on`, `DELETED`) VALUES
+(1, 'Prateek', 'Prakash', 'Manta', 9923433423, 1, '2020-05-31 10:57:25', '2020-07-17 12:56:10', 0),
+(2, 'Pooja', 'Jitendra', 'Tripathi', 9829342232, 2, '2020-05-31 10:58:43', '2020-07-17 12:56:16', 0),
+(3, 'Aniket', 'Kumar', 'Singh', 8934982332, 3, '2020-06-09 05:31:21', '2020-07-17 12:56:24', 0),
+(4, 'Jaya', 'Jitendra', 'Tripathi', 9653118977, 4, '2020-07-11 08:08:06', '2020-07-17 12:56:29', 0),
+(5, 'Rohit', 'Jitendra', 'Tripathi', 123456, 5, '2020-07-17 12:30:33', '2020-07-17 12:56:41', 0),
+(6, 'Sanchi', 'sunil', 'Tiwari', 7891011, 6, '2020-07-17 12:32:51', '2020-07-17 12:56:47', 0),
+(7, 'Nidhi', 'Neeraj', 'Tiwari', 932308, 7, '2020-07-17 12:37:48', '2020-07-17 12:56:53', 0),
+(8, 'Shreya', 'Anil', 'Mishra', 1234654, 8, '2020-07-17 12:38:20', '2020-07-17 12:57:00', 0),
+(9, 'Pramila', '--', 'Shinde', 54654, 9, '2020-07-17 12:38:51', '2020-07-17 12:57:12', 0),
+(10, 'Shwetambari', '--', 'Pawar', 165465123, 10, '2020-07-17 12:39:54', '2020-07-17 12:57:21', 0);
 
 -- --------------------------------------------------------
 
@@ -296,6 +312,7 @@ CREATE TABLE `user_password` (
   `Password_id` int(16) NOT NULL,
   `password` varchar(255) NOT NULL,
   `re_enter_password` varchar(255) NOT NULL,
+  `Details_id` int(16) NOT NULL,
   `created_on` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `DELETED` tinyint(1) NOT NULL
@@ -305,11 +322,17 @@ CREATE TABLE `user_password` (
 -- Dumping data for table `user_password`
 --
 
-INSERT INTO `user_password` (`Password_id`, `password`, `re_enter_password`, `created_on`, `updated_on`, `DELETED`) VALUES
-(1, '123456789', '123456789', '2020-05-31 11:01:18', '2020-06-09 05:24:16', 0),
-(2, '234567890', '234567890', '2020-06-09 05:22:32', '2020-06-09 05:24:23', 0),
-(3, '345678901', '345678901', '2020-06-09 05:23:30', '2020-06-09 05:24:43', 0),
-(4, 'engineer', 'engineer', '2020-07-11 08:09:15', '2020-07-11 08:09:15', 0);
+INSERT INTO `user_password` (`Password_id`, `password`, `re_enter_password`, `Details_id`, `created_on`, `updated_on`, `DELETED`) VALUES
+(1, '123456789', '123456789', 1, '2020-05-31 11:01:18', '2020-07-17 12:44:23', 0),
+(2, '234567890', '234567890', 2, '2020-06-09 05:22:32', '2020-07-17 12:44:39', 0),
+(3, '345678901', '345678901', 3, '2020-06-09 05:23:30', '2020-07-17 12:44:46', 0),
+(4, 'engineer', 'engineer', 4, '2020-07-11 08:09:15', '2020-07-17 12:44:52', 0),
+(5, 'rohit', 'rohit', 5, '2020-07-17 12:47:43', '2020-07-17 12:47:43', 0),
+(6, 'sanchi', 'sanchi', 6, '2020-07-17 12:48:47', '2020-07-17 12:49:02', 0),
+(7, 'nidhi', 'nidhi', 7, '2020-07-17 12:49:54', '2020-07-17 12:49:54', 0),
+(8, 'shreya', 'shreya', 8, '2020-07-17 12:49:54', '2020-07-17 12:49:54', 0),
+(9, 'pramila', 'pramila', 9, '2020-07-17 12:52:04', '2020-07-17 12:52:04', 0),
+(10, 'shwetambari', 'shwetambari', 10, '2020-07-17 12:52:04', '2020-07-17 12:52:04', 0);
 
 --
 -- Indexes for dumped tables
@@ -394,13 +417,15 @@ ALTER TABLE `user`
 -- Indexes for table `user_details`
 --
 ALTER TABLE `user_details`
-  ADD PRIMARY KEY (`Details_id`);
+  ADD PRIMARY KEY (`Details_id`),
+  ADD KEY `Password_id` (`Password_id`);
 
 --
 -- Indexes for table `user_password`
 --
 ALTER TABLE `user_password`
-  ADD PRIMARY KEY (`Password_id`);
+  ADD PRIMARY KEY (`Password_id`),
+  ADD KEY `Details_id` (`Details_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -452,19 +477,19 @@ ALTER TABLE `questions`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `U_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `U_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `user_details`
 --
 ALTER TABLE `user_details`
-  MODIFY `Details_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `Details_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `user_password`
 --
 ALTER TABLE `user_password`
-  MODIFY `Password_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1262239;
+  MODIFY `Password_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1262240;
 
 --
 -- Constraints for dumped tables
@@ -522,6 +547,12 @@ ALTER TABLE `questions`
 ALTER TABLE `user`
   ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`Details_id`) REFERENCES `user_details` (`Details_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `user_ibfk_2` FOREIGN KEY (`Password_id`) REFERENCES `user_password` (`Password_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `user_password`
+--
+ALTER TABLE `user_password`
+  ADD CONSTRAINT `user_password_ibfk_1` FOREIGN KEY (`Details_id`) REFERENCES `user_details` (`Details_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

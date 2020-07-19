@@ -386,7 +386,7 @@
      }
 
      function openPreviewPage() {
-      window.open('form_preview.php', '_blank');
+      window.open('../form_preview/form_preview.php', '_blank');
      }
 
 	</script>

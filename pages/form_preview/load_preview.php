@@ -11,7 +11,7 @@ $data = '<div class="container-fluid flex-container">
 						</div>				
 			</div>
 			<br>'; 
-include 'database-connection/view.class.php';
+include '../form_creation/database-connection/view.class.php';
 $view = new View();
 $rows = $view->fetchRecords();
 if(!empty($rows)){

@@ -125,7 +125,7 @@
           rating = null;
         }
         else if (type == 'rating'){
-          option1 = option2 = option3 = option4 = option5 = null;
+         rating = option1 = option2 = option3 = option4 = option5 = null;
         }
 
         if ( question !== "") {
@@ -300,7 +300,7 @@
       }
       else if (value == 'rating'){
         a.style.display = "none";
-        b.style.display = "block";
+        b.style.display = "none";
         option1.querySelector("#option1").value = null;
         option2.querySelector("#option2").value = null;
         option3.querySelector("#option3").value = null;
@@ -361,6 +361,7 @@
         }
         else if (a[i].value == 'rating'){
           b[i].style.display = "none";
+          c[i].style.display = "none";
         }
      		else {
           c[i].style.display = "none";

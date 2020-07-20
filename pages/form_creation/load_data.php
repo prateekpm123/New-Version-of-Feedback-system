@@ -7,12 +7,12 @@
 						<div class="header container-fluid">
 						<div class="row titlerow">
 						<div class="col-8 md-form">
-							<input type="text" class="title" value="'.$_SESSION['Form_name'].'" placeholder="Form Name">
+							<input type="text" class="title" value="'.$_SESSION['Form_name'].'" placeholder="Form Name" disabled>
 						</div>
 						</div>
 						<div class="row descrow">
 						<div class="col-8 md-form">
-							<input type="text" class="desc" value="'.$_SESSION['Form_desc'].'" placeholder="Form Description">
+							<input type="text" class="desc" value="'.$_SESSION['Form_desc'].'" placeholder="Form Description" disabled>
 						</div>
 						</div>
 						</div>
@@ -119,7 +119,7 @@ if($column == 1){
 	$update->updateQuestion($value, $id);
 }
 else if($column == 2){
-	if($value == 'linearscale' || $value == 'rating'){
+	if($value == 'linearscale'){
 		$update1 = new Control();
 		$update1->updateTypeWithScale($value, $id);
 	}

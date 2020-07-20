@@ -60,7 +60,7 @@ if(!empty($rows)){
 			</div><br>';
 			$number++;
 		}
-			else if($row['type'] == 'rating'){
+			else if($row['type'] == 'linearscale'){
 				$data .='<div class="content container-fluid">
 				<div class="question"><label>'.$number.'.</label>
 				'.$row['Question_desc'].'</div>
@@ -88,6 +88,28 @@ if(!empty($rows)){
 					</div>
 					</div><br>';
 			$number++;
+			}
+			else if($row['type'] == 'rating'){
+				$data .='<div class="ratecontent container-fluid" style="background-color: white;
+					border-radius: 15px;box-shadow: 0 0 2px rgba(0,0,0,.12), 0 2px 4px rgba(0,0,0,.24);">
+								<div class="question"><label>'.$number.'.</label>
+								'.$row['Question_desc'].'</div>
+								<div class="optionrate row">
+								 <div class="rate">
+								    <input type="radio" name="rate" value="5" />
+								    <label for="star5" title="5">5 stars</label>
+								    <input type="radio" name="rate" value="4" />
+								    <label for="star4" title="text">4 stars</label>
+								    <input type="radio" name="rate" value="3" />
+								    <label for="star3" title="text">3 stars</label>
+								    <input type="radio" name="rate" value="2" />
+								    <label for="star2" title="text">2 stars</label>
+								    <input type="radio" name="rate" value="1" />
+								    <label for="star1" title="text">1 star</label>
+								  </div>
+								</div>
+								</div><br>';
+								$number++;
 			}
 			else if($row['type'] == 'multiplechoice'){
 				$data .='<div class="content container-fluid">

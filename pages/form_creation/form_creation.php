@@ -27,6 +27,7 @@
 	    			<option value="radio">radio</option>
 	    			<option value="text" >text</option>
 	    			<option value="multiplechoice">multiplechoice</option>
+            <option value="linearscale">linear scale</option>
             <option value="rating">rating</option>
 	    			</select>
 	        	</div>
@@ -123,6 +124,9 @@
         else if (type == 'radio'  || type == 'multiplechoice'){
           rating = null;
         }
+        else if (type == 'rating'){
+          option1 = option2 = option3 = option4 = option5 = null;
+        }
 
         if ( question !== "") {
           $.ajax({
@@ -155,10 +159,10 @@
           var value1 = element.value;
             var id1 = element.name;
             var a = document.getElementById(id1);
-            if (value1 == 'text') {
+            if (value1 == 'text' || value1 == 'rating') {
               a.style.display = "none";
             }
-            else if(value1 == 'rating'){
+            else if(value1 == 'linearscale'){
             }
             else {
               a.style.display = "block";
@@ -282,7 +286,7 @@
         option4.querySelector("#option4").value = null;
         option5.querySelector("#option5").value = null;
       }
-      else if (value == 'rating'){
+      else if (value == 'linearscale'){
         a.style.display = "block";
         b.style.display = "block";
         option1.style.display = "block";
@@ -293,6 +297,15 @@
         option4.querySelector("#option4").value = null;
         option5.querySelector("#option5").value = null;
         optionmanipulate();
+      }
+      else if (value == 'rating'){
+        a.style.display = "none";
+        b.style.display = "block";
+        option1.querySelector("#option1").value = null;
+        option2.querySelector("#option2").value = null;
+        option3.querySelector("#option3").value = null;
+        option4.querySelector("#option4").value = null;
+        option5.querySelector("#option5").value = null;
       }
      }
 
@@ -344,7 +357,10 @@
      			b[i].style.display = "none";
           c[i].style.display = "none";
         }
+        else if (a[i].value == 'linearscale'){
+        }
         else if (a[i].value == 'rating'){
+          b[i].style.display = "none";
         }
      		else {
           c[i].style.display = "none";

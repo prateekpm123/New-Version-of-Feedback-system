@@ -54,7 +54,8 @@
 			    			<option value="'.$row['type'].'" selected hidden>'.$row['type'].'</option>
 			    			<option value="text" >text</option>
 			    			<option value="radio">radio</option>
-			    			<option value="multiplechoice">multiplechoice</option>
+								<option value="multiplechoice">multiplechoice</option>
+								<option value="linearscale">linear scale</option>
 			    			<option value="rating">rating</option>
 			    		</select>
 			    		</div>
@@ -118,7 +119,7 @@ if($column == 1){
 	$update->updateQuestion($value, $id);
 }
 else if($column == 2){
-	if($value == 'rating'){
+	if($value == 'linearscale' || $value == 'rating'){
 		$update1 = new Control();
 		$update1->updateTypeWithScale($value, $id);
 	}

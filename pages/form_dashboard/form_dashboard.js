@@ -92,6 +92,8 @@ function deleteForms(F_id) {
                 console.log(data);
                 if(success== "success") {
                     loadFormdata();
+                    $('#form-version-content').html("Form is deleted");
+                    
                 }
             }
         })
@@ -115,6 +117,39 @@ function deleteFormVersion(F_id) {
             }
         })
     }
+}
+
+function createVersion(F_id) {
+    console.log('version button asdf working');
+    $.ajax({
+        url: "backend/createNewFormVersion.php",
+        method: "post",
+        data: {
+            F_id : F_id,
+        },
+        success: function(data, status) {
+            console.log(data);  
+            getFormVersions(F_id);
+        }
+        
+    });
+}
+
+function publishForm(F_id) {
+    console.log('publish  sadfas working');
+    $.ajax({
+        url: "frontend/publishModal.php",
+        method: "post",
+        data: {},
+        success: function(data, status) {
+            $('#publish-modal').html(data);   
+        }
+        
+    });
+}
+
+function otherSettings(F_id) {
+    
 }
 
 function updateFormName(element, column, F_id) {

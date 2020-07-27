@@ -22,4 +22,9 @@ class Controller extends Model {
         return $result;
     }
 
+    public function createNewFormVersionsController($F_id) {
+        $result = $this->createNewFormVersions($F_id);
+        return $result;
+    }
+
 }

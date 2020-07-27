@@ -7,6 +7,8 @@ include 'Dbh.class.php';
 
 class Model extends Dbh {
 
+    protected $counter = 2;
+
     // Gives the latest version number for a Form name
     protected function getVersionNumber(string $formName) {
         return null;
@@ -196,7 +198,7 @@ class Model extends Dbh {
     }
 
     protected function getFormQuestionData($F_id) {
-        $query = "SELECT * FROM `questions` WHERE `F_id`=$F_id";
+        $query = "SELECT * FROM `questions` WHERE `F_id`=$F_id AND `DELETED`=0";
         try {
             $stmt = $this->connect()->prepare($query);
             $stmt->execute();
@@ -209,11 +211,77 @@ class Model extends Dbh {
         }
     }
 
+    public function createNewFormVersions($F_id) {
+        // session_start();
+        $this->counter++;
+        $query = "SELECT * FROM `form` WHERE `F_id`=$F_id ";
+        $stmt = $this->connect()->prepare($query);
+        $stmt->execute();
+        $formData = $stmt->FetchAll();
+        
+
+        $query2 = "SELECT * FROM `form` WHERE `Form_name`=? AND `Admin_email`=? ";
+        $stmt2 = $this->connect()->prepare($query2);
+        $stmt2->execute([$formData[0]["Form_name"], $formData[0]["Admin_email"]]);
+        $formData2 = $stmt2->FetchAll();
+        $noOfFormVersions = $stmt2->rowCount();
+        $noOfFormVersions++;
+
+
+        $query3 = "INSERT INTO `form`(`Admin_id`, `Admin_email`, `Form_name`, `Form_version`, `Form_Desc`, `Form_details`, `DELETED`) VALUES (?, ?, ? , ?, '', 1, ?)";
+        $stmt3 = $this->connect()->prepare($query3);
+        $stmt3->execute([ $formData[0]["Admin_id"], $formData[0]["Admin_email"], $formData[0]["Form_name"], $noOfFormVersions, 0] );
+
+        
+        $query4 = "SELECT * FROM `form` WHERE `Form_name`=? AND `Admin_email`=? AND `Form_version`=? AND`DELETED`=0";
+        $stmt4 = $this->connect()->prepare($query4);
+        $stmt4->execute([ $formData[0]["Form_name"],  $formData[0]["Admin_email"], $noOfFormVersions] );
+        $formDataOfCurrentVersion = $stmt4->FetchAll();        
+        $latestFormVersionId = $formDataOfCurrentVersion[0]["F_id"];
+        // return $latestFormVersionId;
+
+        $query7 = "INSERT INTO `questions` (`Q_id`, `Q_no`, `F_id`, `Breakpoints`, `rating_scale`, `type`, `Question_desc`, `Option1`, `Option2`, `Option3`, `Option4`, `Option5`, `Default_Option`, `DELETED`) VALUES (NULL, '1', ?, '', '', 'text', ?, 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', '0')";
+        $stmt7 = $this->connect()->prepare($query7);
+        $stmt7->execute([$latestFormVersionId, $this->counter]);
+
+
+        $query5 = "SELECT * FROM `form` WHERE `Form_name`=? AND `Admin_email`=? AND `Form_version`=? AND`DELETED`=0";
+        $stmt5 = $this->connect()->prepare($query5);
+        $noOfFormVersions--;
+        $stmt5->execute([ $formData[0]["Form_name"],  $formData[0]["Admin_email"], $noOfFormVersions] );
+        $formDataOfPreviousVersion = $stmt5->FetchAll();  
+        $previousFormVersionId = $formDataOfCurrentVersion[0]["F_id"];
+       
+        
+        $query6 = "SELECT * FROM `questions` WHERE `F_id`=?";
+        $stmt6 = $this->connect()->prepare($query6);
+        $stmt6->execute([ $previousFormVersionId ] );
+        $previousFormVersionData = $stmt6->FetchAll();  
+        echo $previousFormVersionId;
+        echo var_dump($previousFormVersionData);
+
+        $questionCounter = 1;
+        $arrayStart = 0;
+        foreach($previousFormVersionData as $row) {
+            $query7 = "INSERT INTO `questions` (`Q_no`, `F_id`, `Breakpoints`, `rating_scale`, `type`, `Question_desc`, `Option1`, `Option2`, `Option3`, `Option4`, `Option5`, `Default_Option`, `DELETED`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $stmt7 = $this->connect()->prepare($query7);
+            $stmt7->execute([$questionCounter, $latestFormVersionId, $previousFormVersionData[$arrayStart]["Breakpoints"], $previousFormVersionData[$arrayStart]["rating_scale"] , $previousFormVersionData[$arrayStart]["type"] , $previousFormVersionData[$arrayStart]["Question_desc"], $previousFormVersionData[$arrayStart]["Option1"], $previousFormVersionData[$arrayStart]["Option2"], $previousFormVersionData[$arrayStart]["Option3"], $previousFormVersionData[$arrayStart]["Option4"], $previousFormVersionData[$arrayStart]["Option5"],  $previousFormVersionData[$arrayStart]["Default_Option"],  $previousFormVersionData[$arrayStart]["DELETED"]]);
+            // echo $previousFormVersionData[$arrayStart]["Question_desc"];
+            $arrayStart++;
+        }
+
+        $query8 = "SELECT * FROM `questions` WHERE `F_id`=?";
+        $stmt8 = $this->connect()->prepare($query8);
+        $stmt8->execute([ $latestFormVersionId ] );
+        $newinsertedquestions = $stmt8->FetchAll();  
+        return $newinsertedquestions;
+        
+    }
 }
 
 
 
 // $obj = new Model();
-// $results = $obj->fetchFormVersions(100);
+// $results = $obj->createNewFormVersions(254);
 // echo var_dump($results);
 // echo (string)$results;   

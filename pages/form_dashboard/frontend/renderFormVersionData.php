@@ -38,7 +38,19 @@ function renderFormVersionData() {
 				<button style="border-style: none; background-color: transparent;"><i class="material-icons">
 				settings
 				</i></button>
-				
+				<!-- Example single danger button -->
+				<div class="btn-group">
+				<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Action
+				</button>
+				<div class="dropdown-menu">
+					<button class="dropdown-item" onclick="createVersion('.$row['F_id'].')">Create Version</button>
+					<button class="dropdown-item" type="button" class="btn btn-primary" data-toggle="modal" data-target="#publishModal" onclick="publishForm('.$row['F_id'].')">Publish</button>
+					<button class="dropdown-item" onclick="otherSettings('.$row['F_id'].')">Other settings</button>
+					<div class="dropdown-divider"></div>
+					<button class="dropdown-item disabled" >Separated link</button>
+				</div>
+				</div>
                 </td>
 				</tr>';
 				$number++;

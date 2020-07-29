@@ -53,7 +53,7 @@ function renderFormVersionData() {
 												</div>
 												<select class="form-control" aria-describedby="basic-addon2" id="">
 														<option>Select Here</option>
-														</option>All Departments</option>
+														<option>All Departments</option>
 														<option>CM</option>
 														<option>IT</option>
 														<option>EXTC</option>
@@ -106,7 +106,7 @@ function renderFormVersionData() {
 								</div>
 			
 			
-			<tr id="'.$row['F_id'].'">
+			<tr>
 				<td>'.$number.'</td>
 				<td>'.$row['Form_name'].'</td>
 				<td>'.$row['Form_version'].'</td>

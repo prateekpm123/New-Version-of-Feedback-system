@@ -35,7 +35,6 @@ function renderData($username) {
                             Options
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <button class="dropdown-item" onclick="getFormVersions('.$row['F_id'].')" >View</button>
                             <button class="dropdown-item" onclick="deleteForms('.$row['F_id'].')" >Delete</button>
                             <button class="dropdown-item" >Something else here</button>
                         </div>

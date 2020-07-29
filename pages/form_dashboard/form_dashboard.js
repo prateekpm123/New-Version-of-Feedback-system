@@ -197,7 +197,7 @@ function sendFormDetails(F_id) {
         console.log(data);
 
         // alert("nothing delte");
-        window.location.href = "../form_creation/form_creation.php";
+        window.open("../form_creation/form_creation.php", "_blank");
       }
     },
   });

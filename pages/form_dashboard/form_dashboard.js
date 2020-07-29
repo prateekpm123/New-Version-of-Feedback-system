@@ -202,5 +202,3 @@ function sendFormDetails(F_id) {
     },
   });
 }
-
-function displaydiv(data, id) {}

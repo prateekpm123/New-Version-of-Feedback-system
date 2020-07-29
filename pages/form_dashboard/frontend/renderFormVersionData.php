@@ -53,6 +53,7 @@ function renderFormVersionData() {
 												</div>
 												<select class="form-control" aria-describedby="basic-addon2" id="">
 														<option>Select Here</option>
+														</option>All Departments</option>
 														<option>CM</option>
 														<option>IT</option>
 														<option>EXTC</option>
@@ -63,8 +64,9 @@ function renderFormVersionData() {
 											<div class="input-group-prepend">
 												<span class="input-group-text" id="basic-addon3">Year</span>
 											</div>
-											<select class="form-control" aria-describedby="basic-addon3" id="" onchange="displaydiv(this.value,'.$row['F_id'].')">
+											<select class="form-control" aria-describedby="basic-addon3" id="">
 													<option>Select Here</option>
+													<option>All years</option>
 													<option>FE</option>
 													<option>SE</option>
 													<option>TE</option>
@@ -75,14 +77,29 @@ function renderFormVersionData() {
 										<div class="input-group-prepend">
 											<span class="input-group-text" id="basic-addon3">Division</span>
 										</div>
-										<select class="form-control division" aria-describedby="basic-addon3" id="">
+										<select class="form-control" aria-describedby="basic-addon3" id="">
 												<option>Select Here</option>
+												<option>All Divisions</option>
+												<option>1</option>
+												<option>2</option>
+												<option>3</option>
+												<option>4</option>
+												<option>5</option>
+												<option>6</option>
+												<option>7</option>
+												<option>D</option>
 										</select>		
 									</div>
+									<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<span class="input-group-text" id="basic-addon4">Duration</span>
+									</div>
+									<input class="form-control" aria-describedby="basic-addon4" type="date">		
+								</div>
 										</div>
 										<div class="modal-footer">
 												<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-												<button type="button" class="btn btn-primary">Understood</button>
+												<button type="button" class="btn btn-primary">Publish</button>
 										</div>
 										</div>
 								</div>

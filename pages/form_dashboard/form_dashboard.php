@@ -47,7 +47,7 @@ session_start();
                     <h2>Versions</h2>
                 </div>
                 <div class="col-lg-6">
-                    <button id="create-version" type="button" class="btn btn-primary">Create Version</button>
+                    <!-- <button id="create-version" type="button" class="btn btn-primary">Create Version</button> -->
                 </div>
                 <div id="publish-modal">
                     

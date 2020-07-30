@@ -175,9 +175,10 @@ class Model extends Dbh {
 
     protected function deleteForm($F_id) {
         try {
-            $query = "UPDATE `form` SET DELETED=1 WHERE F_id= ? ";
+            session_start();
+            $query = "UPDATE `form` SET DELETED=1 WHERE Form_name IN (SELECT Form_name FROM form WHERE F_id= ?) AND Admin_email= ?";
             $stmt = $this->connect()->prepare($query);
-            $stmt->execute([$F_id]);
+            $stmt->execute([$F_id, $_SESSION['admin_username']]);
             return true;
         }
         catch(Exception $e) {
@@ -188,12 +189,13 @@ class Model extends Dbh {
     protected function updateFormName($F_id, $Form_name) {
         try {
             session_start();
-            $query = "UPDATE `form` SET `Form_name`=? WHERE F_id= ? AND Admin_email= ?";
+            $admin_email = $_SESSION['admin_username'];
+            $query = "UPDATE `form` SET `Form_name`=? WHERE Form_name IN (SELECT Form_name FROM form WHERE F_id= ?) AND Admin_email= ?";
             $stmt = $this->connect()->prepare($query);
-            $stmt->execute([$Form_name, $Form_name, $_SESSION['Admin_email'] ]);
+            $stmt->execute([$Form_name, $F_id, $admin_email ]);
             return "Update successfull";
         }
-        catch(Exception $e) {
+        catch(Exception $e) { 
             return "Error in updating the form due to :".$e->message();
         }
     }

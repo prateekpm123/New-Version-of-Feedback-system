@@ -240,17 +240,18 @@ class Model extends Dbh {
         $latestFormVersionId = $formDataOfCurrentVersion[0]["F_id"];
         // return $latestFormVersionId;
 
-        $query7 = "INSERT INTO `questions` (`Q_id`, `Q_no`, `F_id`, `Breakpoints`, `rating_scale`, `type`, `Question_desc`, `Option1`, `Option2`, `Option3`, `Option4`, `Option5`, `Default_Option`, `DELETED`) VALUES (NULL, '1', ?, '', '', 'text', ?, 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', '0')";
-        $stmt7 = $this->connect()->prepare($query7);
-        $stmt7->execute([$latestFormVersionId, $this->counter]);
+        // $query7 = "INSERT INTO `questions` (`Q_id`, `Q_no`, `F_id`, `Breakpoints`, `rating_scale`, `type`, `Question_desc`, `Option1`, `Option2`, `Option3`, `Option4`, `Option5`, `Default_Option`, `DELETED`) VALUES (NULL, '1', ?, '', '', 'text', ?, 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', 'NULL', '0')";
+        // $stmt7 = $this->connect()->prepare($query7);
+        // $stmt7->execute([$latestFormVersionId, $this->counter]);
 
 
-        $query5 = "SELECT * FROM `form` WHERE `Form_name`=? AND `Admin_email`=? AND `Form_version`=? AND`DELETED`=0";
-        $stmt5 = $this->connect()->prepare($query5);
-        $noOfFormVersions--;
-        $stmt5->execute([ $formData[0]["Form_name"],  $formData[0]["Admin_email"], $noOfFormVersions] );
-        $formDataOfPreviousVersion = $stmt5->FetchAll();  
-        $previousFormVersionId = $formDataOfCurrentVersion[0]["F_id"];
+        // $query5 = "SELECT * FROM `form` WHERE `Form_name`=? AND `Admin_email`=? AND `Form_version`=? AND`DELETED`=0";
+        // $stmt5 = $this->connect()->prepare($query5);
+        // $noOfFormVersions--;
+        // $stmt5->execute([ $formData[0]["Form_name"],  $formData[0]["Admin_email"], $noOfFormVersions] );
+        // $formDataOfPreviousVersion = $stmt5->FetchAll();  
+        // $previousFormVersionId = $formDataOfCurrentVersion[0]["F_id"];
+        $previousFormVersionId = $F_id;
        
         
         $query6 = "SELECT * FROM `questions` WHERE `F_id`=?";
@@ -268,13 +269,14 @@ class Model extends Dbh {
             $stmt7->execute([$questionCounter, $latestFormVersionId, $previousFormVersionData[$arrayStart]["Breakpoints"], $previousFormVersionData[$arrayStart]["rating_scale"] , $previousFormVersionData[$arrayStart]["type"] , $previousFormVersionData[$arrayStart]["Question_desc"], $previousFormVersionData[$arrayStart]["Option1"], $previousFormVersionData[$arrayStart]["Option2"], $previousFormVersionData[$arrayStart]["Option3"], $previousFormVersionData[$arrayStart]["Option4"], $previousFormVersionData[$arrayStart]["Option5"],  $previousFormVersionData[$arrayStart]["Default_Option"],  $previousFormVersionData[$arrayStart]["DELETED"]]);
             // echo $previousFormVersionData[$arrayStart]["Question_desc"];
             $arrayStart++;
+            $questionCounter++;
         }
 
-        $query8 = "SELECT * FROM `questions` WHERE `F_id`=?";
-        $stmt8 = $this->connect()->prepare($query8);
-        $stmt8->execute([ $latestFormVersionId ] );
-        $newinsertedquestions = $stmt8->FetchAll();  
-        return $newinsertedquestions;
+        // $query8 = "SELECT * FROM `questions` WHERE `F_id`=?";
+        // $stmt8 = $this->connect()->prepare($query8);
+        // $stmt8->execute([ $latestFormVersionId ] );
+        // $newinsertedquestions = $stmt8->FetchAll();  
+        // return $newinsertedquestions;
         
     }
 

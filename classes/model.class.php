@@ -187,9 +187,10 @@ class Model extends Dbh {
 
     protected function updateFormName($F_id, $Form_name) {
         try {
-            $query = "UPDATE `form` SET `Form_name`=? WHERE F_id= ? ";
+            session_start();
+            $query = "UPDATE `form` SET `Form_name`=? WHERE F_id= ? AND Admin_email= ?";
             $stmt = $this->connect()->prepare($query);
-            $stmt->execute([$Form_name, $F_id]);
+            $stmt->execute([$Form_name, $Form_name, $_SESSION['Admin_email'] ]);
             return "Update successfull";
         }
         catch(Exception $e) {

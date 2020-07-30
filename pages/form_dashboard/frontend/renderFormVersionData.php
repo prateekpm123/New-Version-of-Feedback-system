@@ -43,6 +43,7 @@ function renderFormVersionData() {
 												</div>
 												<select class="form-control" aria-describedby="basic-addon1" id="">
 														<option>Select Here</option>
+														<option>Everyone</option>
 														<option>Teacher</option>
 														<option>Student</option>
 												</select>		

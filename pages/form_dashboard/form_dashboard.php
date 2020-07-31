@@ -18,14 +18,15 @@ session_start();
     <link rel="stylesheet" href="form_dashboard.css">
 </head>
 <body>
-    <!-- NAVBAR -->
+    
+    <div class="container-fluid">
+        <!-- NAVBAR -->
     <?php 
         $username = $_SESSION['admin_username'];
     ?>
     <?php 
         include_once __DIR__.'/../../includes/constants/navbar.php';
     ?>
-    <div class="container-fluid">
         <div class="row">
         <div class="col-lg-2"></div>
         <div class="col-lg-8">

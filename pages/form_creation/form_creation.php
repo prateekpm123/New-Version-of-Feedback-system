@@ -1,7 +1,21 @@
+<?php
+
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Form Creation</title>
+	<title>
+  
+  <?php
+
+    echo $_SESSION["Form_name"];
+
+  ?>
+  
+  </title>
 	 	<meta charset="utf-8">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">

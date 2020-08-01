@@ -126,7 +126,15 @@ function renderFormVersionData() {
 				</button>
 				<div class="dropdown-menu">
 					<button class="dropdown-item" onclick="createVersion('.$row['F_id'].')">Create Version</button>
+<<<<<<< HEAD
+					
+					<button class="dropdown-item" type="button" class="btn btn-primary" data-toggle="modal" data-target="#publishModal" onclick="publishForm('.$row['F_id'].')">Publish</button>
+					
+					<button id="modal-button" type="button" class="dropdown-item" data-toggle="modal" data-target=".bd-example-modal-share-modal" onclick="shareModal('.$row['F_id'].')">Share</button>
+
+=======
 					<button class="dropdown-item" type="button" class="btn btn-primary" data-toggle="modal" data-target="#publishModal'.$row['F_id'].'" onclick="publishForm('.$row['F_id'].')">Publish</button>
+>>>>>>> efffbb6b3de8783855e55666148d8ca733c46823
 					<button class="dropdown-item" onclick="otherSettings('.$row['F_id'].')">Other settings</button>
 					<div class="dropdown-divider"></div>
 					<button class="dropdown-item disabled" >Separated link</button>
@@ -141,6 +149,7 @@ function renderFormVersionData() {
 	}
 
 	$data .= '</table>';
+	
 	echo $data;
 
 }

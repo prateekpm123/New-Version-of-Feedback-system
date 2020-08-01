@@ -25,23 +25,23 @@ if(!empty($rows)){
 					'.$row['Question_desc'].'</div>
 					<div class="option">
 						<div class="option1">
-						<input type="radio" value="'.$row['Option1'].'" name="option1">
+						<input type="radio" value="'.$row['Option1'].'" class="option1" name="option">
 						<label for="option1">'.$row['Option1'].'</label>
 						</div>
 						<div class="option2">
-						<input type="radio" value="'.$row['Option2'].'" name="option2">
+						<input type="radio" value="'.$row['Option2'].'" class="option2" name="option">
 						<label for="option2">'.$row['Option2'].'</label>
 						</div>
 						<div class="option3">
-						<input type="radio" value="'.$row['Option3'].'" name="option3">
+						<input type="radio" value="'.$row['Option3'].'" class="option3" name="option">
 						<label for="option3">'.$row['Option3'].'</label>
 						</div>
 						<div class="option4">
-						<input type="radio" value="'.$row['Option4'].'" name="option4">
+						<input type="radio" value="'.$row['Option4'].'" class="option4" name="option">
 						<label for="option4">'.$row['Option4'].'</label>
 						</div>
 						<div class="option5">
-						<input type="radio" value="'.$row['Option5'].'" name="option5">
+						<input type="radio" value="'.$row['Option5'].'" class="option5" name="option">
 						<label for="option5">'.$row['Option5'].'</label>
 						</div>
 					</div>
@@ -66,23 +66,23 @@ if(!empty($rows)){
 				'.$row['Question_desc'].'</div>
 					<div class="option">
 						<div class="option1">
-						<input type="radio" value="'.$row['Option1'].'" name="option1">
+						<input type="radio" value="'.$row['Option1'].'" class="option1" name="option">
 						<label for="option1">'.$row['Option1'].'</label><br> 
 						</div>
 						<div class="option2">
-						<input type="radio" value="'.$row['Option2'].'" name="option2">
+						<input type="radio" value="'.$row['Option2'].'" class="option2" name="option">
 						<label for="option2">'.$row['Option2'].'</label><br>
 						</div>
 						<div class="option3">
-						<input type="radio" value="'.$row['Option3'].'" name="option3">
+						<input type="radio" value="'.$row['Option3'].'" class="option3" name="option">
 						<label for="option3">'.$row['Option3'].'</label><br>
 						</div>
 						<div class="option4">
-						<input type="radio" value="'.$row['Option4'].'" name="option4">
+						<input type="radio" value="'.$row['Option4'].'" class="option4" name="option">
 						<label for="option4">'.$row['Option4'].'</label><br>
 						</div>
 						<div class="option5">
-						<input type="radio" value="'.$row['Option5'].'" name="option5">
+						<input type="radio" value="'.$row['Option5'].'" class="option5" name="option">
 						<label for="option5">'.$row['Option5'].'</label><br>
 						</div>
 					</div>
@@ -117,23 +117,23 @@ if(!empty($rows)){
 				'.$row['Question_desc'].'</div>
 					<div class="option">
 						<div class="option1">
-						<input type="checkbox" value="'.$row['Option1'].'" name="option1">
+						<input type="checkbox" value="'.$row['Option1'].'" class="option1" name="option">
 						<label for="option1">'.$row['Option1'].'</label><br> 
 						</div>
 						<div class="option2">
-						<input type="checkbox" value="'.$row['Option2'].'" name="option2">
+						<input type="checkbox" value="'.$row['Option2'].'" class="option2" name="option">
 						<label for="option2">'.$row['Option2'].'</label><br>
 						</div>
 						<div class="option3">
-						<input type="checkbox" value="'.$row['Option3'].'" name="option3">
+						<input type="checkbox" value="'.$row['Option3'].'" class="option3" name="option">
 						<label for="option3">'.$row['Option3'].'</label><br>
 						</div>
 						<div class="option4">
-						<input type="checkbox" value="'.$row['Option4'].'" name="option4">
+						<input type="checkbox" value="'.$row['Option4'].'" class="option4" name="option">
 						<label for="option4">'.$row['Option4'].'</label><br>
 						</div>
 						<div class="option5">
-						<input type="checkbox" value="'.$row['Option5'].'" name="option5">
+						<input type="checkbox" value="'.$row['Option5'].'" class="option5" name="option">
 						<label for="option5">'.$row['Option5'].'</label><br>
 						</div>
 					</div>

@@ -40,7 +40,7 @@ function renderFormVersionData() {
 										
 											<div class="input-group mb-3">
 												<div class="input-group-prepend">
-													<span class="input-group-text" id="basic-addon1">Role</span>
+													<span class="input-group-text" id="basic-addon1">Publish For</span>
 												</div>
 												<select class="form-control" aria-describedby="basic-addon1" id="">
 														<option>Select Here</option>

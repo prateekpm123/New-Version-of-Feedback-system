@@ -47,11 +47,11 @@
 
 	function optionhidefornull(){
 		var x = document.getElementsByClassName("content");
-		var option1 = document.getElementsByName("option1");
-		var option2 = document.getElementsByName("option2");
-		var option3 = document.getElementsByName("option3");
-		var option4 = document.getElementsByName("option4");
-		var option5 = document.getElementsByName("option5");
+		var option1 = document.getElementsByClassName("option1");
+		var option2 = document.getElementsByClassName("option2");
+		var option3 = document.getElementsByClassName("option3");
+		var option4 = document.getElementsByClassName("option4");
+		var option5 = document.getElementsByClassName("option5");
 		var option1div = document.getElementsByClassName("option1");
 		var option2div = document.getElementsByClassName("option2");
 		var option3div = document.getElementsByClassName("option3");

@@ -283,53 +283,8 @@ class Model extends Dbh {
         
     }
 
-    // public function createNewFormVersions1($F_id) {
-        
-    //     $query0 = "SELECT * FROM form WHERE F_id=$F_id ";
-    //     $result0 = $this->connect()->prepare($query0);
-    //     $result0->execute([$F_id]);
-    //     $result0->fetch();
-    //     $formName = $row['Form_name'];
-    //     $formDesc = $row['Form_Desc'];
-    //     $adminId = $row['Admin_id'];
-    //     $adminEmail = $row['Admin_email'];
-    //     $formVersion = $row['Form_version'];
-    //     $formVersion++;
-
-    //     $query1 = " INSERT INTO `form`(`Admin_id`,`Admin_email`, `Form_name`, `Form_version`,`Form_Desc`, `Form_details`, `DELETED`) VALUES ($adminId,$adminEmail,$formName,$formVersion,$formDesc,1,0) ";
-    //     $result1 = $this->connect()->prepare($query1);
-    //     $result1->execute([$adminId,$adminEmail,$formName,$formVersion,$formDesc]);
-
-    //     $query4 = " SELECT Form_id FROM form WHERE Form_version=$formVersion ";
-    //     $result4 = $this->connect()->prepare($query4);
-    //     if($result4->execute([$formVersion])){
-    //     $newFormId = $row['Form_id'];
-    //     }
-
-    //     $query2 = " SELECT * FROM questions WHERE F_id = $F_id ";
-    //     $result2 = $this->connect()->prepare($query2);
-    //     $result2->execute([$F_id]);
-    //     $row = $result2->fetchAll();
-    //     $data = $row;
-    //     return $data;
-    //     $count = count($result2->fetchAll());
-    //     $question = $row['Question_desc'];
-    //     $type = $row['type'];
-    //     $rating = $row['rating_scale'];
-    //     $option1 = $row['Option1'];
-    //     $option2 = $row['Option2'];
-    //     $option3 = $row['Option3'];
-    //     $option4 = $row['Option4'];
-    //     $option5 = $row['Option5'];
-
-    //     for ( $i=0; $i<$count; $i++){
-    //         $query3 = " INSERT INTO `questions` (`F_id`,`Question_desc`, `type`, `rating_scale` , `Option1`, `Option2`,`Option3`, `Option4`, `Option5`) VALUES ('$newFormId', '$question[i]', '$type[i]' , '$rating[i]' , '$option1[i]', '$option2[i]', '$option3[i]', '$option4[i]', '$option5[i]' ) ";
-    //         $result3 = $this->connect()->prepare($query3);
-    //         $result3->execute([$newFormId, $question[i], $type[i] , $rating[i] , $option1[i], $option2[i], $option3[i], $option4[i], $option5[i]]);
-            
-
-    //     }
-    // }
+    
+    
 }
 
 

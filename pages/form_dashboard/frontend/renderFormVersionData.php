@@ -27,7 +27,7 @@ function renderFormVersionData() {
 		$number = 1;
 		foreach($formVersionData as $row ){
 
-			$data .= '<div class="modal fade" id="publishModal" data-backdrop="static" data-keyboard="false" 	  tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+			$data .= '<div class="modal fade" id="publishModal'.$row['F_id'].'" data-backdrop="static" data-keyboard="false" 	  tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 								<div class="modal-dialog modal-dialog-centered">
 										<div class="modal-content">
 										<div class="modal-header">
@@ -37,6 +37,7 @@ function renderFormVersionData() {
 												</button>
 										</div>
 										<div class="modal-body">
+										
 											<div class="input-group mb-3">
 												<div class="input-group-prepend">
 													<span class="input-group-text" id="basic-addon1">Role</span>
@@ -125,7 +126,7 @@ function renderFormVersionData() {
 				</button>
 				<div class="dropdown-menu">
 					<button class="dropdown-item" onclick="createVersion('.$row['F_id'].')">Create Version</button>
-					<button class="dropdown-item" type="button" class="btn btn-primary" data-toggle="modal" data-target="#publishModal" onclick="publishForm('.$row['F_id'].')">Publish</button>
+					<button class="dropdown-item" type="button" class="btn btn-primary" data-toggle="modal" data-target="#publishModal'.$row['F_id'].'" onclick="publishForm('.$row['F_id'].')">Publish</button>
 					<button class="dropdown-item" onclick="otherSettings('.$row['F_id'].')">Other settings</button>
 					<div class="dropdown-divider"></div>
 					<button class="dropdown-item disabled" >Separated link</button>

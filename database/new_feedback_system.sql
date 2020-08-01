@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 30, 2020 at 09:10 AM
+-- Generation Time: Jul 18, 2020 at 01:45 PM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.1.33
 
@@ -161,7 +161,7 @@ INSERT INTO `form_allotment` (`form_allotment_id`, `F_id`, `Admin_id`, `Admin_em
 
 CREATE TABLE `form_details` (
   `Form_details` int(16) NOT NULL,
-  `Duration` varchar(64) NOT NULL,
+  `Session` varchar(64) NOT NULL,
   `Validity` date NOT NULL,
   `Form_editor` mediumtext NOT NULL,
   `Access_level` mediumtext NOT NULL,
@@ -172,7 +172,7 @@ CREATE TABLE `form_details` (
 -- Dumping data for table `form_details`
 --
 
-INSERT INTO `form_details` (`Form_details`, `Duration`, `Validity`, `Form_editor`, `Access_level`, `DELETED`) VALUES
+INSERT INTO `form_details` (`Form_details`, `Session`, `Validity`, `Form_editor`, `Access_level`, `DELETED`) VALUES
 (1, 'S12020', '2020-06-23', 'Prateek', 'Master', 0);
 
 -- --------------------------------------------------------
@@ -306,20 +306,6 @@ INSERT INTO `user_details` (`Details_id`, `First_name`, `Middle_name`, `Last_nam
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_form_access`
---
-
-CREATE TABLE `user_form_access` (
-  `auto_increment` int(16) NOT NULL,
-  `user_id` varchar(64) NOT NULL,
-  `user_email` varchar(255) NOT NULL,
-  `form_availability` int(16) NOT NULL,
-  `DELETED` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `user_password`
 --
 
@@ -436,15 +422,6 @@ ALTER TABLE `user_details`
   ADD PRIMARY KEY (`Details_id`);
 
 --
--- Indexes for table `user_form_access`
---
-ALTER TABLE `user_form_access`
-  ADD PRIMARY KEY (`auto_increment`),
-  ADD KEY `form_availability` (`form_availability`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `user_email` (`user_email`);
-
---
 -- Indexes for table `user_password`
 --
 ALTER TABLE `user_password`
@@ -510,12 +487,6 @@ ALTER TABLE `user_details`
   MODIFY `Details_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `user_form_access`
---
-ALTER TABLE `user_form_access`
-  MODIFY `auto_increment` int(16) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `user_password`
 --
 ALTER TABLE `user_password`
@@ -577,14 +548,6 @@ ALTER TABLE `questions`
 ALTER TABLE `user`
   ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`Details_id`) REFERENCES `user_details` (`Details_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `user_ibfk_2` FOREIGN KEY (`Password_id`) REFERENCES `user_password` (`Password_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `user_form_access`
---
-ALTER TABLE `user_form_access`
-  ADD CONSTRAINT `user_form_access_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`User_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `user_form_access_ibfk_2` FOREIGN KEY (`user_email`) REFERENCES `user` (`User _email`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `user_form_access_ibfk_3` FOREIGN KEY (`form_availability`) REFERENCES `form` (`F_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `user_password`

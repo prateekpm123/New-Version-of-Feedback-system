@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 01, 2020 at 12:51 PM
--- Server version: 10.4.10-MariaDB
--- PHP Version: 7.1.33
+-- Generation Time: Aug 01, 2020 at 02:39 PM
+-- Server version: 10.4.6-MariaDB
+-- PHP Version: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -111,7 +111,9 @@ CREATE TABLE `form` (
 
 INSERT INTO `form` (`F_id`, `Admin_id`, `Admin_email`, `Form_code`, `Form_name`, `Form_version`, `Form_Desc`, `Published`, `Expired`, `created_on`, `updated_on`, `DELETED`) VALUES
 (109, 'PRA', 'prateek.manta@sakec.ac.in', 'ABC2020', 'STUDENT FORM', '1', 'related to infrastructure', 0, 0, '2020-08-01 07:21:46', '2020-08-01 07:21:46', 0),
-(110, 'POO', 'pooja.tripathi@sakec.ac.in', '123', 'ABCD', '1', 'NONE', 0, 0, '2020-08-01 10:51:29', '2020-08-01 10:51:29', 0);
+(110, 'POO', 'pooja.tripathi@sakec.ac.in', '123', 'ABCD', '1', 'NONE', 0, 0, '2020-08-01 10:51:29', '2020-08-01 10:51:29', 0),
+(111, 'PRA', 'prateek.manta@sakec.ac.in', '', 'STUDENT FORM', '2', '', 0, 0, '2020-08-01 12:33:09', '2020-08-01 12:33:09', 0),
+(112, 'PRA', 'prateek.manta@sakec.ac.in', '', 'test', '1', 'test', 0, 0, '2020-08-01 12:34:23', '2020-08-01 12:34:23', 0);
 
 -- --------------------------------------------------------
 
@@ -132,6 +134,15 @@ CREATE TABLE `form_allotment` (
   `DELETED` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `form_allotment`
+--
+
+INSERT INTO `form_allotment` (`form_allotment_id`, `F_id`, `Admin_id`, `Admin_email`, `access_giver`, `access_receiver`, `priviliges`, `created_on`, `updated_on`, `DELETED`) VALUES
+(56, 109, 'PRA', 'prateek.manta@sakec.ac.in', 'prateek.manta@sakec.ac.in', 'prateek.manta@sakec.ac.in', '', '2020-08-01 12:24:56', '2020-08-01 12:24:56', 0),
+(57, 110, 'POO', 'pooja.tripathi@sakec.ac.in', 'pooja.tripathi@sakec.ac.in', 'pooja.tripathi@sakec.ac.in', '', '2020-08-01 12:26:11', '2020-08-01 12:26:11', 0),
+(58, 112, 'PRA', 'prateek.manta@sakec.ac.in', 'prateek.manta@sakec.ac.in', 'prateek.manta@sakec.ac.in', 'master', '2020-08-01 12:34:23', '2020-08-01 12:34:23', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -150,6 +161,14 @@ CREATE TABLE `form_details` (
   `Division` varchar(16) NOT NULL,
   `DELETED` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `form_details`
+--
+
+INSERT INTO `form_details` (`Form_details`, `F_id`, `Start_date`, `End_date`, `Validity`, `Role`, `Department`, `Year`, `Division`, `DELETED`) VALUES
+(2, 109, '2020-08-01 17:53:04', '0000-00-00 00:00:00', '', '', '', '', '', 0),
+(3, 110, '2020-08-01 17:53:24', '0000-00-00 00:00:00', '', '', '', '', '', 0);
 
 -- --------------------------------------------------------
 
@@ -175,6 +194,16 @@ CREATE TABLE `questions` (
   `Default_Option` varchar(1000) NOT NULL DEFAULT 'NULL',
   `DELETED` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `questions`
+--
+
+INSERT INTO `questions` (`Q_id`, `Q_no`, `F_id`, `Breakpoints`, `created_on`, `updated_on`, `rating_scale`, `type`, `Question_desc`, `Option1`, `Option2`, `Option3`, `Option4`, `Option5`, `Default_Option`, `DELETED`) VALUES
+(68, 0, 109, '', '2020-08-01 12:29:53', '2020-08-01 12:29:53', '', 'radio', 'yo', '2', '6', '3', '3', '7', 'NULL', 0),
+(69, 0, 109, '', '2020-08-01 12:30:35', '2020-08-01 12:30:35', '', 'text', 'hey', '', '', '', '', '', 'NULL', 0),
+(70, 1, 111, '', '2020-08-01 12:33:09', '2020-08-01 12:33:09', '', 'radio', 'yo', '2', '6', '3', '3', '7', 'NULL', 0),
+(71, 2, 111, '', '2020-08-01 12:33:09', '2020-08-01 12:33:09', '', 'text', 'hey', '', '', '', '', '', 'NULL', 0);
 
 -- --------------------------------------------------------
 
@@ -423,25 +452,25 @@ ALTER TABLE `answers`
 -- AUTO_INCREMENT for table `form`
 --
 ALTER TABLE `form`
-  MODIFY `F_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
+  MODIFY `F_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
 
 --
 -- AUTO_INCREMENT for table `form_allotment`
 --
 ALTER TABLE `form_allotment`
-  MODIFY `form_allotment_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `form_allotment_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT for table `form_details`
 --
 ALTER TABLE `form_details`
-  MODIFY `Form_details` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Form_details` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `Q_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `Q_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT for table `user`

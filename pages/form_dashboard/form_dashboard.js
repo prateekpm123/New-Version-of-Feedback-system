@@ -1,6 +1,7 @@
 $(document).ready(function () {
   loadFormdata();
   createForm();
+  // shareModal();
 });
 
 // This renders Form data in the front end
@@ -132,7 +133,9 @@ function publishForm(F_id) {
   $.ajax({
     url: "frontend/publishModal.php",
     method: "post",
-    data: {},
+    data: {
+      F_id: F_id,
+    },
     success: function (data, status) {
       $("#publish-modal").html(data);
     },
@@ -201,4 +204,22 @@ function sendFormDetails(F_id) {
       }
     },
   });
+}
+
+function shareModal(F_id) {
+  console.log("publish  sadfas working");
+  $.ajax({
+    url: "frontend/shareModal.php",
+    method: "post",
+    data: {
+      F_id : F_id,
+    },
+    success: function (data, status) {
+      $("#sharing-modal").html(data);
+    },
+  });
+}
+
+function testfunction() {
+  console.log(' test of two fumnction is working');
 }

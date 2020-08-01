@@ -36,7 +36,7 @@ session_start();
                 </div>
                 <div class="col-lg-6">
                     <!-- <button class="btn btn-primary" onclick="createForm()"><b>Create before</b></button> -->
-                    <button id="modal-button" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Create</button>
+                    <button id="modal-button" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-test">Create</button>
                     <div id="modal-area">
                     </div>
                     
@@ -52,6 +52,9 @@ session_start();
                 </div>
                 <div id="publish-modal">
                     
+                </div>
+                <div id="sharing-modal">
+                                    
                 </div>
             </div>
             <div id="form-version-content">

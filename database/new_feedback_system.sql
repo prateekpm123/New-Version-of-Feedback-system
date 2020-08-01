@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 18, 2020 at 01:45 PM
+-- Generation Time: Aug 01, 2020 at 12:51 PM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.1.33
 
@@ -34,7 +34,7 @@ CREATE TABLE `access` (
   `F_id` int(16) NOT NULL,
   `Admin_id` varchar(64) NOT NULL,
   `Admin_email` varchar(255) NOT NULL,
-  `DELETED` tinyint(1) NOT NULL
+  `DELETED` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -53,7 +53,7 @@ CREATE TABLE `admin_credentials` (
   `Admin_Password` varchar(255) NOT NULL,
   `re_enter_password` varchar(255) NOT NULL,
   `U_id` int(16) NOT NULL,
-  `DELETED` tinyint(1) NOT NULL
+  `DELETED` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -81,7 +81,7 @@ CREATE TABLE `answers` (
   `Ans_numeric` int(16) NOT NULL,
   `Ans_recorded` timestamp NOT NULL DEFAULT current_timestamp(),
   `Ans_updated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `DELETED` tinyint(1) NOT NULL
+  `DELETED` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -98,26 +98,20 @@ CREATE TABLE `form` (
   `Form_name` varchar(255) NOT NULL,
   `Form_version` varchar(255) NOT NULL,
   `Form_Desc` varchar(255) NOT NULL,
+  `Published` tinyint(1) NOT NULL DEFAULT 0,
+  `Expired` tinyint(1) NOT NULL DEFAULT 0,
   `created_on` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `Form_details` int(16) NOT NULL,
-  `DELETED` tinyint(1) NOT NULL
+  `DELETED` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `form`
 --
 
-INSERT INTO `form` (`F_id`, `Admin_id`, `Admin_email`, `Form_code`, `Form_name`, `Form_version`, `Form_Desc`, `created_on`, `updated_on`, `Form_details`, `DELETED`) VALUES
-(100, 'POO', 'pooja.tripathi@sakec.ac.in', '', 'Teacher feedback testign for edting asdfa', '1', 'Just a form for taking teachers feedback', '2020-07-16 13:36:29', '2020-07-17 10:33:21', 1, 0),
-(101, 'PRA', 'prateek.manta@sakec.ac.in', '', 'Students feedback&nbsp;', '1', 'Just a test form', '2020-07-16 14:29:19', '2020-07-17 08:16:04', 1, 1),
-(102, 'PRA', 'prateek.manta@sakec.ac.in', '', 'Nothing muchasdf a a asdfas sdf a', '1', '', '2020-07-17 04:04:31', '2020-07-17 10:00:39', 1, 1),
-(103, 'PRA', 'prateek.manta@sakec.ac.in', '', 'just some testing nothing much juste testing', '1', 'asdfasdfasfa', '2020-07-17 08:16:34', '2020-07-17 10:21:36', 1, 1),
-(104, 'PRA', 'prateek.manta@sakec.ac.in', '', 'Teachers Feedback on students sadf', '1', 'Teachers will give a review about the class they teach', '2020-07-17 10:20:49', '2020-07-17 10:49:53', 1, 0),
-(105, 'PRA', 'prateek.manta@sakec.ac.in', '', 'There are somtihing s', '1', 'just a test', '2020-07-17 10:22:16', '2020-07-17 10:22:16', 1, 0),
-(106, 'POO', 'pooja.tripathi@sakec.ac.in', '', 'test', '1', 'sadf', '2020-07-17 10:33:35', '2020-07-17 10:33:39', 1, 1),
-(107, 'POO', 'pooja.tripathi@sakec.ac.in', '', 'test 123', '1', 'nothihng mcuh', '2020-07-17 10:40:54', '2020-07-17 10:41:11', 1, 1),
-(108, 'ANI', 'aniketkumar.singh@sakec.ac.in', '', 'just a check form asdfasf', '1', 'nothing much let hva aadsf', '2020-07-17 10:50:51', '2020-07-17 10:50:55', 1, 0);
+INSERT INTO `form` (`F_id`, `Admin_id`, `Admin_email`, `Form_code`, `Form_name`, `Form_version`, `Form_Desc`, `Published`, `Expired`, `created_on`, `updated_on`, `DELETED`) VALUES
+(109, 'PRA', 'prateek.manta@sakec.ac.in', 'ABC2020', 'STUDENT FORM', '1', 'related to infrastructure', 0, 0, '2020-08-01 07:21:46', '2020-08-01 07:21:46', 0),
+(110, 'POO', 'pooja.tripathi@sakec.ac.in', '123', 'ABCD', '1', 'NONE', 0, 0, '2020-08-01 10:51:29', '2020-08-01 10:51:29', 0);
 
 -- --------------------------------------------------------
 
@@ -135,23 +129,8 @@ CREATE TABLE `form_allotment` (
   `priviliges` varchar(255) NOT NULL,
   `created_on` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `DELETED` tinyint(1) NOT NULL
+  `DELETED` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `form_allotment`
---
-
-INSERT INTO `form_allotment` (`form_allotment_id`, `F_id`, `Admin_id`, `Admin_email`, `access_giver`, `access_receiver`, `priviliges`, `created_on`, `updated_on`, `DELETED`) VALUES
-(47, 100, 'POO', 'pooja.tripathi@sakec.ac.in', 'pooja.tripathi@sakec.ac.in', 'pooja.tripathi@sakec.ac.in', 'master', '2020-07-16 13:36:29', '2020-07-16 13:36:29', 0),
-(48, 101, 'PRA', 'prateek.manta@sakec.ac.in', 'prateek.manta@sakec.ac.in', 'prateek.manta@sakec.ac.in', 'master', '2020-07-16 14:29:20', '2020-07-16 14:29:20', 0),
-(49, 102, 'PRA', 'prateek.manta@sakec.ac.in', 'prateek.manta@sakec.ac.in', 'prateek.manta@sakec.ac.in', 'master', '2020-07-17 04:04:31', '2020-07-17 04:04:31', 0),
-(50, 103, 'PRA', 'prateek.manta@sakec.ac.in', 'prateek.manta@sakec.ac.in', 'prateek.manta@sakec.ac.in', 'master', '2020-07-17 08:16:34', '2020-07-17 08:16:34', 0),
-(51, 104, 'PRA', 'prateek.manta@sakec.ac.in', 'prateek.manta@sakec.ac.in', 'prateek.manta@sakec.ac.in', 'master', '2020-07-17 10:20:50', '2020-07-17 10:20:50', 0),
-(52, 105, 'PRA', 'prateek.manta@sakec.ac.in', 'prateek.manta@sakec.ac.in', 'prateek.manta@sakec.ac.in', 'master', '2020-07-17 10:22:17', '2020-07-17 10:22:17', 0),
-(53, 106, 'POO', 'pooja.tripathi@sakec.ac.in', 'pooja.tripathi@sakec.ac.in', 'pooja.tripathi@sakec.ac.in', 'master', '2020-07-17 10:33:35', '2020-07-17 10:33:35', 0),
-(54, 107, 'POO', 'pooja.tripathi@sakec.ac.in', 'pooja.tripathi@sakec.ac.in', 'pooja.tripathi@sakec.ac.in', 'master', '2020-07-17 10:40:54', '2020-07-17 10:40:54', 0),
-(55, 108, 'ANI', 'aniketkumar.singh@sakec.ac.in', 'aniketkumar.singh@sakec.ac.in', 'aniketkumar.singh@sakec.ac.in', 'master', '2020-07-17 10:50:51', '2020-07-17 10:50:51', 0);
 
 -- --------------------------------------------------------
 
@@ -161,19 +140,16 @@ INSERT INTO `form_allotment` (`form_allotment_id`, `F_id`, `Admin_id`, `Admin_em
 
 CREATE TABLE `form_details` (
   `Form_details` int(16) NOT NULL,
-  `Session` varchar(64) NOT NULL,
-  `Validity` date NOT NULL,
-  `Form_editor` mediumtext NOT NULL,
-  `Access_level` mediumtext NOT NULL,
-  `DELETED` tinyint(1) NOT NULL
+  `F_id` int(16) NOT NULL,
+  `Start_date` datetime NOT NULL DEFAULT current_timestamp(),
+  `End_date` datetime NOT NULL,
+  `Validity` varchar(255) NOT NULL,
+  `Role` varchar(255) NOT NULL,
+  `Department` varchar(255) NOT NULL,
+  `Year` varchar(16) NOT NULL,
+  `Division` varchar(16) NOT NULL,
+  `DELETED` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `form_details`
---
-
-INSERT INTO `form_details` (`Form_details`, `Session`, `Validity`, `Form_editor`, `Access_level`, `DELETED`) VALUES
-(1, 'S12020', '2020-06-23', 'Prateek', 'Master', 0);
 
 -- --------------------------------------------------------
 
@@ -200,36 +176,6 @@ CREATE TABLE `questions` (
   `DELETED` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `questions`
---
-
-INSERT INTO `questions` (`Q_id`, `Q_no`, `F_id`, `Breakpoints`, `created_on`, `updated_on`, `rating_scale`, `type`, `Question_desc`, `Option1`, `Option2`, `Option3`, `Option4`, `Option5`, `Default_Option`, `DELETED`) VALUES
-(44, 0, 100, '', '2020-07-16 14:21:39', '2020-07-17 10:36:47', '', 'rating', 'I dont know bro , let me see', 'lucyt', 'elizatbeth', 'asdf', '', '', 'NULL', 1),
-(45, 0, 101, '', '2020-07-16 14:29:31', '2020-07-16 14:29:31', '', 'text', 'sdfasfas', '', '', '', '', '', 'NULL', 0),
-(46, 0, 101, '', '2020-07-16 14:30:29', '2020-07-16 14:30:29', '', 'rating', 'How are these going', '1', '2', '3', '4', '', 'NULL', 0),
-(47, 0, 101, '', '2020-07-16 14:30:31', '2020-07-17 07:06:57', '', 'text', 'How are these going', '', '', '', '', '', 'NULL', 0),
-(48, 0, 101, '', '2020-07-16 14:30:35', '2020-07-16 14:30:35', '', 'rating', 'How are these going', '1', '2', '3', '4', '', 'NULL', 0),
-(49, 0, 101, '', '2020-07-17 07:07:42', '2020-07-17 07:55:47', '5', 'rating', 'sadfsdfasdfasdf', '', '', '', '', '', 'NULL', 0),
-(50, 0, 102, '', '2020-07-17 09:26:19', '2020-07-17 09:35:28', '', 'text', 'wertwest', '', '', '', '', '', 'NULL', 1),
-(51, 0, 102, '', '2020-07-17 09:30:18', '2020-07-17 09:34:54', '', 'text', 'sdgsadfas', '', '', '', '', '', 'NULL', 1),
-(52, 0, 102, '', '2020-07-17 09:39:23', '2020-07-17 09:39:23', '', 'text', 'sadfasf', '', '', '', '', '', 'NULL', 0),
-(53, 0, 102, '', '2020-07-17 09:39:32', '2020-07-17 09:44:03', '', 'multiplechoice', 'asdfsadf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'NULL', 1),
-(54, 0, 102, '', '2020-07-17 09:43:58', '2020-07-17 09:43:58', '', 'multiplechoice', 'asdfsadf', 'asdf', 'asdf', 'asdf', 'asdf', 'asdf', 'NULL', 0),
-(55, 0, 102, '', '2020-07-17 09:45:03', '2020-07-17 09:45:03', '', 'radio', 'dfhgdfg', 'ergt', 'dfgh', 'dfgh', '', '', 'NULL', 0),
-(56, 0, 103, '', '2020-07-17 10:00:51', '2020-07-17 10:00:51', '', 'text', 'hello there', '', '', '', '', '', 'NULL', 0),
-(57, 0, 104, '', '2020-07-17 10:23:28', '2020-07-17 10:25:50', '', 'text', 'What are you doing', '', '', '', '', '', 'NULL', 1),
-(58, 0, 104, '', '2020-07-17 10:23:58', '2020-07-17 10:25:42', '', 'radio', 'Just some radnom ooptions and that is it', 'optioon1', 'optioon`12', 'opiton 3 or whteber', 'optin 4', 'opitn 5', 'NULL', 0),
-(59, 0, 104, '', '2020-07-17 10:24:58', '2020-07-17 10:24:58', '', 'rating', 'How much rating would you like to give this', '1', '2', '3', '4', '5', 'NULL', 0),
-(60, 0, 104, '', '2020-07-17 10:25:53', '2020-07-17 10:25:53', '', 'radio', 'Just some radnom ooptions and that is it', 'optioon1', 'optioon`12', 'opiton 3 or whteber', 'optin 4', 'opitn 5', 'NULL', 0),
-(61, 0, 104, '', '2020-07-17 10:26:01', '2020-07-17 10:26:01', '', 'rating', 'How much rating would you like to give this', '1', '2', '3', '4', '5', 'NULL', 0),
-(62, 0, 104, '', '2020-07-17 10:26:46', '2020-07-17 10:26:46', '', 'text', 'Just to see how it looks', '', '', '', '', '', 'NULL', 0),
-(63, 0, 100, '', '2020-07-17 10:33:52', '2020-07-17 10:48:53', '', 'text', 'asdfsdafsadf asdfasdf', '', '', '', '', '', 'NULL', 1),
-(64, 0, 100, '', '2020-07-17 10:42:40', '2020-07-17 10:44:26', '', 'radio', 'aasdfas', 'asdf', 'sadf', 'asdf', 'sadfasdf', '', 'NULL', 1),
-(65, 0, 100, '', '2020-07-17 10:43:46', '2020-07-17 10:47:56', '3', 'rating', 'how do you like it let me edit this', '1', '2', '3', '', '', 'NULL', 0),
-(66, 0, 100, '', '2020-07-17 10:48:12', '2020-07-17 10:48:12', '', 'multiplechoice', 'let have loolk', 'asdf', 'asdf', 'asdf', 'sa', 'sdfdsfgdsaf', 'NULL', 0),
-(67, 0, 108, '', '2020-07-17 10:51:04', '2020-07-17 10:51:04', '', 'text', 'sadfsaf', '', '', '', '', '', 'NULL', 0);
-
 -- --------------------------------------------------------
 
 --
@@ -249,7 +195,7 @@ CREATE TABLE `user` (
   `Roll-no` int(16) NOT NULL,
   `Details_id` int(16) NOT NULL,
   `Password_id` int(16) NOT NULL,
-  `DELETED` tinyint(1) NOT NULL
+  `DELETED` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -283,7 +229,7 @@ CREATE TABLE `user_details` (
   `Phone` bigint(20) NOT NULL,
   `created_on` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `DELETED` tinyint(1) NOT NULL
+  `DELETED` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -306,6 +252,20 @@ INSERT INTO `user_details` (`Details_id`, `First_name`, `Middle_name`, `Last_nam
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `user_form_access`
+--
+
+CREATE TABLE `user_form_access` (
+  `auto_increment` int(16) NOT NULL,
+  `user_id` varchar(64) NOT NULL,
+  `user_email` varchar(255) NOT NULL,
+  `form_availability` int(16) NOT NULL,
+  `DELETED` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user_password`
 --
 
@@ -316,7 +276,7 @@ CREATE TABLE `user_password` (
   `Details_id` int(16) NOT NULL,
   `created_on` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `DELETED` tinyint(1) NOT NULL
+  `DELETED` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -378,7 +338,6 @@ ALTER TABLE `form`
   ADD PRIMARY KEY (`F_id`),
   ADD KEY `f_id` (`F_id`),
   ADD KEY `Admin_id` (`Admin_id`),
-  ADD KEY `Form_details` (`Form_details`),
   ADD KEY `form_ibfk_2` (`Admin_email`),
   ADD KEY `F_id_2` (`F_id`);
 
@@ -395,7 +354,8 @@ ALTER TABLE `form_allotment`
 -- Indexes for table `form_details`
 --
 ALTER TABLE `form_details`
-  ADD PRIMARY KEY (`Form_details`);
+  ADD PRIMARY KEY (`Form_details`),
+  ADD KEY `F_id1` (`F_id`);
 
 --
 -- Indexes for table `questions`
@@ -420,6 +380,15 @@ ALTER TABLE `user`
 --
 ALTER TABLE `user_details`
   ADD PRIMARY KEY (`Details_id`);
+
+--
+-- Indexes for table `user_form_access`
+--
+ALTER TABLE `user_form_access`
+  ADD PRIMARY KEY (`auto_increment`),
+  ADD KEY `form_availability` (`form_availability`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `user_email` (`user_email`);
 
 --
 -- Indexes for table `user_password`
@@ -454,7 +423,7 @@ ALTER TABLE `answers`
 -- AUTO_INCREMENT for table `form`
 --
 ALTER TABLE `form`
-  MODIFY `F_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+  MODIFY `F_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
 
 --
 -- AUTO_INCREMENT for table `form_allotment`
@@ -485,6 +454,12 @@ ALTER TABLE `user`
 --
 ALTER TABLE `user_details`
   MODIFY `Details_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `user_form_access`
+--
+ALTER TABLE `user_form_access`
+  MODIFY `auto_increment` int(16) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user_password`
@@ -525,8 +500,7 @@ ALTER TABLE `answers`
 --
 ALTER TABLE `form`
   ADD CONSTRAINT `form_ibfk_1` FOREIGN KEY (`Admin_id`) REFERENCES `admin_credentials` (`Admin_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `form_ibfk_2` FOREIGN KEY (`Admin_email`) REFERENCES `admin_credentials` (`Admin_email`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `form_ibfk_3` FOREIGN KEY (`Form_details`) REFERENCES `form_details` (`Form_details`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `form_ibfk_2` FOREIGN KEY (`Admin_email`) REFERENCES `admin_credentials` (`Admin_email`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `form_allotment`
@@ -535,6 +509,12 @@ ALTER TABLE `form_allotment`
   ADD CONSTRAINT `form_allotment_ibfk_1` FOREIGN KEY (`F_id`) REFERENCES `form` (`F_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `form_allotment_ibfk_2` FOREIGN KEY (`Admin_id`) REFERENCES `form` (`Admin_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `form_allotment_ibfk_3` FOREIGN KEY (`Admin_email`) REFERENCES `form` (`Admin_email`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `form_details`
+--
+ALTER TABLE `form_details`
+  ADD CONSTRAINT `form_details_ibfk_1` FOREIGN KEY (`F_id`) REFERENCES `form` (`F_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `questions`
@@ -548,6 +528,14 @@ ALTER TABLE `questions`
 ALTER TABLE `user`
   ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`Details_id`) REFERENCES `user_details` (`Details_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `user_ibfk_2` FOREIGN KEY (`Password_id`) REFERENCES `user_password` (`Password_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `user_form_access`
+--
+ALTER TABLE `user_form_access`
+  ADD CONSTRAINT `user_form_access_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`User_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `user_form_access_ibfk_2` FOREIGN KEY (`user_email`) REFERENCES `user` (`User _email`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `user_form_access_ibfk_3` FOREIGN KEY (`form_availability`) REFERENCES `form` (`F_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `user_password`

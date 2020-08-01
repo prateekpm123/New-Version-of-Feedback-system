@@ -128,19 +128,19 @@ function createVersion(F_id) {
   });
 }
 
-function publishForm(F_id) {
-  console.log("publish  sadfas working");
-  $.ajax({
-    url: "frontend/publishModal.php",
-    method: "post",
-    data: {
-      F_id: F_id,
-    },
-    success: function (data, status) {
-      $("#publish-modal").html(data);
-    },
-  });
-}
+// function publishForm(F_id) {
+//   console.log("publish  sadfas working");
+//   $.ajax({
+//     url: "frontend/publishModal.php",
+//     method: "post",
+//     data: {
+//       F_id: F_id,
+//     },
+//     success: function (data, status) {
+//       $("#publish-modal").html(data);
+//     },
+//   });
+// }
 
 function otherSettings(F_id) {}
 
@@ -212,7 +212,7 @@ function shareModal(F_id) {
     url: "frontend/shareModal.php",
     method: "post",
     data: {
-      F_id : F_id,
+      F_id: F_id,
     },
     success: function (data, status) {
       $("#sharing-modal").html(data);
@@ -221,5 +221,5 @@ function shareModal(F_id) {
 }
 
 function testfunction() {
-  console.log(' test of two fumnction is working');
+  console.log(" test of two fumnction is working");
 }

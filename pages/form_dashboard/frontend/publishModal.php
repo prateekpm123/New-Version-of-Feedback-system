@@ -1,22 +1,22 @@
-<?php
 
 
-require "../backend/getFormDetails.php";
+
+<!-- require "../backend/getFormDetails.php";
 
 
-renderPublishModal();
+//renderPublishModal();
 
-function renderPublishModal() {
+//function renderPublishModal() {
 
-    $F_id = $_POST['F_id'];
+ //   $F_id = $_POST['F_id'];
     
-    $formInfoObj = new FormInfo();
-    $formVersionData = $formInfoObj->giveFormVersionToRender($F_id);
+  //  $formInfoObj = new FormInfo();
+ //   $formVersionData = $formInfoObj->giveFormVersionToRender($F_id);
 
     $data = '';
-	if(!empty($formVersionData)){
+//	if(!empty($formVersionData)){
 		$number = 1;
-		foreach($formVersionData as $row ){
+//		foreach($formVersionData as $row ){
 
 			$data .= '<div class="modal fade" id="publishModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 								<div class="modal-dialog modal-dialog-centered">
@@ -101,12 +101,12 @@ function renderPublishModal() {
 			
 			
 				$number++;
-		}
-	} else {
+//		}
+//	} else {
 		$data .= '<h4 style="color: red;"> Admin id is empty, so try creating a new form !</h4>';
-	}
+//	}
 
 	
 	echo $data;
 
-}
+//} -->

@@ -129,7 +129,7 @@ class Model extends Dbh {
     protected function insetNewForm(string $formName, string $formDesc) {
         session_start();
         
-        $query =  "INSERT INTO `form`(`Admin_id`,`Admin_email`, `Form_name`, `Form_version`,`Form_Desc`, `Form_details`, `DELETED`) VALUES (?,?,?, 1, ? ,1,0)";
+        $query =  "INSERT INTO `form`(`Admin_id`,`Admin_email`, `Form_name`, `Form_version`,`Form_Desc`, `DELETED`) VALUES (?,?,?, 1, ? ,0)";
         try {
             $stmt = $this->connect()->prepare($query);
             $stmt->execute([ $_SESSION['admin_id'], $_SESSION['admin_username'], $formName, $formDesc]);
@@ -231,7 +231,7 @@ class Model extends Dbh {
         $noOfFormVersions++;
 
 
-        $query3 = "INSERT INTO `form`(`Admin_id`, `Admin_email`, `Form_name`, `Form_version`, `Form_Desc`, `Form_details`, `DELETED`) VALUES (?, ?, ? , ?, '', 1, ?)";
+        $query3 = "INSERT INTO `form`(`Admin_id`, `Admin_email`, `Form_name`, `Form_version`, `Form_Desc`, `DELETED`) VALUES (?, ?, ? , ?, '', ?)";
         $stmt3 = $this->connect()->prepare($query3);
         $stmt3->execute([ $formData[0]["Admin_id"], $formData[0]["Admin_email"], $formData[0]["Form_name"], $noOfFormVersions, 0] );
 

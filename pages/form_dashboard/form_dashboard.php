@@ -75,5 +75,92 @@ session_start();
         include_once __DIR__.'/../../includes/constants/jqueryLinks.php';
     ?>
     <script src="form_dashboard.js"></script>
+    <script>
+    function publishForm(F_id) {
+    var a = document.getElementById("publishModal"+F_id+"").querySelector(".publishClass1").value; 
+    var b = document.getElementById("publishModal"+F_id+"").querySelector(".publishClass2").value;
+    var c = document.getElementById("publishModal"+F_id+"").querySelector(".publishClass3").value;
+    var d = document.getElementById("publishModal"+F_id+"").querySelector(".publishClass4").value;
+    var e = document.getElementById("publishModal"+F_id+"").querySelector(".publishClass5").value;
+    var f = document.getElementById("publishModal"+F_id+"").querySelector(".publishClass6").value;
+   // console.log(a);
+   if (a == 'Everyone'){
+        b = null;
+        c = null;
+        d = null;    
+   }
+   if (b == 'All Departments'){
+       c = null;
+       d = null;
+   }
+   if (c == 'All years'){
+       d = null;
+   }
+    $.ajax({
+    url: "frontend/publishModal.php",
+    method: "post",
+    data: {
+      F_id: F_id,
+      Role: a,
+      Department: b,
+      Year: c,
+      Division: d,
+      Start: e,
+      End: f
+    },
+    success: function (data, status) {
+      
+    },
+  });
+}
+
+function publishChange(F_id) {
+    var a = document.getElementById("publishModal"+F_id+"").querySelector(".publishClass1").value;
+    var b = document.getElementById("publishModal"+F_id+"").querySelector(".publishClass2").value;
+    var c = document.getElementById("publishModal"+F_id+"").querySelector(".publishClass3").value;
+    var x = document.getElementById("publishModal"+F_id+"").querySelector(".publishDiv1");
+    var y = document.getElementById("publishModal"+F_id+"").querySelector(".publishDiv2");
+    var z = document.getElementById("publishModal"+F_id+"").querySelector(".publishDiv3");
+
+    if (a == 'Everyone'){
+         x.style.display = "none";
+         y.style.display = "none";
+         z.style.display = "none";
+    }
+    else{
+        x.style.display = "block";
+        y.style.display = "block";
+        z.style.display = "block";
+    }
+}
+
+function publishChange1(F_id){
+    var b = document.getElementById("publishModal"+F_id+"").querySelector(".publishClass2").value;
+    var c = document.getElementById("publishModal"+F_id+"").querySelector(".publishClass3").value;
+    var y = document.getElementById("publishModal"+F_id+"").querySelector(".publishDiv2");
+    var z = document.getElementById("publishModal"+F_id+"").querySelector(".publishDiv3");
+
+    if (b == 'All Departments'){
+        y.style.display = "none";
+        z.style.display = "none";
+    }
+    else{
+        y.style.display = "block";
+        z.style.display = "block";  
+    }
+}
+
+function publishChange2(F_id){
+    var c = document.getElementById("publishModal"+F_id+"").querySelector(".publishClass3").value;
+    var z = document.getElementById("publishModal"+F_id+"").querySelector(".publishDiv3");
+
+    if (c == 'All years'){
+        z.style.display = "none";
+    }
+    else{
+        z.style.display = "block";
+    }
+}
+    </script>
 </body>
 </html>

@@ -128,19 +128,41 @@ function createVersion(F_id) {
   });
 }
 
-// function publishForm(F_id) {
-//   console.log("publish  sadfas working");
-//   $.ajax({
-//     url: "frontend/publishModal.php",
-//     method: "post",
-//     data: {
-//       F_id: F_id,
-//     },
-//     success: function (data, status) {
-//       $("#publish-modal").html(data);
-//     },
-//   });
-// }
+function publishForm(F_id) {
+  var a = document
+    .getElementById("publishModal" + F_id + "")
+    .querySelector(".publishClass1").value;
+  var b = document
+    .getElementById("publishModal" + F_id + "")
+    .querySelector(".publishClass2").value;
+  var c = document
+    .getElementById("publishModal" + F_id + "")
+    .querySelector(".publishClass3").value;
+  var d = document
+    .getElementById("publishModal" + F_id + "")
+    .querySelector(".publishClass4").value;
+  var e = document
+    .getElementById("publishModal" + F_id + "")
+    .querySelector(".publishClass5").value;
+  var f = document
+    .getElementById("publishModal" + F_id + "")
+    .querySelector(".publishClass6").value;
+  // console.log(a);
+  $.ajax({
+    url: "frontend/publishModal.php",
+    method: "post",
+    data: {
+      F_id: F_id,
+      Role: a,
+      Department: b,
+      Year: c,
+      Division: d,
+      Start: e,
+      End: f,
+    },
+    success: function (data, status) {},
+  });
+}
 
 function otherSettings(F_id) {}
 

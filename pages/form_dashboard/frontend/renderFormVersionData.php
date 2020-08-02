@@ -42,19 +42,21 @@ function renderFormVersionData() {
 												<div class="input-group-prepend">
 													<span class="input-group-text" id="basic-addon1">Publish For</span>
 												</div>
-												<select class="form-control" aria-describedby="basic-addon1" id="">
-														<option>Select Here</option>
+												<select class="form-control publishClass1" aria-describedby="basic-addon1" onchange="publishChange('.$row['F_id'].')">
+														
+														<option>'.$row['Role'].'</option>
 														<option>Everyone</option>
 														<option>Teacher</option>
 														<option>Student</option>
 												</select>		
 											</div>
+											<div class="publishDiv1">
 											<div class="input-group mb-3">
 												<div class="input-group-prepend">
 													<span class="input-group-text" id="basic-addon2">Department</span>
 												</div>
-												<select class="form-control" aria-describedby="basic-addon2" id="">
-														<option>Select Here</option>
+												<select class="form-control publishClass2" aria-describedby="basic-addon2" onchange="publishChange1('.$row['F_id'].')">
+														<option>'.$row['Department'].'</option>
 														<option>All Departments</option>
 														<option>CM</option>
 														<option>IT</option>
@@ -62,12 +64,14 @@ function renderFormVersionData() {
 														<option>ETRX</option>
 												</select>		
 											</div>
+											</div>
+											<div class="publishDiv2">
 											<div class="input-group mb-3">
 											<div class="input-group-prepend">
 												<span class="input-group-text" id="basic-addon3">Year</span>
 											</div>
-											<select class="form-control" aria-describedby="basic-addon3" id="">
-													<option>Select Here</option>
+											<select class="form-control publishClass3" aria-describedby="basic-addon3" onchange="publishChange2('.$row['F_id'].')">
+													<option>'.$row['Year'].'</option>
 													<option>All years</option>
 													<option>FE</option>
 													<option>SE</option>
@@ -75,12 +79,14 @@ function renderFormVersionData() {
 													<option>BE</option>
 											</select>		
 										</div>
+										</div>
+										<div class="publishDiv3">
 										<div class="input-group mb-3">
 										<div class="input-group-prepend">
 											<span class="input-group-text" id="basic-addon3">Division</span>
 										</div>
-										<select class="form-control" aria-describedby="basic-addon3" id="">
-												<option>Select Here</option>
+										<select class="form-control publishClass4" aria-describedby="basic-addon3" id="">
+												<option>'.$row['Division'].'</option>
 												<option>All Divisions</option>
 												<option>1</option>
 												<option>2</option>
@@ -92,16 +98,23 @@ function renderFormVersionData() {
 												<option>D</option>
 										</select>		
 									</div>
+									</div>
 									<div class="input-group mb-3">
 									<div class="input-group-prepend">
-										<span class="input-group-text" id="basic-addon4">Duration</span>
+										<span class="input-group-text" id="basic-addon4">Start Date (YYYY-MM-DD)</span>
 									</div>
-									<input class="form-control" aria-describedby="basic-addon4" type="date">		
+									<input class="form-control publishClass5" aria-describedby="basic-addon4" type="text" value="'.$row['Start_date'].'">		
+								</div>
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<span class="input-group-text" id="basic-addon4">End Date (YYYY)</span>
+									</div>
+									<input class="form-control publishClass6" aria-describedby="basic-addon4" type="text" value="'.$row['End_date'].'">		
 								</div>
 										</div>
 										<div class="modal-footer">
 												<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-												<button type="button" class="btn btn-primary">Publish</button>
+												<button class="btn btn-primary" onclick="publishForm('.$row['F_id'].')" data-dismiss="modal">Publish</button>
 										</div>
 										</div>
 								</div>
@@ -126,7 +139,7 @@ function renderFormVersionData() {
 				</button>
 				<div class="dropdown-menu">
 					<button class="dropdown-item" onclick="createVersion('.$row['F_id'].')">Create Version</button>
-					<button class="dropdown-item" type="button" class="btn btn-primary" data-toggle="modal" data-target="#publishModal'.$row['F_id'].'" onclick="publishForm('.$row['F_id'].')">Publish</button>
+					<button class="dropdown-item" type="button" class="btn btn-primary" data-toggle="modal" data-target="#publishModal'.$row['F_id'].'">Publish</button>
 					<button class="dropdown-item" onclick="otherSettings('.$row['F_id'].')">Other settings</button>
 					<div class="dropdown-divider"></div>
 					<button class="dropdown-item disabled" >Separated link</button>

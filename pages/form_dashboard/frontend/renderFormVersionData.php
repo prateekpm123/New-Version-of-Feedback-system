@@ -44,7 +44,7 @@ function renderFormVersionData() {
 												</div>
 												<select class="form-control publishClass1" aria-describedby="basic-addon1" onchange="publishChange('.$row['F_id'].')">
 														
-														<option>'.$row['Role'].'</option>
+														<option selected hidden>'.$row['Role'].'</option>
 														<option>Everyone</option>
 														<option>Teacher</option>
 														<option>Student</option>
@@ -56,7 +56,7 @@ function renderFormVersionData() {
 													<span class="input-group-text" id="basic-addon2">Department</span>
 												</div>
 												<select class="form-control publishClass2" aria-describedby="basic-addon2" onchange="publishChange1('.$row['F_id'].')">
-														<option>'.$row['Department'].'</option>
+														<option selected hidden>'.$row['Department'].'</option>
 														<option>All Departments</option>
 														<option>CM</option>
 														<option>IT</option>
@@ -71,7 +71,7 @@ function renderFormVersionData() {
 												<span class="input-group-text" id="basic-addon3">Year</span>
 											</div>
 											<select class="form-control publishClass3" aria-describedby="basic-addon3" onchange="publishChange2('.$row['F_id'].')">
-													<option>'.$row['Year'].'</option>
+													<option selected hidden>'.$row['Year'].'</option>
 													<option>All years</option>
 													<option>FE</option>
 													<option>SE</option>
@@ -85,8 +85,8 @@ function renderFormVersionData() {
 										<div class="input-group-prepend">
 											<span class="input-group-text" id="basic-addon3">Division</span>
 										</div>
-										<select class="form-control publishClass4" aria-describedby="basic-addon3" id="">
-												<option>'.$row['Division'].'</option>
+										<select class="form-control publishClass4" aria-describedby="basic-addon3">
+												<option selected hidden>'.$row['Division'].'</option>
 												<option>All Divisions</option>
 												<option>1</option>
 												<option>2</option>

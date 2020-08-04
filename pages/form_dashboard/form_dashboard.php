@@ -89,6 +89,10 @@ session_start();
         c = null;
         d = null;    
    }
+   else if (a == 'Teacher'){
+       c = null;
+       d = null;
+   }
    if (b == 'All Departments'){
        c = null;
        d = null;
@@ -127,6 +131,11 @@ function publishChange(F_id) {
          y.style.display = "none";
          z.style.display = "none";
     }
+    else if (a== 'Teacher'){
+        x.style.display = "block";
+        y.style.display = "none";
+        z.style.display = "none";
+    }
     else{
         x.style.display = "block";
         y.style.display = "block";
@@ -135,6 +144,7 @@ function publishChange(F_id) {
 }
 
 function publishChange1(F_id){
+    var a = document.getElementById("publishModal"+F_id+"").querySelector(".publishClass1").value;
     var b = document.getElementById("publishModal"+F_id+"").querySelector(".publishClass2").value;
     var c = document.getElementById("publishModal"+F_id+"").querySelector(".publishClass3").value;
     var y = document.getElementById("publishModal"+F_id+"").querySelector(".publishDiv2");
@@ -144,9 +154,15 @@ function publishChange1(F_id){
         y.style.display = "none";
         z.style.display = "none";
     }
-    else{
-        y.style.display = "block";
-        z.style.display = "block";  
+    else if (b == 'CM' || b == 'IT' || b == 'ETRX' || b == 'EXTC'){
+        if (a == 'Teacher'){
+        y.style.display = "none";
+        z.style.display = "none";  
+        }
+        else if (a == 'Student'){
+            y.style.display = "block";
+            z.style.display = "block";
+        }
     }
 }
 

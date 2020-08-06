@@ -94,29 +94,26 @@ class Model extends Dbh {
 
     public function fetchFormVersions($F_id) {
         session_start();
-        $query = "SELECT * FROM `form` WHERE `F_id`= ? AND `DELETED`=0 AND `Admin_id`= ?";
+        // $query = "SELECT * FROM `form` WHERE `F_id`= ? AND `DELETED`=0 AND `Admin_id`= ?";
 
-        try{
-            $stmt = $this->connect()->prepare($query);
-            $stmt->execute([$F_id, $_SESSION['admin_id'] ]);
-            $formIdName = $stmt->FetchAll();
-        }
-        catch(Exception $e) {
-            echo "Fetching Forms Version Data was not successfull ".$e->message();
-        }
+        // try{
+        //     $stmt = $this->connect()->prepare($query);
+        //     $stmt->execute([$F_id, $_SESSION['admin_id'] ]);
+        //     $formIdName = $stmt->FetchAll();
+        // }
+        // catch(Exception $e) {
+        //     echo "Fetching Forms Version Data was not successfull ".$e->message();
+        // }
         
         try{
-            $Form_name = $formIdName[0]['Form_name'];
-            $query2 = "SELECT * FROM `form` WHERE `Form_name`= ? AND `Admin_id`=? AND  `DELETED`=0 ";
-        }
-        catch(Exception $e) {
-            return false;
-        }
-       
-        try{
+            // $Form_name = $formIdName[0]['Form_name'];
+            // $query2 = "SELECT * FROM `form` WHERE `Form_name`= ? AND `Admin_id`=? AND  `DELETED`=0 ";
+            $query2 = "SELECT * FROM form INNER JOIN publish_details ON form.F_id=publish_details.F_id WHERE form.Form_name in ( SELECT Form_name FROM form WHERE F_id=?  AND `Admin_email`=? AND  `DELETED`=0)";
+    
             $stmt = $this->connect()->prepare($query2);
-            $stmt->execute([$Form_name, $_SESSION['admin_id']]);
+            $stmt->execute([$F_id, $_SESSION['admin_username']]);
             $formVersionsData = $stmt->FetchAll();
+            //var_dump($formVersionsData);
             return $formVersionsData ?? false;
         }
         catch(Exception $e) {
@@ -145,14 +142,17 @@ class Model extends Dbh {
             echo $thisF_id;
             // ADDING THE DATA INTO THE ACCESS TABLE
             $this->addTheEntryOfTheNewFormInAccessTable($thisF_id);
-            return true;
+            // return true;
+
+            $query8 = "INSERT INTO `publish_details`(`F_id`) VALUES (?)";
+            $stmt8 = $this->connect()->prepare($query8);
+            $stmt8->execute([$thisF_id]);
         } 
         catch(Exception $e ) {
             echo "Fetching Forms data was not successfull ".$e->message();
             return false;
         }
-
-        
+       
 
     }
 
@@ -242,6 +242,10 @@ class Model extends Dbh {
         $formDataOfCurrentVersion = $stmt4->FetchAll();        
         $latestFormVersionId = $formDataOfCurrentVersion[0]["F_id"];
         $previousFormVersionId = $F_id;
+
+        $query8 = "INSERT INTO publish_details(`F_id`) VALUES (?)";
+        $stmt8 = $this->connect()->prepare($query8);
+        $stmt8->execute([$latestFormVersionId]);
        
         
         $query6 = "SELECT * FROM `questions` WHERE `F_id`=?";
@@ -264,7 +268,7 @@ class Model extends Dbh {
     }
 
     public function publishForm($F_id,$role,$department,$year,$division,$start,$end){
-        $query = "UPDATE form SET Role='$role',Department='$department',Year='$year',Division='$division',Start_date='$start',End_date='$end' WHERE F_id=$F_id ";
+        $query = "UPDATE publish_details SET Role='$role',Department='$department',Year='$year',Division='$division',Start_date='$start',End_date='$end' WHERE F_id=$F_id ";
         $result=$this->connect()->prepare($query);
         $result->execute([$role,$department,$year,$division,$start,$end,$F_id]);
 }
@@ -272,3 +276,7 @@ class Model extends Dbh {
     
     
 }
+
+// $testing = new Model();
+// $data = $testing->fetchFormVersions(113);
+// var_dump($data);

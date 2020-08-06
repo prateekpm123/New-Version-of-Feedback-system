@@ -107,7 +107,7 @@ function renderFormVersionData() {
 								</div>
 								<div class="input-group mb-3">
 									<div class="input-group-prepend">
-										<span class="input-group-text" id="basic-addon4">End Date (YYYY)</span>
+										<span class="input-group-text" id="basic-addon4">End Date (YYYY-MM-DD)</span>
 									</div>
 									<input class="form-control publishClass6" aria-describedby="basic-addon4" type="text" value="'.$row['End_date'].'">		
 								</div>

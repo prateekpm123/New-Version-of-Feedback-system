@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 01, 2020 at 02:39 PM
+-- Generation Time: Aug 06, 2020 at 12:33 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -110,10 +110,14 @@ CREATE TABLE `form` (
 --
 
 INSERT INTO `form` (`F_id`, `Admin_id`, `Admin_email`, `Form_code`, `Form_name`, `Form_version`, `Form_Desc`, `Published`, `Expired`, `created_on`, `updated_on`, `DELETED`) VALUES
-(109, 'PRA', 'prateek.manta@sakec.ac.in', 'ABC2020', 'STUDENT FORM', '1', 'related to infrastructure', 0, 0, '2020-08-01 07:21:46', '2020-08-01 07:21:46', 0),
-(110, 'POO', 'pooja.tripathi@sakec.ac.in', '123', 'ABCD', '1', 'NONE', 0, 0, '2020-08-01 10:51:29', '2020-08-01 10:51:29', 0),
-(111, 'PRA', 'prateek.manta@sakec.ac.in', '', 'STUDENT FORM', '2', '', 0, 0, '2020-08-01 12:33:09', '2020-08-01 12:33:09', 0),
-(112, 'PRA', 'prateek.manta@sakec.ac.in', '', 'test', '1', 'test', 0, 0, '2020-08-01 12:34:23', '2020-08-01 12:34:23', 0);
+(135, 'PRA', 'prateek.manta@sakec.ac.in', '', 'Test 1', '1', 'test', 0, 0, '2020-08-05 14:38:23', '2020-08-05 14:38:23', 0),
+(136, 'PRA', 'prateek.manta@sakec.ac.in', '', 'Test 1', '2', '', 0, 0, '2020-08-05 14:41:07', '2020-08-05 14:41:07', 0),
+(137, 'PRA', 'prateek.manta@sakec.ac.in', '', 'Test 1', '3', '', 0, 0, '2020-08-05 14:41:36', '2020-08-05 14:41:36', 0),
+(138, 'PRA', 'prateek.manta@sakec.ac.in', '', 'Test 1', '4', '', 0, 0, '2020-08-05 14:41:46', '2020-08-05 14:41:46', 0),
+(139, 'PRA', 'prateek.manta@sakec.ac.in', '', 'Test 2', '1', 'test', 0, 0, '2020-08-05 14:42:06', '2020-08-06 10:31:30', 1),
+(140, 'PRA', 'prateek.manta@sakec.ac.in', '', 'Test 2', '2', '', 0, 0, '2020-08-06 10:28:57', '2020-08-06 10:31:30', 1),
+(141, 'PRA', 'prateek.manta@sakec.ac.in', '', 'Test 2', '3', '', 0, 0, '2020-08-06 10:31:22', '2020-08-06 10:31:30', 1),
+(142, 'PRA', 'prateek.manta@sakec.ac.in', '', 'Test 2', '4', '', 0, 0, '2020-08-06 10:31:25', '2020-08-06 10:31:30', 1);
 
 -- --------------------------------------------------------
 
@@ -139,21 +143,22 @@ CREATE TABLE `form_allotment` (
 --
 
 INSERT INTO `form_allotment` (`form_allotment_id`, `F_id`, `Admin_id`, `Admin_email`, `access_giver`, `access_receiver`, `priviliges`, `created_on`, `updated_on`, `DELETED`) VALUES
-(56, 109, 'PRA', 'prateek.manta@sakec.ac.in', 'prateek.manta@sakec.ac.in', 'prateek.manta@sakec.ac.in', '', '2020-08-01 12:24:56', '2020-08-01 12:24:56', 0),
 (57, 110, 'POO', 'pooja.tripathi@sakec.ac.in', 'pooja.tripathi@sakec.ac.in', 'pooja.tripathi@sakec.ac.in', '', '2020-08-01 12:26:11', '2020-08-01 12:26:11', 0),
-(58, 112, 'PRA', 'prateek.manta@sakec.ac.in', 'prateek.manta@sakec.ac.in', 'prateek.manta@sakec.ac.in', 'master', '2020-08-01 12:34:23', '2020-08-01 12:34:23', 0);
+(64, 127, 'ANI', 'aniketkumar.singh@sakec.ac.in', 'aniketkumar.singh@sakec.ac.in', 'aniketkumar.singh@sakec.ac.in', 'master', '2020-08-05 14:14:00', '2020-08-05 14:14:00', 0),
+(69, 135, 'PRA', 'prateek.manta@sakec.ac.in', 'prateek.manta@sakec.ac.in', 'prateek.manta@sakec.ac.in', 'master', '2020-08-05 14:38:23', '2020-08-05 14:38:23', 0),
+(70, 139, 'PRA', 'prateek.manta@sakec.ac.in', 'prateek.manta@sakec.ac.in', 'prateek.manta@sakec.ac.in', 'master', '2020-08-05 14:42:06', '2020-08-05 14:42:06', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `form_details`
+-- Table structure for table `publish_details`
 --
 
-CREATE TABLE `form_details` (
+CREATE TABLE `publish_details` (
   `Form_details` int(16) NOT NULL,
   `F_id` int(16) NOT NULL,
-  `Start_date` datetime NOT NULL DEFAULT current_timestamp(),
-  `End_date` datetime NOT NULL,
+  `Start_date` date NOT NULL,
+  `End_date` date NOT NULL,
   `Validity` varchar(255) NOT NULL,
   `Role` varchar(255) NOT NULL,
   `Department` varchar(255) NOT NULL,
@@ -163,12 +168,18 @@ CREATE TABLE `form_details` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `form_details`
+-- Dumping data for table `publish_details`
 --
 
-INSERT INTO `form_details` (`Form_details`, `F_id`, `Start_date`, `End_date`, `Validity`, `Role`, `Department`, `Year`, `Division`, `DELETED`) VALUES
-(2, 109, '2020-08-01 17:53:04', '0000-00-00 00:00:00', '', '', '', '', '', 0),
-(3, 110, '2020-08-01 17:53:24', '0000-00-00 00:00:00', '', '', '', '', '', 0);
+INSERT INTO `publish_details` (`Form_details`, `F_id`, `Start_date`, `End_date`, `Validity`, `Role`, `Department`, `Year`, `Division`, `DELETED`) VALUES
+(14, 135, '2020-08-05', '0000-00-00', '', 'Teacher', 'EXTC', '', '', 0),
+(15, 136, '2020-08-05', '0000-00-00', '', 'Everyone', '', '', '', 0),
+(16, 137, '2020-08-05', '0000-00-00', '', '', '', '', '', 0),
+(17, 138, '2020-08-05', '0000-00-00', '', '', '', '', '', 0),
+(18, 139, '2020-08-05', '0000-00-00', '', '', '', '', '', 0),
+(19, 140, '0000-00-00', '0000-00-00', '', '', '', '', '', 0),
+(20, 141, '0000-00-00', '0000-00-00', '', '', '', '', '', 0),
+(21, 142, '0000-00-00', '0000-00-00', '', '', '', '', '', 0);
 
 -- --------------------------------------------------------
 
@@ -203,7 +214,17 @@ INSERT INTO `questions` (`Q_id`, `Q_no`, `F_id`, `Breakpoints`, `created_on`, `u
 (68, 0, 109, '', '2020-08-01 12:29:53', '2020-08-01 12:29:53', '', 'radio', 'yo', '2', '6', '3', '3', '7', 'NULL', 0),
 (69, 0, 109, '', '2020-08-01 12:30:35', '2020-08-01 12:30:35', '', 'text', 'hey', '', '', '', '', '', 'NULL', 0),
 (70, 1, 111, '', '2020-08-01 12:33:09', '2020-08-01 12:33:09', '', 'radio', 'yo', '2', '6', '3', '3', '7', 'NULL', 0),
-(71, 2, 111, '', '2020-08-01 12:33:09', '2020-08-01 12:33:09', '', 'text', 'hey', '', '', '', '', '', 'NULL', 0);
+(71, 2, 111, '', '2020-08-01 12:33:09', '2020-08-01 12:33:09', '', 'text', 'hey', '', '', '', '', '', 'NULL', 0),
+(72, 0, 113, '', '2020-08-01 13:54:57', '2020-08-01 13:54:57', '', 'radio', 'dsvdfv', 'gghchgc', 'ytyf', 'cctrtrdc', 'cgfc', 'yfyf', 'NULL', 0),
+(73, 0, 113, '', '2020-08-01 14:29:03', '2020-08-01 14:29:03', '', 'rating', 'hiiii', '', '', '', '', '', 'NULL', 0),
+(80, 1, 128, '', '2020-08-05 14:18:29', '2020-08-05 14:18:29', '', 'radio', 'yo', '2', '6', '3', '3', '7', 'NULL', 0),
+(81, 2, 128, '', '2020-08-05 14:18:29', '2020-08-05 14:18:29', '', 'text', 'hey', '', '', '', '', '', 'NULL', 0),
+(84, 0, 135, '', '2020-08-05 14:40:55', '2020-08-05 14:40:55', '', 'text', 'yoyoyo', '', '', '', '', '', 'NULL', 0),
+(85, 1, 136, '', '2020-08-05 14:41:07', '2020-08-05 14:41:07', '', 'text', 'yoyoyo', '', '', '', '', '', 'NULL', 0),
+(86, 0, 136, '', '2020-08-05 14:41:24', '2020-08-05 14:41:24', '', 'rating', 'hiiiiii', '', '', '', '', '', 'NULL', 0),
+(87, 1, 137, '', '2020-08-05 14:41:36', '2020-08-05 14:41:36', '', 'text', 'yoyoyo', '', '', '', '', '', 'NULL', 0),
+(88, 2, 137, '', '2020-08-05 14:41:37', '2020-08-05 14:41:37', '', 'rating', 'hiiiiii', '', '', '', '', '', 'NULL', 0),
+(89, 1, 138, '', '2020-08-05 14:41:47', '2020-08-05 14:41:47', '', 'text', 'yoyoyo', '', '', '', '', '', 'NULL', 0);
 
 -- --------------------------------------------------------
 
@@ -380,9 +401,9 @@ ALTER TABLE `form_allotment`
   ADD KEY `Admin_email` (`Admin_email`);
 
 --
--- Indexes for table `form_details`
+-- Indexes for table `publish_details`
 --
-ALTER TABLE `form_details`
+ALTER TABLE `publish_details`
   ADD PRIMARY KEY (`Form_details`),
   ADD KEY `F_id1` (`F_id`);
 
@@ -452,25 +473,25 @@ ALTER TABLE `answers`
 -- AUTO_INCREMENT for table `form`
 --
 ALTER TABLE `form`
-  MODIFY `F_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
+  MODIFY `F_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
 
 --
 -- AUTO_INCREMENT for table `form_allotment`
 --
 ALTER TABLE `form_allotment`
-  MODIFY `form_allotment_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `form_allotment_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
--- AUTO_INCREMENT for table `form_details`
+-- AUTO_INCREMENT for table `publish_details`
 --
-ALTER TABLE `form_details`
-  MODIFY `Form_details` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `publish_details`
+  MODIFY `Form_details` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `Q_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `Q_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -540,10 +561,10 @@ ALTER TABLE `form_allotment`
   ADD CONSTRAINT `form_allotment_ibfk_3` FOREIGN KEY (`Admin_email`) REFERENCES `form` (`Admin_email`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `form_details`
+-- Constraints for table `publish_details`
 --
-ALTER TABLE `form_details`
-  ADD CONSTRAINT `form_details_ibfk_1` FOREIGN KEY (`F_id`) REFERENCES `form` (`F_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `publish_details`
+  ADD CONSTRAINT `publish_details_ibfk_1` FOREIGN KEY (`F_id`) REFERENCES `form` (`F_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `questions`

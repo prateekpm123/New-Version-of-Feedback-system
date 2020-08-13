@@ -52,11 +52,11 @@
 		var option3 = document.getElementsByClassName("option3");
 		var option4 = document.getElementsByClassName("option4");
 		var option5 = document.getElementsByClassName("option5");
-		var option1div = document.getElementsByClassName("option1");
-		var option2div = document.getElementsByClassName("option2");
-		var option3div = document.getElementsByClassName("option3");
-		var option4div = document.getElementsByClassName("option4");
-		var option5div = document.getElementsByClassName("option5");
+		var option1div = document.getElementsByClassName("option1class");
+		var option2div = document.getElementsByClassName("option2class");
+		var option3div = document.getElementsByClassName("option3class");
+		var option4div = document.getElementsByClassName("option4class");
+		var option5div = document.getElementsByClassName("option5class");
 
 		  for(var i=0; i<x.length; i++){
 			if(option1[i].value == ''){

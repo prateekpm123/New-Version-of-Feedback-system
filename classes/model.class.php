@@ -271,12 +271,38 @@ class Model extends Dbh {
         $query = "UPDATE publish_details SET Role='$role',Department='$department',Year='$year',Division='$division',Start_date='$start',End_date='$end' WHERE F_id=$F_id ";
         $result=$this->connect()->prepare($query);
         $result->execute([$role,$department,$year,$division,$start,$end,$F_id]);
-}
+    }
 
+
+    public function validateUser($user_name, $user_password) {
+        $sql = "SELECT * FROM user WHERE User_email =? AND User_password=? AND `DELETED`=0 ";
+
+        try {
+            $stmt = $this->connect()->prepare($sql);
+            $stmt->execute([$user_name, $user_password]);
+
+            $results = $stmt->FetchAll();
+            $rowCount = $stmt->rowCount();
+
+            if($rowCount > 1) {
+                $ans = [$rowCount, $results];
+                return null;
+            }
+            else if($rowCount = 0) {
+                return null;
+            }
+            else if($rowCount = 1 ) {
+                return $results ?? null;
+            }
+        }
+        catch(Exception $e) {
+            echo "Database action was not successfull".$e->message();
+        }
+    }
     
     
 }
 
-// $testing = new Model();
-// $data = $testing->fetchFormVersions(113);
-// var_dump($data);
+$testing = new Model();
+$data = $testing->validateUser('prateek.manta@sakec.ac.in', '123456789');
+var_dump($data);

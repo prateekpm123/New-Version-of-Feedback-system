@@ -14,7 +14,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col"></div>
-		<div id="records_content" class="col-8">
+		<div id="records_content" class="col-lg-8">
 			
 		</div>
 		<div class="col"></div>

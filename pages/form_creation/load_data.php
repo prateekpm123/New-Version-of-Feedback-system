@@ -3,7 +3,7 @@
 	if(isset($_POST['readrecord'])) {
 		session_start();
 
-		$data = '<div class="container-fluid flex-container">
+		$data = '<div class=" flex-container">
 						<div class="header container-fluid">
 						<div class="row titlerow">
 						<div class="col-8 md-form">
@@ -26,7 +26,7 @@
 		foreach($rows as $row )
 
 		{
-			$data .= '<div class="content container-fluid" id="'.$row['Q_id'].'">
+			$data .= '<div class="content " id="'.$row['Q_id'].'">
 						<div class="row firstrow">
 							<div class="col-8 md-form">
 							<input type="text" id="questionarea'.$number.'" class="questionclass form-control" value="'.$row['Question_desc'].'" onChange="updatetheparticularchange(this,1,'.$row['Q_id'].')">

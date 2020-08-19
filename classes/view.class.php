@@ -46,5 +46,10 @@ class View extends Model {
         return $formQuestionData;
     }
 
+    public function viewUserValidationResults(string $admin_email, string $password) {
+        $results = $this->validateUser($admin_email, $password);
+        return $results;
+    }
+
 }
 

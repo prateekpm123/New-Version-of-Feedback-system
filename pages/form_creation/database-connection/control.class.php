@@ -21,6 +21,12 @@ Class Control extends Dbh {
 		$result->execute([$value, $id]);
 	}
 
+	public function updateScale($value, $id){
+		$query = "UPDATE questions SET rating_scale = '$value', Option1 = '', Option2 = '', Option3 = '', Option4 = '', Option5 = '' WHERE Q_id = '$id'  ";
+		$result = $this->connect()->prepare($query);
+		$result->execute([$value, $id]);
+	}
+
 	public function updateOption1($value, $id){
 		$query = "UPDATE questions SET Option1 = '$value' WHERE Q_id = '$id'";
 		$result = $this->connect()->prepare($query);

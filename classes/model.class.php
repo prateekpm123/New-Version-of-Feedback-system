@@ -303,6 +303,6 @@ class Model extends Dbh {
     
 }
 
-$testing = new Model();
-$data = $testing->validateUser('prateek.manta@sakec.ac.in', '123456789');
-var_dump($data);
+// $testing = new Model();
+// $data = $testing->validateUser('prateek.manta@sakec.ac.in', '123456789');
+// var_dump($data);

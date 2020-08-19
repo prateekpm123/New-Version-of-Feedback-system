@@ -17,7 +17,7 @@ function validate() {
                     success: function(data, status) {
                         console.log(data);
                         if(data == 1) {
-                            window.location.href = "../form_dashboard/form_dashboard.php";
+                            window.location.href = "../user_dashboard/user_dashboard.php";
                         } else  {
                             $('#validation-warning').html('<p class="warning">Wrong email or password</p>'); 
                         }

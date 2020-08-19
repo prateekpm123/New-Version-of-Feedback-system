@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 19, 2020 at 04:23 PM
--- Server version: 10.4.10-MariaDB
--- PHP Version: 7.1.33
+-- Generation Time: Aug 06, 2020 at 12:33 PM
+-- Server version: 10.4.6-MariaDB
+-- PHP Version: 7.3.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -117,8 +117,7 @@ INSERT INTO `form` (`F_id`, `Admin_id`, `Admin_email`, `Form_code`, `Form_name`,
 (139, 'PRA', 'prateek.manta@sakec.ac.in', '', 'Test 2', '1', 'test', 0, 0, '2020-08-05 14:42:06', '2020-08-06 10:31:30', 1),
 (140, 'PRA', 'prateek.manta@sakec.ac.in', '', 'Test 2', '2', '', 0, 0, '2020-08-06 10:28:57', '2020-08-06 10:31:30', 1),
 (141, 'PRA', 'prateek.manta@sakec.ac.in', '', 'Test 2', '3', '', 0, 0, '2020-08-06 10:31:22', '2020-08-06 10:31:30', 1),
-(142, 'PRA', 'prateek.manta@sakec.ac.in', '', 'Test 2', '4', '', 0, 0, '2020-08-06 10:31:25', '2020-08-06 10:31:30', 1),
-(143, 'PRA', 'prateek.manta@sakec.ac.in', '', 'Test 1', '5', '', 0, 0, '2020-08-10 13:04:44', '2020-08-10 13:04:44', 0);
+(142, 'PRA', 'prateek.manta@sakec.ac.in', '', 'Test 2', '4', '', 0, 0, '2020-08-06 10:31:25', '2020-08-06 10:31:30', 1);
 
 -- --------------------------------------------------------
 
@@ -173,15 +172,14 @@ CREATE TABLE `publish_details` (
 --
 
 INSERT INTO `publish_details` (`Form_details`, `F_id`, `Start_date`, `End_date`, `Validity`, `Role`, `Department`, `Year`, `Division`, `DELETED`) VALUES
-(14, 135, '2020-08-12', '2020-08-14', '', 'Teacher', 'EXTC', '', '', 0),
+(14, 135, '2020-08-05', '0000-00-00', '', 'Teacher', 'EXTC', '', '', 0),
 (15, 136, '2020-08-05', '0000-00-00', '', 'Everyone', '', '', '', 0),
 (16, 137, '2020-08-05', '0000-00-00', '', '', '', '', '', 0),
 (17, 138, '2020-08-05', '0000-00-00', '', '', '', '', '', 0),
 (18, 139, '2020-08-05', '0000-00-00', '', '', '', '', '', 0),
 (19, 140, '0000-00-00', '0000-00-00', '', '', '', '', '', 0),
 (20, 141, '0000-00-00', '0000-00-00', '', '', '', '', '', 0),
-(21, 142, '0000-00-00', '0000-00-00', '', '', '', '', '', 0),
-(22, 143, '0000-00-00', '0000-00-00', '', 'Student', 'IT', 'SE', '4', 0);
+(21, 142, '0000-00-00', '0000-00-00', '', '', '', '', '', 0);
 
 -- --------------------------------------------------------
 
@@ -221,16 +219,12 @@ INSERT INTO `questions` (`Q_id`, `Q_no`, `F_id`, `Breakpoints`, `created_on`, `u
 (73, 0, 113, '', '2020-08-01 14:29:03', '2020-08-01 14:29:03', '', 'rating', 'hiiii', '', '', '', '', '', 'NULL', 0),
 (80, 1, 128, '', '2020-08-05 14:18:29', '2020-08-05 14:18:29', '', 'radio', 'yo', '2', '6', '3', '3', '7', 'NULL', 0),
 (81, 2, 128, '', '2020-08-05 14:18:29', '2020-08-05 14:18:29', '', 'text', 'hey', '', '', '', '', '', 'NULL', 0),
-(84, 0, 135, '', '2020-08-05 14:40:55', '2020-08-10 14:11:16', '5', 'linearscale', 'yoyoyo', 'asdfasdf', 'asdfasfd', 'asdfas', 'asdf', 'asdf', 'NULL', 0),
+(84, 0, 135, '', '2020-08-05 14:40:55', '2020-08-05 14:40:55', '', 'text', 'yoyoyo', '', '', '', '', '', 'NULL', 0),
 (85, 1, 136, '', '2020-08-05 14:41:07', '2020-08-05 14:41:07', '', 'text', 'yoyoyo', '', '', '', '', '', 'NULL', 0),
 (86, 0, 136, '', '2020-08-05 14:41:24', '2020-08-05 14:41:24', '', 'rating', 'hiiiiii', '', '', '', '', '', 'NULL', 0),
 (87, 1, 137, '', '2020-08-05 14:41:36', '2020-08-05 14:41:36', '', 'text', 'yoyoyo', '', '', '', '', '', 'NULL', 0),
 (88, 2, 137, '', '2020-08-05 14:41:37', '2020-08-05 14:41:37', '', 'rating', 'hiiiiii', '', '', '', '', '', 'NULL', 0),
-(89, 1, 138, '', '2020-08-05 14:41:47', '2020-08-05 14:41:47', '', 'text', 'yoyoyo', '', '', '', '', '', 'NULL', 0),
-(90, 1, 143, '', '2020-08-10 13:04:44', '2020-08-10 13:04:44', '', 'text', 'yoyoyo', '', '', '', '', '', 'NULL', 0),
-(91, 0, 135, '', '2020-08-10 14:10:53', '2020-08-10 14:10:53', '', 'text', 'The following', '', '', '', '', '', 'NULL', 0),
-(92, 0, 135, '', '2020-08-10 14:12:55', '2020-08-10 14:12:55', '', 'multiplechoice', 'asdfasf', 'asdfasdf', 'asdf', 'asdf', 'asdfa', 'sdf', 'NULL', 0),
-(93, 0, 135, '', '2020-08-10 14:13:22', '2020-08-10 14:13:22', '', 'radio', 'asdfasdf', 'asdfaas', 'dfasdf', 'asd', 'fasdfasdf', 'asdf', 'NULL', 0);
+(89, 1, 138, '', '2020-08-05 14:41:47', '2020-08-05 14:41:47', '', 'text', 'yoyoyo', '', '', '', '', '', 'NULL', 0);
 
 -- --------------------------------------------------------
 
@@ -242,8 +236,7 @@ CREATE TABLE `user` (
   `U_id` int(16) NOT NULL,
   `User_id` varchar(64) NOT NULL,
   `User_name` varchar(255) NOT NULL,
-  `User_email` varchar(255) NOT NULL,
-  `User_password` varchar(255) NOT NULL,
+  `User _email` varchar(255) NOT NULL,
   `Role` text NOT NULL,
   `Mentor` varchar(255) NOT NULL,
   `Department` varchar(255) NOT NULL,
@@ -259,18 +252,18 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`U_id`, `User_id`, `User_name`, `User_email`, `User_password`, `Role`, `Mentor`, `Department`, `Year`, `Division`, `Roll-no`, `Details_id`, `Password_id`, `DELETED`) VALUES
-(3, 'ANI', 'aniket', 'aniketkumar.singh@sakec.ac.in', '345678901', 'student', 'Mr. Lukesh kadu', 'IT', 'FE', 5, 1, 3, 3, 0),
-(11, 'ASH', 'Ash', 'ash@gmail.com', '', 'HOD', '--', 'IT', '-', 0, 0, 11, 11, 0),
-(4, 'JAYA', 'Jaya', 'jayatripathi@gmail.com', '', 'student', 'Ms. Ashwini Deshmukh', 'CN', 'SE', 3, 2, 4, 4, 0),
-(7, 'NID', 'Nidhi', 'nidhi@gmailcom', '', 'Student', 'Ms. Nilakshi', 'CN', 'TE', 4, 68, 7, 7, 0),
-(2, 'POO', 'Pooja', 'pooja.tripathi@sakec.ac.in', '234567890', 'student', 'Ms. Nilakshi Jain', 'EXTC', 'TE', 1, 34, 2, 2, 0),
-(1, 'PRA', 'prateek', 'prateek.manta@sakec.ac.in', '123456789', 'student', 'Ms. Pramila Shinde', 'ETRX', 'BE', 7, 50, 1, 1, 0),
-(9, 'PRAM', 'Pramila', 'pramila@gmail.com', '', 'Teacher', '-', '-', '-', 0, 0, 9, 9, 0),
-(5, 'ROH', 'Rohit', 'rohit_tripathi@gmail.com', '', 'student', 'Ms. Shwetambari Pawar', 'IT', 'FE', 6, 25, 5, 5, 0),
-(6, 'SAN', 'Sanchi', 'sanchi@gmail.com', '', 'student', 'Ms. Swati', 'EXTC', 'BE', 2, 41, 6, 6, 0),
-(8, 'SHR', 'Shreya', 'shreya@gmail.com', '', 'student', 'Mr. Lukesh KAdu', 'ETRX', 'SE', 2, 56, 8, 8, 0),
-(10, 'SHWE', 'Shwetambari', 'shwetambari@gmail.com', '', 'Teacher', '-', '-', '-', 0, 0, 10, 10, 0);
+INSERT INTO `user` (`U_id`, `User_id`, `User_name`, `User _email`, `Role`, `Mentor`, `Department`, `Year`, `Division`, `Roll-no`, `Details_id`, `Password_id`, `DELETED`) VALUES
+(3, 'ANI', 'aniket', 'aniketkumar.singh@sakec.ac.in', 'student', 'Mr. Lukesh kadu', 'IT', 'FE', 5, 1, 3, 3, 0),
+(11, 'ASH', 'Ash', 'ash@gmail.com', 'HOD', '--', 'IT', '-', 0, 0, 11, 11, 0),
+(4, 'JAYA', 'Jaya', 'jayatripathi@gmail.com', 'student', 'Ms. Ashwini Deshmukh', 'CN', 'SE', 3, 2, 4, 4, 0),
+(7, 'NID', 'Nidhi', 'nidhi@gmailcom', 'Student', 'Ms. Nilakshi', 'CN', 'TE', 4, 68, 7, 7, 0),
+(2, 'POO', 'Pooja', 'pooja.tripathi@sakec.ac.in', 'student', 'Ms. Nilakshi Jain', 'EXTC', 'TE', 1, 34, 2, 2, 0),
+(1, 'PRA', 'prateek', 'prateek.manta@sakec.ac.in', 'student', 'Ms. Pramila Shinde', 'ETRX', 'BE', 7, 50, 1, 1, 0),
+(9, 'PRAM', 'Pramila', 'pramila@gmail.com', 'Teacher', '-', '-', '-', 0, 0, 9, 9, 0),
+(5, 'ROH', 'Rohit', 'rohit_tripathi@gmail.com', 'student', 'Ms. Shwetambari Pawar', 'IT', 'FE', 6, 25, 5, 5, 0),
+(6, 'SAN', 'Sanchi', 'sanchi@gmail.com', 'student', 'Ms. Swati', 'EXTC', 'BE', 2, 41, 6, 6, 0),
+(8, 'SHR', 'Shreya', 'shreya@gmail.com', 'student', 'Mr. Lukesh KAdu', 'ETRX', 'SE', 2, 56, 8, 8, 0),
+(10, 'SHWE', 'Shwetambari', 'shwetambari@gmail.com', 'Teacher', '-', '-', '-', 0, 0, 10, 10, 0);
 
 -- --------------------------------------------------------
 
@@ -430,7 +423,7 @@ ALTER TABLE `user`
   ADD KEY `details_id` (`Details_id`),
   ADD KEY `password_id` (`Password_id`),
   ADD KEY `u_id` (`U_id`),
-  ADD KEY `User _email` (`User_email`);
+  ADD KEY `User _email` (`User _email`);
 
 --
 -- Indexes for table `user_details`
@@ -480,7 +473,7 @@ ALTER TABLE `answers`
 -- AUTO_INCREMENT for table `form`
 --
 ALTER TABLE `form`
-  MODIFY `F_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=144;
+  MODIFY `F_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=143;
 
 --
 -- AUTO_INCREMENT for table `form_allotment`
@@ -492,13 +485,13 @@ ALTER TABLE `form_allotment`
 -- AUTO_INCREMENT for table `publish_details`
 --
 ALTER TABLE `publish_details`
-  MODIFY `Form_details` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `Form_details` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `Q_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
+  MODIFY `Q_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -549,7 +542,7 @@ ALTER TABLE `admin_credentials`
 ALTER TABLE `answers`
   ADD CONSTRAINT `answers_ibfk_1` FOREIGN KEY (`User_id`) REFERENCES `user` (`User_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `answers_ibfk_2` FOREIGN KEY (`Q_no`) REFERENCES `questions` (`Q_no`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `answers_ibfk_3` FOREIGN KEY (`User _email`) REFERENCES `user` (`User_email`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `answers_ibfk_3` FOREIGN KEY (`User _email`) REFERENCES `user` (`User _email`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `answers_ibfk_4` FOREIGN KEY (`F_id`) REFERENCES `form` (`F_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
@@ -560,10 +553,45 @@ ALTER TABLE `form`
   ADD CONSTRAINT `form_ibfk_2` FOREIGN KEY (`Admin_email`) REFERENCES `admin_credentials` (`Admin_email`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
+-- Constraints for table `form_allotment`
+--
+ALTER TABLE `form_allotment`
+  ADD CONSTRAINT `form_allotment_ibfk_1` FOREIGN KEY (`F_id`) REFERENCES `form` (`F_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `form_allotment_ibfk_2` FOREIGN KEY (`Admin_id`) REFERENCES `form` (`Admin_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `form_allotment_ibfk_3` FOREIGN KEY (`Admin_email`) REFERENCES `form` (`Admin_email`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Constraints for table `publish_details`
 --
 ALTER TABLE `publish_details`
   ADD CONSTRAINT `publish_details_ibfk_1` FOREIGN KEY (`F_id`) REFERENCES `form` (`F_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `questions`
+--
+ALTER TABLE `questions`
+  ADD CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`F_id`) REFERENCES `form` (`F_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `user`
+--
+ALTER TABLE `user`
+  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`Details_id`) REFERENCES `user_details` (`Details_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `user_ibfk_2` FOREIGN KEY (`Password_id`) REFERENCES `user_password` (`Password_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `user_form_access`
+--
+ALTER TABLE `user_form_access`
+  ADD CONSTRAINT `user_form_access_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`User_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `user_form_access_ibfk_2` FOREIGN KEY (`user_email`) REFERENCES `user` (`User _email`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `user_form_access_ibfk_3` FOREIGN KEY (`form_availability`) REFERENCES `form` (`F_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `user_password`
+--
+ALTER TABLE `user_password`
+  ADD CONSTRAINT `user_password_ibfk_1` FOREIGN KEY (`Details_id`) REFERENCES `user_details` (`Details_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

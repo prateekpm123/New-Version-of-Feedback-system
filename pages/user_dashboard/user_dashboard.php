@@ -1,3 +1,6 @@
+<?php
+  session_start();
+?>
 <html>
   <head>
 
@@ -38,7 +41,7 @@
       $data .= '<tr>
                     <th scope="row">'.$number.'</th>
                     <td>'.$row['Form_name'].'</td>
-                    <td><button class="btn btn-success btn-sm">Fill Form</button></td>
+                    <td><button class="btn btn-success btn-sm" onclick="getFormDetails('.$row['F_id'].')">Fill Form</button></td>
                 </tr>';
       $number++;          
         }
@@ -55,11 +58,27 @@
 
 
 
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script type="text/javascript">
+  
+  function getFormDetails(F_id) {
+  let test = F_id;
+   $.ajax({
+    url: "test.php",
+    method: "post",
+    data: {
+      F_id: test,
+    },
+    success: function (data, success) {
+      if (success == "success") {
+        window.location.href = "user_feedback.php";
+      }
+    },
+  });
+
+}
 </script>
 </body>
 </html>

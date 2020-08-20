@@ -271,6 +271,21 @@ class Model extends Dbh {
         $query = "UPDATE publish_details SET Role='$role',Department='$department',Year='$year',Division='$division',Start_date='$start',End_date='$end' WHERE F_id=$F_id ";
         $result=$this->connect()->prepare($query);
         $result->execute([$role,$department,$year,$division,$start,$end,$F_id]);
+
+        $query1 = "SELECT * FROM user WHERE Role='$role'AND Department='$department' AND Year='$year' AND 
+        Division='$division' ";
+        $result1=$this->connect()->prepare($query1);
+        if ($result1->execute([$role,$department,$year,$division])){
+            while ($rows = $result1->fetch()){
+                $data[] = $rows;
+            }
+        }
+        
+            foreach($data as $row){
+            $query2 = " INSERT INTO `user_form_access` (`user_id`,`user_email`,`F_id`,`DELETED`) VALUES (?,?,?,0) ";
+            $result2=$this->connect()->prepare($query2);
+            $result2->execute([$row['U_id'],$row['User_email'],$F_id]);
+            }
     }
 
 

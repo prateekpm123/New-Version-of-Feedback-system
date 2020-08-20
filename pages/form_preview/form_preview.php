@@ -5,21 +5,19 @@
 				<meta charset="utf-8">
 		    	<meta name="viewport" content="width=device-width, initial-scale=1">
 		      	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-		      	<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" 
-		      	rel="stylesheet">
 		      	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
 		    	<link rel="stylesheet" href="form_preview.css">
 		</head>
 <body>
-<div class="container">
-	<div class="row">
-		<div class="col"></div>
-		<div id="records_content" class="col-lg-8">
+
+	
+		
+		<div id="records_content" class="container">
 			
 		</div>
-		<div class="col"></div>
-	</div>
-</div>
+		
+	
+
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

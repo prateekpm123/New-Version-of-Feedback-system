@@ -65,23 +65,23 @@ if(!empty($rows)){
 				<div class="question"><label>'.$number.'.</label>
 				'.$row['Question_desc'].'</div>
 					<div class="option row">
-						<div class="option1class col-4">
+						<div class="option1class col-12 col-sm-4 col-md-3 col-lg-2">
 						<input type="radio" value="'.$row['Option1'].'" class="option1" name="option">
 						<label for="option1">'.$row['Option1'].'</label><br> 
 						</div>
-						<div class="option2class col-4">
+						<div class="option2class col-12 col-sm-4 col-md-3 col-lg-2">
 						<input type="radio" value="'.$row['Option2'].'" class="option2" name="option">
 						<label for="option2">'.$row['Option2'].'</label><br>
 						</div>
-						<div class="option3class col-4">
+						<div class="option3class col-12 col-sm-4 col-md-3 col-lg-2">
 						<input type="radio" value="'.$row['Option3'].'" class="option3" name="option">
 						<label for="option3">'.$row['Option3'].'</label><br>
 						</div>
-						<div class="option4class col-4">
+						<div class="option4class col-12 col-sm-4 col-md-3 col-lg-2">
 						<input type="radio" value="'.$row['Option4'].'" class="option4" name="option">
 						<label for="option4">'.$row['Option4'].'</label><br>
 						</div>
-						<div class="option5class col-4">
+						<div class="option5class col-12 col-sm-4 col-md-3 col-lg-2">
 						<input type="radio" value="'.$row['Option5'].'" class="option5" name="option">
 						<label for="option5">'.$row['Option5'].'</label><br>
 						</div>
@@ -96,16 +96,16 @@ if(!empty($rows)){
 								'.$row['Question_desc'].'</div>
 								<div class="optionrate row">
 								 <div class="rate">
-								    <input type="radio" name="rate" value="5" />
-								    <label for="star5" title="5">5 stars</label>
-								    <input type="radio" name="rate" value="4" />
-								    <label for="star4" title="text">4 stars</label>
-								    <input type="radio" name="rate" value="3" />
-								    <label for="star3" title="text">3 stars</label>
-								    <input type="radio" name="rate" value="2" />
-								    <label for="star2" title="text">2 stars</label>
-								    <input type="radio" name="rate" value="1" />
-								    <label for="star1" title="text">1 star</label>
+								    <input type="radio" id="star5'.$row['Q_id'].'" name="rate'.$row['Q_id'].'" value="5" />
+								    <label for="star5'.$row['Q_id'].'" title="5">5 stars</label>
+								    <input type="radio" id="star4'.$row['Q_id'].'" name="rate'.$row['Q_id'].'" value="4" />
+								    <label for="star4'.$row['Q_id'].'" title="text">4 stars</label>
+								    <input type="radio" id="star3'.$row['Q_id'].'" name="rate'.$row['Q_id'].'" value="3" />
+								    <label for="star3'.$row['Q_id'].'" title="text">3 stars</label>
+								    <input type="radio" id="star2'.$row['Q_id'].'" name="rate'.$row['Q_id'].'" value="2" />
+								    <label for="star2'.$row['Q_id'].'" title="text">2 stars</label>
+								    <input type="radio" id="star1'.$row['Q_id'].'" name="rate'.$row['Q_id'].'" value="1" />
+								    <label for="star1'.$row['Q_id'].'" title="text">1 star</label>
 								  </div>
 								</div>
 								</div><br>';

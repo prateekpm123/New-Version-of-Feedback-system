@@ -18,6 +18,14 @@ Class View extends Dbh {
     return $data;
     
   }
+
+  public function removeForm($F_id) {
+    session_start();
+    $user_email = $_SESSION['user_email'];
+    $query = "DELETE FROM user_form_access WHERE user_email = ? AND F_id = ? ";
+    $result = $this->connect()->prepare($query);
+    $result->execute([$user_email,$F_id]);
+  }
 }
 
 

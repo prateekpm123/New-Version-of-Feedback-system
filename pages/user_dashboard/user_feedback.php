@@ -72,8 +72,91 @@
 		  }
 	}
 
-	function submitForm() {
-		
+	function submitForm(id) {
+		if (document.getElementById("option1"+id+"").checked){
+			var value = document.getElementById("option1"+id+"").value;
+		}
+		else if (document.getElementById("option2"+id+"").checked){
+			var value = document.getElementById("option2"+id+"").value;
+		}
+		else if (document.getElementById("option3"+id+"").checked){
+			var value = document.getElementById("option3"+id+"").value;
+		}
+		else if (document.getElementById("option4"+id+"").checked){
+			var value = document.getElementById("option4"+id+"").value;
+		}
+		else if (document.getElementById("option5"+id+"").checked){
+			var value = document.getElementById("option5"+id+"").value;
+		}
+		console.log(value);
+		$.ajax({
+          url:"send_data.php",
+          type:"post",
+          data: { id: id,
+									value: value },
+          success:function(data,status){
+          }
+        });
+	}
+
+	function submitFormMul(id) {
+		var value = [];
+		if (document.getElementById("option1"+id+"").checked){
+			var value1 = document.getElementById("option1"+id+"").value;
+			value.push(value1);
+		}
+		if (document.getElementById("option2"+id+"").checked){
+			var value2 = document.getElementById("option2"+id+"").value;
+			value.push(value2);
+		}
+		if (document.getElementById("option3"+id+"").checked){
+			var value3 = document.getElementById("option3"+id+"").value;
+			value.push(value3);
+		}
+		if (document.getElementById("option4"+id+"").checked){
+			var value4 = document.getElementById("option4"+id+"").value;
+			value.push(value4);
+		}
+		if (document.getElementById("option5"+id+"").checked){
+			var value5 = document.getElementById("option5"+id+"").value;
+			value.push(value5);
+		}
+		//console.log(value);
+		var valueStr = value.toString();
+		console.log(valueStr);
+		$.ajax({
+          url:"send_data.php",
+          type:"post",
+          data: { id: id,
+									value: valueStr },
+          success:function(data,status){
+          }
+        });
+	}
+
+	function submitFormText(id) {
+		var value = document.getElementById("text"+id+"").value;
+		console.log(value);
+		$.ajax({
+          url:"send_data.php",
+          type:"post",
+          data: { id: id,
+									value: value },
+          success:function(data,status){
+          }
+        });
+	}
+
+	function redirect(F_id) {
+		$.ajax({
+          url:"send_data.php",
+          type:"post",
+          data: { F_id: F_id },
+          success:function(data,status){
+						window.location.href = "user_dashboard.php";
+          }
+        });
+		//console.log(F_id);
 	}
 </script>
 </body>

@@ -28,7 +28,6 @@ if($result != null) {
     $_SESSION["user_department"] = $result['0']['Department'];
     $_SESSION["user_year"] = $result['0']['Year'];
     $_SESSION["user_div"] = $result['0']['Division'];
-    $_SESSION["user_roll_no"] = $result['0']['Roll-no'];
 
 
 

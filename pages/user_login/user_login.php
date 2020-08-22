@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ADMIN LOGIN</title>
+    <title>USER LOGIN</title>
     
     <!-- Bootstrap css links from constants folder -->
     <?php 

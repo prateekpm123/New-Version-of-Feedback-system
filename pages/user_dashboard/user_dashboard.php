@@ -13,15 +13,15 @@
 
 <body>
   <nav class="navbar navbar-expand navbar-dark bg-dark">
-    <h4 class="text-white">Username</h4>
-    <a class="navbar-brand ml-auto" href="#">Logout</a>
+    <h5 class="text-white"><?php echo $_SESSION['user_email']; ?></h5>
+    <a class="navbar-brand ml-auto" href="../user_login/user_login.php">Logout</a>
   </nav>
+  <br>
   <div class="container" id="records_content">
     <?php
       $data = '<div class="row">
                 <div class="col-12 col-sm-2"></div>
                 <div class="col-12 col-sm-8">
-                <h2 align="center">Pending Forms</h2>
                 <table class="table table-hover table-borderless table-striped">
                 <thead class="thead-dark">
                   <tr>
@@ -45,6 +45,13 @@
                 </tr>';
       $number++;          
         }
+      }
+      else {
+        $data .= '<div class="row">
+                    <div class="col-12">
+                      <h2 class="text-center">No forms available for you!!</h2>
+                    </div>
+                  </div>';
       }
       
       $data .= '</tbody>

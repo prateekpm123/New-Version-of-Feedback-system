@@ -272,6 +272,17 @@ class Model extends Dbh {
         $result=$this->connect()->prepare($query);
         $result->execute([$role,$department,$year,$division,$start,$end,$F_id]);
 
+        if ($role == 'Teacher'){
+            $query1 = "SELECT * FROM user WHERE Role='$role'AND Department='$department' AND Year='' AND 
+            Division='' ";
+            $result1=$this->connect()->prepare($query1);
+            if ($result1->execute([$role,$department])){
+                while ($rows = $result1->fetch()){
+                    $data[] = $rows;
+                }
+            }
+        }
+        else {
         $query1 = "SELECT * FROM user WHERE Role='$role'AND Department='$department' AND Year='$year' AND 
         Division='$division' ";
         $result1=$this->connect()->prepare($query1);
@@ -280,11 +291,12 @@ class Model extends Dbh {
                 $data[] = $rows;
             }
         }
+        }
         
             foreach($data as $row){
-            $query2 = " INSERT INTO `user_form_access` (`user_id`,`user_email`,`F_id`,`DELETED`) VALUES (?,?,?,0) ";
+            $query2 = " INSERT INTO `user_form_access` (`user_email`,`F_id`,`DELETED`) VALUES (?,?,0) ";
             $result2=$this->connect()->prepare($query2);
-            $result2->execute([$row['U_id'],$row['User_email'],$F_id]);
+            $result2->execute([$row['User_email'],$F_id]);
             }
     }
 

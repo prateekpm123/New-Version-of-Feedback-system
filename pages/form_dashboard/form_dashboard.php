@@ -106,10 +106,12 @@ session_start();
    for (var i=0; i<table.length; i++){
        if(table[i].style.color == "red"){
            table[i].style.color = "black";
+           table[i].style.background = "white";
        }
    }
    var publish_color = document.getElementById(F_id);
-   publish_color.style.color = "red"
+   publish_color.style.color = "red";
+   publish_color.style.background = "#ffcccb";
     $.ajax({
     url: "frontend/publishModal.php",
     method: "post",

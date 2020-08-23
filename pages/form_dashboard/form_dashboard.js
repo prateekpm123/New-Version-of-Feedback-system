@@ -35,6 +35,7 @@ function getFormVersions(F_id) {
       var x = document.getElementsByClassName('published1')[0];
       console.log(x);
       x.style.color = "red";
+      x.style.background = "#ffcccb";
     },
   });
 }

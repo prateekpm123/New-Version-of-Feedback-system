@@ -100,6 +100,16 @@ session_start();
    if (c == 'All years'){
        d = null;
    }
+
+   var table = document.getElementsByClassName("version-row");
+   console.log(table);
+   for (var i=0; i<table.length; i++){
+       if(table[i].style.color == "red"){
+           table[i].style.color = "black";
+       }
+   }
+   var publish_color = document.getElementById(F_id);
+   publish_color.style.color = "red"
     $.ajax({
     url: "frontend/publishModal.php",
     method: "post",
@@ -177,6 +187,7 @@ function publishChange2(F_id){
         z.style.display = "block";
     }
 }
+
     </script>
 </body>
 </html>

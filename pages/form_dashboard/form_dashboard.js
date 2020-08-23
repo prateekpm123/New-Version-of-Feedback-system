@@ -18,6 +18,7 @@ function loadFormdata() {
   });
 }
 
+
 // This Renders Version table in the frontend
 // runs: When VIEW button is clicked
 function getFormVersions(F_id) {
@@ -30,8 +31,10 @@ function getFormVersions(F_id) {
       F_id: F_id,
     },
     success: function (data, success) {
-      console.log(" in renderformversion data ajax");
       $("#form-version-content").html(data);
+      var x = document.getElementsByClassName('published1')[0];
+      console.log(x);
+      x.style.color = "red";
     },
   });
 }
@@ -160,11 +163,11 @@ function publishForm(F_id) {
       Start: e,
       End: f,
     },
-    success: function (data, status) {},
+    success: function (data, status) { },
   });
 }
 
-function otherSettings(F_id) {}
+function otherSettings(F_id) { }
 
 function updateFormName(element, column, F_id) {
   console.log("its running");
@@ -245,3 +248,4 @@ function shareModal(F_id) {
 function testfunction() {
   console.log(" test of two fumnction is working");
 }
+

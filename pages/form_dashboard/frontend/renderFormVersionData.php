@@ -13,7 +13,7 @@ function renderFormVersionData() {
     $formVersionData = $formInfoObj->giveFormVersionToRender($F_id);
 
 
-    $data = '<table class="table table-bordered table-striped">
+    $data = '<table class="table table-bordered table-striped version">
 				<tr>
 					<th>No.</th>
 					<th>Form Name</th>
@@ -121,7 +121,7 @@ function renderFormVersionData() {
 								</div>
 			
 			
-			<tr>
+			<tr id="'.$row['F_id'].'" class="version-row published'.$row['Published'].'">
 				<td>'.$number.'</td>
 				<td>'.$row['Form_name'].'</td>
 				<td>'.$row['Form_version'].'</td>
@@ -158,3 +158,5 @@ function renderFormVersionData() {
 	echo $data;
 
 }
+
+?>

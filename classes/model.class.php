@@ -147,6 +147,10 @@ class Model extends Dbh {
             $query8 = "INSERT INTO `publish_details`(`F_id`) VALUES (?)";
             $stmt8 = $this->connect()->prepare($query8);
             $stmt8->execute([$thisF_id]);
+
+            $query1 = "UPDATE form SET Form_code = $thisF_id WHERE F_id = $thisF_id";
+            $result = $this->connect()->prepare($query1);
+            $result->execute([$thisF_id, $thisF_id]);
         } 
         catch(Exception $e ) {
             echo "Fetching Forms data was not successfull ".$e->message();
@@ -231,9 +235,9 @@ class Model extends Dbh {
         $noOfFormVersions++;
 
 
-        $query3 = "INSERT INTO `form`(`Admin_id`, `Admin_email`, `Form_name`, `Form_version`, `Form_Desc`, `DELETED`) VALUES (?, ?, ? , ?, '', ?)";
+        $query3 = "INSERT INTO `form`(`Admin_id`, `Admin_email`, `Form_name`, `Form_version`, `Form_Desc`, `DELETED`) VALUES (?, ?, ? , ?, ?, ?)";
         $stmt3 = $this->connect()->prepare($query3);
-        $stmt3->execute([ $formData[0]["Admin_id"], $formData[0]["Admin_email"], $formData[0]["Form_name"], $noOfFormVersions, 0] );
+        $stmt3->execute([ $formData[0]["Admin_id"], $formData[0]["Admin_email"], $formData[0]["Form_name"], $noOfFormVersions,$formData[0]["Form_Desc"], 0] );
 
         
         $query4 = "SELECT * FROM `form` WHERE `Form_name`=? AND `Admin_email`=? AND `Form_version`=? AND`DELETED`=0";
@@ -264,10 +268,20 @@ class Model extends Dbh {
             $arrayStart++;
             $questionCounter++;
         }
+
+        $query9 = "SELECT * FROM `form` WHERE `Form_name`=? AND `Form_version` = 1 AND `Admin_email`=? ";
+        $stmt9 = $this->connect()->prepare($query9);
+        $stmt9->execute([$formData[0]["Form_name"], $formData[0]["Admin_email"]]);
+        $formcodeData = $stmt9->fetch();
+
+        $query5 = "UPDATE form SET Form_code = ? WHERE F_id = ?";
+        $result = $this->connect()->prepare($query5);
+        $result->execute([$formcodeData["F_id"],$latestFormVersionId]);
    
     }
 
     public function publishForm($F_id,$role,$department,$year,$division,$start,$end){
+
         $query = "UPDATE publish_details SET Role='$role',Department='$department',Year='$year',Division='$division',Start_date='$start',End_date='$end' WHERE F_id=$F_id ";
         $result=$this->connect()->prepare($query);
         $result->execute([$role,$department,$year,$division,$start,$end,$F_id]);
@@ -292,12 +306,33 @@ class Model extends Dbh {
             }
         }
         }
+
+        $query4 = "SELECT Form_code FROM form WHERE F_id = $F_id";
+        $result4 = $this->connect()->prepare($query4);
+        $result4->execute([$F_id]);
+        $formCode = $result4->fetch();
+
+        $query6 = "DELETE FROM user_form_access WHERE Form_code = ?";
+        $result6 = $this->connect()->prepare($query6);
+        $result6->execute([$formCode["Form_code"]]);
         
             foreach($data as $row){
-            $query2 = " INSERT INTO `user_form_access` (`user_email`,`F_id`,`DELETED`) VALUES (?,?,0) ";
+            $query2 = " INSERT INTO `user_form_access` (`user_email`,`F_id`,`Form_code`) 
+            VALUES (?,?,?) ";
             $result2=$this->connect()->prepare($query2);
-            $result2->execute([$row['User_email'],$F_id]);
+            $result2->execute([$row['User_email'],$F_id,$formCode["Form_code"]]);
             }
+
+        $query5 = "UPDATE form SET published = 0 WHERE Form_code = ?";
+        $result5 = $this->connect()->prepare($query5);
+        $result5->execute([$formCode["Form_code"]]);
+        
+        $query3 = "UPDATE form SET published = 1 WHERE F_id = ?";
+        $result3 = $this->connect()->prepare($query3);
+        $result3->execute([$F_id]);
+
+
+
     }
 
 

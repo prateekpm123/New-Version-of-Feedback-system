@@ -7,14 +7,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <title>User Dashboard</title>
 
   </head>
 
 <body>
   <nav class="navbar navbar-expand navbar-dark bg-dark">
-    <h5 class="text-white"><?php echo $_SESSION['user_email']; ?></h5>
-    <a class="navbar-brand ml-auto" href="../user_login/user_login.php">Logout</a>
+    <a class="nav-link text-white" href="#"><?php echo $_SESSION['user_email']; ?></a>
+    <a class="navbar-brand ml-auto" href="../user_login/user_login.php"><span><i class="fa fa-sign-in"></i></span> Logout</a>
   </nav>
   <br>
   <div class="container" id="records_content">

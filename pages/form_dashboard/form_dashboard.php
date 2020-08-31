@@ -1,6 +1,5 @@
 <?php 
 session_start();
-
 ?>
 
 <!DOCTYPE html>
@@ -13,30 +12,47 @@ session_start();
     <?php 
         include_once __DIR__.'/../../includes/constants/bootstrapcss.php';
     ?>
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
-
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="form_dashboard.css">
 </head>
 <body>
-    
-    <div class="container-fluid">
-        <!-- NAVBAR -->
     <?php 
         $username = $_SESSION['admin_username'];
     ?>
-    <?php 
-        include_once __DIR__.'/../../includes/constants/navbar.php';
-    ?>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-header">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link navbar-brand" href="#"><span><i class="fa fa-list-ul"></i></span> Form Control</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link navbar-brand" href="form_stats.php"><span><i class="fa fa-area-chart"></i></span> Form Statistics</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link navbar-brand" href="#">
+                        <?php 
+                            echo $username; 
+                        ?>
+                    </a>
+                </li>
+            </ul>
+            <a class="navbar-brand ml-auto" href="../admin_login/admin_login.php"><span><i class="fa fa-sign-in"></i></span> Logout</a>
+    </nav>
+    <br>
+    <div class="container-fluid">
         <div class="row">
-        <div class="col-lg-2"></div>
-        <div class="col-lg-8">
+        <div class="col-12 col-sm-2"></div>
+        <div class="col-12 col-sm-8">
             <div class="row">
                 <div class="col-lg-6">
-                    <h2 class="">Your Forms</h2>
+                    <h2 class="">Forms</h2>
                 </div>
                 <div class="col-lg-6">
                     <!-- <button class="btn btn-primary" onclick="createForm()"><b>Create before</b></button> -->
+                    <div class="row">
+                    <div class="col-3 offset-9">
                     <button id="modal-button" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-test">Create</button>
+                    </div>
+                    </div>
                     <div id="modal-area">
                     </div>
                     
@@ -64,7 +80,7 @@ session_start();
         
 
         
-        <div class="col-lg-2"></div>
+        <div class="col-12 col-sm-2"></div>
     </div>
     </div>
     

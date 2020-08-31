@@ -11,34 +11,28 @@ function renderData($username) {
     $formInfoObj = new FormInfo();
     $formData = $formInfoObj->giveFormDataToRender($username);
     
-    $data = '<table class="table table-bordered table-striped">
-                    <tr>
-                        <th>No.</th>
-                        <th>Form Name</th>
-                        <th>Check Versions</th>
-                        <th>Other Option</th>
-                    </tr>';
+    $data = '<table class="table table-borderless table-hover table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>No.</th>
+                            <th>Form Name</th>
+                            <th>Check Versions</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>';
 
     if(!empty($formData)){
 		$number = 1;
 		foreach($formData as $row ){
             $Form_name = $row['Form_name'];
 			$data .= '<tr>
-				<td>'.$number.'</td>
+				<th scope="row">'.$number.'</th>
 				<td contenteditable="true" onBlur="updateFormName(this,1,'.$row['F_id'].')">'.$Form_name.'</td>
 				<td>
-					<button onclick="getFormVersions('.$row['F_id'].')" class="btn btn-info">View</button>
+					<button onclick="getFormVersions('.$row['F_id'].')" class="btn btn-sm btn-info">View</button>
                 </td>
                 <td>
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Options
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <button class="dropdown-item" onclick="deleteForms('.$row['F_id'].')" >Delete</button>
-                            <button class="dropdown-item" >Something else here</button>
-                        </div>
-                    </div>
+                    <button class="btn btn-sm btn-danger" onclick="deleteForms('.$row['F_id'].')" >Delete</button>        
                 </td>
                 
 				</tr>';

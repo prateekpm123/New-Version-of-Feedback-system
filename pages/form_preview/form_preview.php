@@ -10,7 +10,7 @@ session_start();
 			<title>
 			<?php
 
-				echo "Preview ".$_SESSION["Form_version"]." : ".$_SESSION["Form_name"];
+				echo "Preview : ".$_SESSION["Form_name"];
 
 			?>
 			</title>

@@ -11,7 +11,7 @@ session_start();
   
   <?php
 
-    echo $_SESSION["Form_name"];
+    echo $_SESSION["Form_version"]." : ".$_SESSION["Form_name"];
 
   ?>
   

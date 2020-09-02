@@ -1,7 +1,19 @@
+<?php
+
+session_start();
+
+?>
+
 <!DOCTYPE html>
 	<html>
 		<head>
-			<title>Form Preview</title>
+			<title>
+			<?php
+
+				echo "Preview ".$_SESSION["Form_version"]." : ".$_SESSION["Form_name"];
+
+			?>
+			</title>
 				<meta charset="utf-8">
 		    	<meta name="viewport" content="width=device-width, initial-scale=1">
 		      	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">

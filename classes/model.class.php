@@ -361,7 +361,33 @@ class Model extends Dbh {
             echo "Database action was not successfull".$e->message();
         }
     }
+
+    public function fetchPublishedForms(){
+        $data = null;
+        $admin_email = $_SESSION['admin_username'];
+        $query = "SELECT * FROM form WHERE Admin_email = ? AND published = 1";
+        $result = $this->connect()->prepare($query);
+        if ($result->execute([$admin_email])){
+            while ($row = $result->fetch()){
+                $data[] = $row;
+            }
+        }
+        return $data;
+    }
     
+    public function fetchUserResponseDetails($F_id){
+        $data = null;
+        $query = "SELECT * FROM user_response WHERE F_id = ?";
+        $result = $this->connect()->prepare($query);
+        //$result->execute([$F_id]);
+        $count = 0;
+        if ($result->execute([$F_id])){
+            while ($row = $result->fetch()){
+                $count = $count + 1;
+            }
+        }
+        return $count;
+    }
     
 }
 

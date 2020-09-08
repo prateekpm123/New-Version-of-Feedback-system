@@ -19,7 +19,7 @@ session_start();
     <?php 
       $username = $_SESSION['admin_username'];
     ?>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a class="nav-link navbar-brand" href="form_dashboard.php"><span><i class="fa fa-list-ul"></i></span> Form Control</a>
@@ -38,10 +38,75 @@ session_start();
             <a class="navbar-brand ml-auto" href="../admin_login/admin_login.php"><span><i class="fa fa-sign-in"></i></span> Logout</a>
     </nav>
 
-<!-- Bootstrap js and jquery links from constants folder -->
-    <?php 
-      include_once __DIR__.'/../../includes/constants/bootstrapjs.php';
-      include_once __DIR__.'/../../includes/constants/jqueryLinks.php';
+    <br>
+  <div class="container-fluid" id="records_content">
+    <div class="row">
+    <?php
+      $data = '<div class="col-12 col-sm-8">
+                <table class="table table-hover table-borderless table-striped">
+                <thead align="center" class="thead-dark">
+                  <tr>
+                    <th style="width: 10%;">Sr No.</th>
+                    <th style="width: 60%;">Form Name</th>
+                    <th style="width: 10%;">Version</th>
+                    <th style="width: 20%;">Response</th>
+                  </tr>
+                </thead>';
+      
+      include '../../classes/model.class.php';
+      $view = new Model();
+      $rows = $view->fetchPublishedForms();
+      if(!empty($rows)){
+        $number = 1;
+        foreach($rows as $row )
+        {
+      $data .= '<tr>
+                    <td align="center"><b>'.$number.'</b></td>
+                    <td align="center">'.$row['Form_name'].'</td>
+                    <td align="center">'.$row['Form_version'].'</td>
+                    <td align="center"><button class="btn btn-success btn-sm" onclick="getResponseDetails('.$row['F_id'].')">Check Response</button></td>
+                </tr>';
+      $number++;          
+        }
+      }
+      else {
+        $data .= '<div class="row">
+                    <div class="col-12">
+                      <h2 class="text-center">No forms have been published!!</h2>
+                    </div>
+                  </div>';
+      }
+      
+      $data .= '</table>
+                  </div>';
+      echo $data;
     ?>
+  
+    <div class="col-12 col-sm-4 sticky-top" id="response_card">
+
+    </div>
+    
+    
+    </div>
+  </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+  function getResponseDetails(F_id) {
+  $.ajax({
+    url: "backend/getFormResponse.php",
+    method: "post",
+    data: {
+      F_id: F_id,
+    },
+    success: function (data, success) {
+    $("#response_card").html(data);
+    console.log(data);
+    },
+  });
+}
+</script>
 </body>
 </html>

@@ -15,10 +15,10 @@ function renderFormVersionData() {
 
 		$data = '<table class="table table-borderless table-hover version">
 		<thead class="thead-dark">
-				<tr>
+				<tr align="center">
+					<th>Versions</th>
 					<th>Form Name</th>
-					<th>Form Version</th>
-					<th>Edit Form</th>
+					<th>Edit</th>
 					<th>Options</th>
 		</thead>
 				</tr>';
@@ -122,13 +122,12 @@ function renderFormVersionData() {
 			
 			
 			<tr id="'.$row['F_id'].'" class="version-row published'.$row['Published'].'">
-				
-				<td>'.$row['Form_name'].'</td>
-				<th scope="row">'.$row['Form_version'].'</th>
-				<td>
+				<td align="center" style="width: 10%;"><b>'.$row['Form_version'].'</b></th>
+				<td align="center" style="width: 60%;">'.$row['Form_name'].'</th>
+				<td align="center" style="width: 15%;">
 					<button class="btn btn-sm btn-warning" onclick="sendFormDetails('.$row['F_id'].')">Edit</button>
 				</td>
-				<td>
+				<td align="center" style="width: 15%;">
 				<!-- Example single danger button -->
 				<div class="btn-group">
 				<button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

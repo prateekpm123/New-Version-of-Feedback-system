@@ -19,7 +19,7 @@ session_start();
     <?php 
         $username = $_SESSION['admin_username'];
     ?>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     <a class="nav-link navbar-brand" href="#"><span><i class="fa fa-list-ul"></i></span> Form Control</a>

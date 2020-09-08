@@ -25,6 +25,10 @@ Class View extends Dbh {
     $query = "DELETE FROM user_form_access WHERE user_email = ? AND F_id = ? ";
     $result = $this->connect()->prepare($query);
     $result->execute([$user_email,$F_id]);
+
+    $query1 = "INSERT INTO user_response (`User_email`,`F_id`) VALUES (?,?)";
+    $result1 = $this->connect()->prepare($query1);
+    $result1->execute([$user_email,$F_id]);
   }
 }
 

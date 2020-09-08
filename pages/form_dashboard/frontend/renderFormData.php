@@ -13,10 +13,10 @@ function renderData($username) {
     
     $data = '<table class="table table-borderless table-hover table-striped">
                     <thead class="thead-dark">
-                        <tr>
+                        <tr align="center">
                             <th>No.</th>
                             <th>Form Name</th>
-                            <th>Check Versions</th>
+                            <th>Versions</th>
                             <th>Delete</th>
                         </tr>
                     </thead>';
@@ -26,12 +26,12 @@ function renderData($username) {
 		foreach($formData as $row ){
             $Form_name = $row['Form_name'];
 			$data .= '<tr>
-				<th scope="row">'.$number.'</th>
-				<td contenteditable="true" onBlur="updateFormName(this,1,'.$row['F_id'].')">'.$Form_name.'</td>
-				<td>
+				<td align="center" style="width: 10%"><b>'.$number.'</b></td>
+				<td align="center" style="width: 60%" contenteditable="true" onBlur="updateFormName(this,1,'.$row['F_id'].')">'.$Form_name.'</td>
+				<td align="center" style="width: 15%">
 					<button onclick="getFormVersions('.$row['F_id'].')" class="btn btn-sm btn-info">View</button>
                 </td>
-                <td>
+                <td align="center" style="width: 15%">
                     <button class="btn btn-sm btn-danger" onclick="deleteForms('.$row['F_id'].')" >Delete</button>        
                 </td>
                 

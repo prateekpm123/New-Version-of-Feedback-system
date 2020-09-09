@@ -388,6 +388,29 @@ class Model extends Dbh {
         }
         return $count;
     }
+
+    public function getFormDataForResponse($F_id){
+        $data = null;
+        $query = "SELECT * FROM form WHERE F_id = ? ";
+        $result = $this->connect()->prepare($query);
+        if ($result->execute([$F_id])){
+            while ($row = $result->fetch()){
+                $data[] = $row;
+            }
+        }
+        return $data;
+    }
+
+    public function fetchUsersResponse($F_id) {
+        $query = " SELECT * FROM user_response WHERE F_id = ? ";
+        $result = $this->connect()->prepare($query);
+        if ($result->execute([$F_id])){
+            while ($row = $result->fetch()){
+                $data[] = $row;
+            }
+        }
+        return $data;
+    }
     
 }
 

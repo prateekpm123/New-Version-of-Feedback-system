@@ -103,10 +103,24 @@ session_start();
     },
     success: function (data, success) {
     $("#response_card").html(data);
-    console.log(data);
+    //console.log(data);
     },
   });
 }
+
+  function getUserNames(F_id) {
+    $.ajax({
+    url: "backend/getUserNames.php",
+    method: "post",
+    data: {
+      F_id: F_id,
+    },
+    success: function (data, success) {
+    window.location = "form_stats_user.php"
+    //console.log(data);
+    },
+  });
+  }
 </script>
 </body>
 </html>

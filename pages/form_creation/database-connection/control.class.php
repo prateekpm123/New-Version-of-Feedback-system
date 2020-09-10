@@ -67,6 +67,10 @@ Class Control extends Dbh {
 		$query = "UPDATE questions SET DELETED=1 WHERE Q_id = '$question_id' ";
 		$result = $this->connect()->prepare($query);
 		$result->execute([$question_id]);
+
+		$query1 = "UPDATE answers SET DELETED=1 WHERE Q_id = '$question_id' ";
+		$result1 = $this->connect()->prepare($query1);
+		$result1->execute([$question_id]);
 	}
 }
 

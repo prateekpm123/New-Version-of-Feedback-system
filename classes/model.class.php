@@ -365,7 +365,7 @@ class Model extends Dbh {
     public function fetchPublishedForms(){
         $data = null;
         $admin_email = $_SESSION['admin_username'];
-        $query = "SELECT * FROM form WHERE Admin_email = ? AND published = 1";
+        $query = "SELECT * FROM form WHERE Admin_email = ? AND published = 1 AND DELETED = 0 ";
         $result = $this->connect()->prepare($query);
         if ($result->execute([$admin_email])){
             while ($row = $result->fetch()){
@@ -405,6 +405,18 @@ class Model extends Dbh {
         $query = " SELECT * FROM user_response WHERE F_id = ? ";
         $result = $this->connect()->prepare($query);
         if ($result->execute([$F_id])){
+            while ($row = $result->fetch()){
+                $data[] = $row;
+            }
+        }
+        return $data;
+    }
+
+    public function fetchUserNameResponse($F_id,$user_name) {
+        $data = null;
+        $query = "SELECT * FROM answers WHERE F_id = ? AND User_email = ? AND DELETED = 0 ORDER BY Q_id ";
+        $result = $this->connect()->prepare($query);
+        if ($result->execute([$F_id,$user_name])){
             while ($row = $result->fetch()){
                 $data[] = $row;
             }

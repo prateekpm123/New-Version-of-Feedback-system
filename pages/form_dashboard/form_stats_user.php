@@ -22,7 +22,11 @@ $F_id = $_SESSION['F_id'];
     <div class="row">
     <?php
       $data = '<div class="col-12 col-sm-7">
-                <table class="table table-hover table-borderless table-striped">
+                  <div style="padding: 5px;">
+                    <input type="text" name="" class="form-control" id="myInput" placeholder="User Names" onkeyup="searchFun()" style="width: 50%">
+                  </div>
+                  
+                <table class="table table-hover table-borderless table-striped" id="myTable">
                 <thead align="center" class="thead-dark">
                   <tr>
                     <th style="width: 10%;">Sr No.</th>
@@ -41,9 +45,10 @@ $F_id = $_SESSION['F_id'];
         {
       $data .= '<tr>
                     <td align="center"><b>'.$number.'</b></td>
-                    <td align="center">'.$row['User_email'].'</td>
+                    <td align="center" id="'.$number.'">'.$row['User_email'].'</td>
                     <td align="center"> </td>
-                    <td align="center"><button class="btn btn-success btn-sm" onclick="getUserResponseDetails('.$row['F_id'].')">Check Response</button></td>
+                    <td align="center"><button class="btn btn-success btn-sm" 
+                    onclick="getUserResponseDetails('.$row['F_id'].','.$number.')">Check Response</button></td>
                 </tr>';
       $number++;          
         }
@@ -60,11 +65,52 @@ $F_id = $_SESSION['F_id'];
                   </div>';
       echo $data;
     ?>
+    <div class="col-12 col-sm-5" id="response_card">
+      
+    </div>
     </div>
   </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+  function searchFun(){
+    let filter = document.getElementById('myInput').value;
+    let myTable = document.getElementById('myTable');
+    let tr = myTable.getElementsByTagName('tr');
+    //console.log(tr);
+    for(var i=1; i<tr.length; i++){
+      let td = tr[i].getElementsByTagName('td')[1];
+
+      if(td){
+        let textValue = td.textContent || td.innerHTML;
+
+        if(textValue.indexOf(filter) >= 0){
+          tr[i].style.display = "";
+        }else{
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  }
+
+  function getUserResponseDetails(F_id,num){
+    x = document.getElementById(num).textContent;
+    console.log(x);
+    $.ajax({
+    url: "backend/getUserResponseDetails.php",
+    method: "post",
+    data: {
+      F_id: F_id,
+      User_name: x,
+    },
+    success: function (data, success) {
+    $("#response_card").html(data);
+    //console.log(data);
+    },
+  });
+  }
+</script>
 </body>
-<html>
+</html>

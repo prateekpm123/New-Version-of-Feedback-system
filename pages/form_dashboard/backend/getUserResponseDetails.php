@@ -4,8 +4,12 @@
   $user_name = $_POST['User_name'];
   //$name = $_SESSION['Form_name'];
   $data = '<div class="card">
-            <h3 class="card-header bg-primary text-white">User Response</h3>
-            <div class="card-body">';
+            <h4 class="card-header bg-primary text-white">'.$user_name.'</h4>
+            <div class="card-body">
+            <dl class="row">
+                <dt class="col-3">Q_no.</dt>
+                <dd class="col-9"><b>Answer</b></dd>
+            </dl>';
   if(isset($_POST['F_id']) && isset($_POST['User_name'])){
   include '../../../classes/model.class.php';
   $view = new Model();
@@ -14,8 +18,8 @@
 		$number = 1;
 		foreach($rows as $row ){
   $data .= '<dl class="row">
-                <dt class="col-1">'.$number.'</dt>
-                <dd class="col-8">'.$row['Answer_desc'].'</dd>
+                <dt class="col-3">'.$number.'</dt>
+                <dd class="col-9">'.$row['Answer_desc'].'</dd>
             </dl>';
             $number++;
     }

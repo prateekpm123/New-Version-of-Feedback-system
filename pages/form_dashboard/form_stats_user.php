@@ -23,7 +23,7 @@ $F_id = $_SESSION['F_id'];
     <?php
       $data = '<div class="col-12 col-sm-7">
                   <div style="padding: 5px;">
-                    <input type="text" name="" class="form-control" id="myInput" placeholder="User Names" onkeyup="searchFun()" style="width: 50%">
+                    <input type="text" name="" class="form-control" id="myInput" placeholder="Search" onkeyup="searchFun()" style="width: 50%">
                   </div>
                   
                 <table class="table table-hover table-borderless table-striped" id="myTable">

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 23, 2020 at 05:08 PM
+-- Generation Time: Sep 12, 2020 at 01:09 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -21,21 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `new_feedback_system`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `access`
---
-
-CREATE TABLE `access` (
-  `Access_id` int(16) NOT NULL,
-  `form_allotment_id` int(16) NOT NULL,
-  `F_id` int(16) NOT NULL,
-  `Admin_id` varchar(64) NOT NULL,
-  `Admin_email` varchar(255) NOT NULL,
-  `DELETED` tinyint(1) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -73,22 +58,12 @@ INSERT INTO `admin_credentials` (`A_id`, `Admin_id`, `Admin_name`, `Admin_email`
 CREATE TABLE `answers` (
   `Ans_id` int(16) NOT NULL,
   `User_email` varchar(255) NOT NULL,
+  `F_id` int(20) NOT NULL,
   `Q_id` int(100) NOT NULL,
   `Answer_desc` varchar(10000) NOT NULL,
   `Ans_recorded` timestamp NOT NULL DEFAULT current_timestamp(),
   `DELETED` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `answers`
---
-
-INSERT INTO `answers` (`Ans_id`, `User_email`, `Q_id`, `Answer_desc`, `Ans_recorded`, `DELETED`) VALUES
-(1, 'aniketkumar.singh@sakec.ac.in', 100, 'bfg', '2020-08-22 14:04:28', 0),
-(2, 'aniketkumar.singh@sakec.ac.in', 101, 'jack 1', '2020-08-22 14:04:39', 0),
-(3, 'aniketkumar.singh@sakec.ac.in', 102, 'ththt', '2020-08-22 14:04:40', 0),
-(4, 'aniketkumar.singh@sakec.ac.in', 103, 'gddg', '2020-08-22 14:04:47', 0),
-(5, 'aniketkumar.singh@sakec.ac.in', 104, '4', '2020-08-22 14:04:49', 0);
 
 -- --------------------------------------------------------
 
@@ -130,24 +105,6 @@ CREATE TABLE `form_allotment` (
   `DELETED` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `form_allotment`
---
-
-INSERT INTO `form_allotment` (`form_allotment_id`, `F_id`, `Admin_id`, `Admin_email`, `access_giver`, `access_receiver`, `priviliges`, `created_on`, `updated_on`, `DELETED`) VALUES
-(57, 110, 'POO', 'pooja.tripathi@sakec.ac.in', 'pooja.tripathi@sakec.ac.in', 'pooja.tripathi@sakec.ac.in', '', '2020-08-01 12:26:11', '2020-08-01 12:26:11', 0),
-(64, 127, 'ANI', 'aniketkumar.singh@sakec.ac.in', 'aniketkumar.singh@sakec.ac.in', 'aniketkumar.singh@sakec.ac.in', 'master', '2020-08-05 14:14:00', '2020-08-05 14:14:00', 0),
-(69, 135, 'PRA', 'prateek.manta@sakec.ac.in', 'prateek.manta@sakec.ac.in', 'prateek.manta@sakec.ac.in', 'master', '2020-08-05 14:38:23', '2020-08-05 14:38:23', 0),
-(70, 139, 'PRA', 'prateek.manta@sakec.ac.in', 'prateek.manta@sakec.ac.in', 'prateek.manta@sakec.ac.in', 'master', '2020-08-05 14:42:06', '2020-08-05 14:42:06', 0),
-(71, 144, 'ANI', 'aniketkumar.singh@sakec.ac.in', 'aniketkumar.singh@sakec.ac.in', 'aniketkumar.singh@sakec.ac.in', 'master', '2020-08-19 15:58:57', '2020-08-19 15:58:57', 0),
-(72, 147, 'ANI', 'aniketkumar.singh@sakec.ac.in', 'aniketkumar.singh@sakec.ac.in', 'aniketkumar.singh@sakec.ac.in', 'master', '2020-08-23 10:35:13', '2020-08-23 10:35:13', 0),
-(73, 151, 'ANI', 'aniketkumar.singh@sakec.ac.in', 'aniketkumar.singh@sakec.ac.in', 'aniketkumar.singh@sakec.ac.in', 'master', '2020-08-23 11:14:16', '2020-08-23 11:14:16', 0),
-(74, 155, 'ANI', 'aniketkumar.singh@sakec.ac.in', 'aniketkumar.singh@sakec.ac.in', 'aniketkumar.singh@sakec.ac.in', 'master', '2020-08-23 11:16:43', '2020-08-23 11:16:43', 0),
-(75, 158, 'ANI', 'aniketkumar.singh@sakec.ac.in', 'aniketkumar.singh@sakec.ac.in', 'aniketkumar.singh@sakec.ac.in', 'master', '2020-08-23 11:18:18', '2020-08-23 11:18:18', 0),
-(76, 159, 'ANI', 'aniketkumar.singh@sakec.ac.in', 'aniketkumar.singh@sakec.ac.in', 'aniketkumar.singh@sakec.ac.in', 'master', '2020-08-23 11:19:55', '2020-08-23 11:19:55', 0),
-(77, 1, 'ANI', 'aniketkumar.singh@sakec.ac.in', 'aniketkumar.singh@sakec.ac.in', 'aniketkumar.singh@sakec.ac.in', 'master', '2020-08-23 12:31:19', '2020-08-23 12:31:19', 0),
-(78, 4, 'ANI', 'aniketkumar.singh@sakec.ac.in', 'aniketkumar.singh@sakec.ac.in', 'aniketkumar.singh@sakec.ac.in', 'master', '2020-08-23 15:04:50', '2020-08-23 15:04:50', 0);
-
 -- --------------------------------------------------------
 
 --
@@ -175,7 +132,6 @@ CREATE TABLE `publish_details` (
 
 CREATE TABLE `questions` (
   `Q_id` int(16) NOT NULL,
-  `Q_no` float NOT NULL,
   `F_id` int(16) NOT NULL,
   `Breakpoints` varchar(255) NOT NULL,
   `created_on` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -191,56 +147,6 @@ CREATE TABLE `questions` (
   `Default_Option` varchar(1000) NOT NULL DEFAULT 'NULL',
   `DELETED` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `questions`
---
-
-INSERT INTO `questions` (`Q_id`, `Q_no`, `F_id`, `Breakpoints`, `created_on`, `updated_on`, `rating_scale`, `type`, `Question_desc`, `Option1`, `Option2`, `Option3`, `Option4`, `Option5`, `Default_Option`, `DELETED`) VALUES
-(68, 0, 109, '', '2020-08-01 12:29:53', '2020-08-01 12:29:53', '', 'radio', 'yo', '2', '6', '3', '3', '7', 'NULL', 0),
-(69, 0, 109, '', '2020-08-01 12:30:35', '2020-08-01 12:30:35', '', 'text', 'hey', '', '', '', '', '', 'NULL', 0),
-(70, 1, 111, '', '2020-08-01 12:33:09', '2020-08-01 12:33:09', '', 'radio', 'yo', '2', '6', '3', '3', '7', 'NULL', 0),
-(71, 2, 111, '', '2020-08-01 12:33:09', '2020-08-01 12:33:09', '', 'text', 'hey', '', '', '', '', '', 'NULL', 0),
-(72, 0, 113, '', '2020-08-01 13:54:57', '2020-08-01 13:54:57', '', 'radio', 'dsvdfv', 'gghchgc', 'ytyf', 'cctrtrdc', 'cgfc', 'yfyf', 'NULL', 0),
-(73, 0, 113, '', '2020-08-01 14:29:03', '2020-08-01 14:29:03', '', 'rating', 'hiiii', '', '', '', '', '', 'NULL', 0),
-(80, 1, 128, '', '2020-08-05 14:18:29', '2020-08-05 14:18:29', '', 'radio', 'yo', '2', '6', '3', '3', '7', 'NULL', 0),
-(81, 2, 128, '', '2020-08-05 14:18:29', '2020-08-05 14:18:29', '', 'text', 'hey', '', '', '', '', '', 'NULL', 0),
-(84, 0, 135, '', '2020-08-05 14:40:55', '2020-08-10 14:11:16', '5', 'linearscale', 'yoyoyo', 'asdfasdf', 'asdfasfd', 'asdfas', 'asdf', 'asdf', 'NULL', 0),
-(85, 1, 136, '', '2020-08-05 14:41:07', '2020-08-05 14:41:07', '', 'text', 'yoyoyo', '', '', '', '', '', 'NULL', 0),
-(86, 0, 136, '', '2020-08-05 14:41:24', '2020-08-05 14:41:24', '', 'rating', 'hiiiiii', '', '', '', '', '', 'NULL', 0),
-(87, 1, 137, '', '2020-08-05 14:41:36', '2020-08-05 14:41:36', '', 'text', 'yoyoyo', '', '', '', '', '', 'NULL', 0),
-(88, 2, 137, '', '2020-08-05 14:41:37', '2020-08-05 14:41:37', '', 'rating', 'hiiiiii', '', '', '', '', '', 'NULL', 0),
-(89, 1, 138, '', '2020-08-05 14:41:47', '2020-08-05 14:41:47', '', 'text', 'yoyoyo', '', '', '', '', '', 'NULL', 0),
-(90, 1, 143, '', '2020-08-10 13:04:44', '2020-08-10 13:04:44', '', 'text', 'yoyoyo', '', '', '', '', '', 'NULL', 0),
-(91, 0, 135, '', '2020-08-10 14:10:53', '2020-08-10 14:10:53', '', 'text', 'The following', '', '', '', '', '', 'NULL', 0),
-(92, 0, 135, '', '2020-08-10 14:12:55', '2020-08-10 14:12:55', '', 'multiplechoice', 'asdfasf', 'asdfasdf', 'asdf', 'asdf', 'asdfa', 'sdf', 'NULL', 0),
-(93, 0, 135, '', '2020-08-10 14:13:22', '2020-08-10 14:13:22', '', 'radio', 'asdfasdf', 'asdfaas', 'dfasdf', 'asd', 'fasdfasdf', 'asdf', 'NULL', 0),
-(94, 0, 144, '', '2020-08-20 14:04:00', '2020-08-22 06:49:27', '', 'radio', 'radio few', 'def', 'fe', 'bfg', '', '', 'NULL', 0),
-(95, 0, 144, '', '2020-08-20 14:04:09', '2020-08-20 14:04:09', '', 'text', 'tesxt', '', '', '', '', '', 'NULL', 0),
-(96, 0, 144, '', '2020-08-20 14:04:21', '2020-08-20 14:04:21', '', 'multiplechoice', 'multiiii', 'rdhd', 'htdhtd', 'ththt', 'hrhtf', 'htfyhrh', 'NULL', 0),
-(97, 0, 144, '', '2020-08-20 14:04:34', '2020-08-20 14:04:34', '3', 'linearscale', 'thrdhdr', 'gddg', 'hdd', 'hdh', '', '', 'NULL', 0),
-(98, 0, 144, '', '2020-08-20 14:04:39', '2020-08-20 14:04:39', '', 'rating', 'rate', '', '', '', '', '', 'NULL', 0),
-(99, 0, 145, '', '2020-08-22 12:14:33', '2020-08-22 12:14:33', '', 'radio', 'jbjb', 'vy', 'hhu', 'gyuugy', 'vdrtyf', 'vhggyuj', 'NULL', 0),
-(100, 1, 146, '', '2020-08-22 13:30:41', '2020-08-22 13:30:41', '', 'radio', 'radio few', 'def', 'fe', 'bfg', '', '', 'NULL', 0),
-(101, 2, 146, '', '2020-08-22 13:30:41', '2020-08-22 13:30:41', '', 'text', 'tesxt', '', '', '', '', '', 'NULL', 0),
-(102, 3, 146, '', '2020-08-22 13:30:41', '2020-08-22 13:30:41', '', 'multiplechoice', 'multiiii', 'rdhd', 'htdhtd', 'ththt', 'hrhtf', 'htfyhrh', 'NULL', 0),
-(103, 4, 146, '', '2020-08-22 13:30:41', '2020-08-22 13:30:41', '3', 'linearscale', 'thrdhdr', 'gddg', 'hdd', 'hdh', '', '', 'NULL', 0),
-(104, 5, 146, '', '2020-08-22 13:30:41', '2020-08-22 13:30:41', '', 'rating', 'rate', '', '', '', '', '', 'NULL', 0),
-(105, 0, 1, '', '2020-08-23 12:32:05', '2020-08-23 12:32:05', '', 'radio', 'THis is the first question', 'this is option 1', 'option 2', 'option3', 'option4', '', 'NULL', 0),
-(106, 0, 1, '', '2020-08-23 12:32:20', '2020-08-23 12:32:20', '', 'text', 'second question', '', '', '', '', '', 'NULL', 0),
-(107, 0, 1, '', '2020-08-23 12:32:47', '2020-08-23 12:32:47', '', 'multiplechoice', 'third question', 'choose this', 'this too', 'dont', 'yes', 'obvious', 'NULL', 0),
-(108, 0, 1, '', '2020-08-23 12:32:57', '2020-08-23 12:32:57', '', 'rating', 'rate my system', '', '', '', '', '', 'NULL', 0),
-(109, 0, 1, '', '2020-08-23 12:34:01', '2020-08-23 12:34:01', '5', 'linearscale', 'same as radio', 'heeyyyy', 'good', 'bad', 'excel', 'kkk', 'NULL', 0),
-(110, 1, 2, '', '2020-08-23 12:34:57', '2020-08-23 12:34:57', '', 'radio', 'THis is the first question', 'this is option 1', 'option 2', 'option3', 'option4', '', 'NULL', 0),
-(111, 2, 2, '', '2020-08-23 12:34:57', '2020-08-23 12:35:11', '', 'text', 'second question', '', '', '', '', '', 'NULL', 1),
-(112, 3, 2, '', '2020-08-23 12:34:57', '2020-08-23 12:34:57', '', 'multiplechoice', 'third question', 'choose this', 'this too', 'dont', 'yes', 'obvious', 'NULL', 0),
-(113, 4, 2, '', '2020-08-23 12:34:57', '2020-08-23 12:34:57', '', 'rating', 'rate my system', '', '', '', '', '', 'NULL', 0),
-(114, 5, 2, '', '2020-08-23 12:34:57', '2020-08-23 12:34:57', '5', 'linearscale', 'same as radio', 'heeyyyy', 'good', 'bad', 'excel', 'kkk', 'NULL', 0),
-(115, 1, 3, '', '2020-08-23 12:35:22', '2020-08-23 12:35:22', '', 'radio', 'THis is the first question', 'this is option 1', 'option 2', 'option3', 'option4', '', 'NULL', 0),
-(116, 2, 3, '', '2020-08-23 12:35:22', '2020-08-23 12:35:22', '', 'text', 'second question', '', '', '', '', '', 'NULL', 1),
-(117, 3, 3, '', '2020-08-23 12:35:22', '2020-08-23 12:35:22', '', 'multiplechoice', 'third question', 'choose this', 'this too', 'dont', 'yes', 'obvious', 'NULL', 0),
-(118, 4, 3, '', '2020-08-23 12:35:22', '2020-08-23 12:35:22', '', 'rating', 'rate my system', '', '', '', '', '', 'NULL', 0),
-(119, 5, 3, '', '2020-08-23 12:35:22', '2020-08-23 12:35:22', '5', 'linearscale', 'same as radio', 'heeyyyy', 'good', 'bad', 'excel', 'kkk', 'NULL', 0);
 
 -- --------------------------------------------------------
 
@@ -327,49 +233,19 @@ CREATE TABLE `user_form_access` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_password`
+-- Table structure for table `user_response`
 --
 
-CREATE TABLE `user_password` (
-  `Password_id` int(16) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `re_enter_password` varchar(255) NOT NULL,
-  `Details_id` int(16) NOT NULL,
-  `created_on` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `DELETED` tinyint(1) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `user_password`
---
-
-INSERT INTO `user_password` (`Password_id`, `password`, `re_enter_password`, `Details_id`, `created_on`, `updated_on`, `DELETED`) VALUES
-(1, '123456789', '123456789', 1, '2020-05-31 11:01:18', '2020-07-17 12:44:23', 0),
-(2, '234567890', '234567890', 2, '2020-06-09 05:22:32', '2020-07-17 12:44:39', 0),
-(3, '345678901', '345678901', 3, '2020-06-09 05:23:30', '2020-07-17 12:44:46', 0),
-(4, 'engineer', 'engineer', 4, '2020-07-11 08:09:15', '2020-07-17 12:44:52', 0),
-(5, 'square', 'square', 5, '2020-07-17 12:47:43', '2020-07-18 08:56:01', 0),
-(6, 'circle', 'circle', 6, '2020-07-17 12:48:47', '2020-07-18 08:56:16', 0),
-(7, 'nidhi', 'nidhi', 7, '2020-07-17 12:49:54', '2020-07-17 12:49:54', 0),
-(8, 'shreya', 'shreya', 8, '2020-07-17 12:49:54', '2020-07-17 12:49:54', 0),
-(9, 'pramila', 'pramila', 9, '2020-07-17 12:52:04', '2020-07-17 12:52:04', 0),
-(10, 'shwetambari', 'shwetambari', 10, '2020-07-17 12:52:04', '2020-07-17 12:52:04', 0),
-(11, 'hexagon', 'hexagon', 11, '2020-07-18 08:53:03', '2020-07-18 08:53:03', 0);
+CREATE TABLE `user_response` (
+  `id` int(20) NOT NULL,
+  `User_email` varchar(255) NOT NULL,
+  `F_id` int(20) NOT NULL,
+  `Timestamp` datetime(6) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `access`
---
-ALTER TABLE `access`
-  ADD PRIMARY KEY (`Access_id`),
-  ADD KEY `Access_id` (`form_allotment_id`),
-  ADD KEY `Admin_id` (`Admin_id`),
-  ADD KEY `Form_id` (`F_id`),
-  ADD KEY `Admin_email` (`Admin_email`);
 
 --
 -- Indexes for table `admin_credentials`
@@ -387,7 +263,8 @@ ALTER TABLE `admin_credentials`
 ALTER TABLE `answers`
   ADD PRIMARY KEY (`Ans_id`),
   ADD KEY `User _email` (`User_email`),
-  ADD KEY `Q_id` (`Q_id`);
+  ADD KEY `Q_id` (`Q_id`),
+  ADD KEY `F_id` (`F_id`);
 
 --
 -- Indexes for table `form`
@@ -421,8 +298,7 @@ ALTER TABLE `publish_details`
 --
 ALTER TABLE `questions`
   ADD PRIMARY KEY (`Q_id`),
-  ADD KEY `FOREIGN KEY` (`F_id`),
-  ADD KEY `Q_no` (`Q_no`);
+  ADD KEY `FOREIGN KEY` (`F_id`);
 
 --
 -- Indexes for table `user`
@@ -449,21 +325,16 @@ ALTER TABLE `user_form_access`
   ADD KEY `Form_code` (`Form_code`);
 
 --
--- Indexes for table `user_password`
+-- Indexes for table `user_response`
 --
-ALTER TABLE `user_password`
-  ADD PRIMARY KEY (`Password_id`),
-  ADD KEY `Details_id` (`Details_id`);
+ALTER TABLE `user_response`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `User_email` (`User_email`),
+  ADD KEY `F_id` (`F_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
-
---
--- AUTO_INCREMENT for table `access`
---
-ALTER TABLE `access`
-  MODIFY `Access_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `admin_credentials`
@@ -475,7 +346,7 @@ ALTER TABLE `admin_credentials`
 -- AUTO_INCREMENT for table `answers`
 --
 ALTER TABLE `answers`
-  MODIFY `Ans_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `Ans_id` int(16) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `form`
@@ -487,7 +358,7 @@ ALTER TABLE `form`
 -- AUTO_INCREMENT for table `form_allotment`
 --
 ALTER TABLE `form_allotment`
-  MODIFY `form_allotment_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `form_allotment_id` int(16) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `publish_details`
@@ -499,7 +370,7 @@ ALTER TABLE `publish_details`
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `Q_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
+  MODIFY `Q_id` int(16) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -520,23 +391,14 @@ ALTER TABLE `user_form_access`
   MODIFY `auto_increment` int(16) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `user_password`
+-- AUTO_INCREMENT for table `user_response`
 --
-ALTER TABLE `user_password`
-  MODIFY `Password_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1262240;
+ALTER TABLE `user_response`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `access`
---
-ALTER TABLE `access`
-  ADD CONSTRAINT `access_ibfk_1` FOREIGN KEY (`Admin_id`) REFERENCES `admin_credentials` (`Admin_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `access_ibfk_2` FOREIGN KEY (`Admin_email`) REFERENCES `admin_credentials` (`Admin_email`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `access_ibfk_3` FOREIGN KEY (`form_allotment_id`) REFERENCES `form_allotment` (`form_allotment_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `access_ibfk_4` FOREIGN KEY (`F_id`) REFERENCES `form` (`F_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `answers`

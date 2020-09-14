@@ -19,11 +19,11 @@
     <?php  
         $username = "nothing";
      ?>
-    <!-- NAVBAR -->
+    <!-- NAVBAR
     <?php 
-        include_once __DIR__.'/../../includes/constants/navbar.php';
-    ?>
-
+        //include_once __DIR__.'/../../includes/constants/navbar.php';
+    ?> -->
+    <div style="padding-top:80px;"></div>
     <div class="row">
         <div class="col-lg-4 col-md-3 col-sm-2"></div>
         <div class="col-lg-4 col-md-6 col-sm-8">

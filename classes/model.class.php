@@ -108,7 +108,7 @@ class Model extends Dbh {
         try{
             // $Form_name = $formIdName[0]['Form_name'];
             // $query2 = "SELECT * FROM `form` WHERE `Form_name`= ? AND `Admin_id`=? AND  `DELETED`=0 ";
-            $query2 = "SELECT * FROM form INNER JOIN publish_details ON form.F_id=publish_details.F_id WHERE form.Form_name in ( SELECT Form_name FROM form WHERE F_id=?  AND `Admin_email`=? AND  `DELETED`=0)";
+            $query2 = "SELECT * FROM form INNER JOIN publish_details ON form.F_id=publish_details.F_id WHERE form.Form_code in ( SELECT Form_code FROM form WHERE F_id=?  AND `Admin_email`=? AND  `DELETED`=0)";
     
             $stmt = $this->connect()->prepare($query2);
             $stmt->execute([$F_id, $_SESSION['admin_username']]);
@@ -180,7 +180,7 @@ class Model extends Dbh {
     protected function deleteForm($F_id) {
         try {
             session_start();
-            $query = "UPDATE `form` SET DELETED=1 WHERE Form_name IN (SELECT Form_name FROM form WHERE F_id= ?) AND Admin_email= ?";
+            $query = "UPDATE `form` SET DELETED=1 WHERE Form_code IN (SELECT Form_code FROM form WHERE F_id= ?) AND Admin_email= ?";
             $stmt = $this->connect()->prepare($query);
             $stmt->execute([$F_id, $_SESSION['admin_username']]);
             return true;
@@ -194,7 +194,7 @@ class Model extends Dbh {
         try {
             session_start();
             $admin_email = $_SESSION['admin_username'];
-            $query = "UPDATE `form` SET `Form_name`=? WHERE Form_name IN (SELECT Form_name FROM form WHERE F_id= ?) AND Admin_email= ?";
+            $query = "UPDATE `form` SET `Form_name`=? WHERE Form_code IN (SELECT Form_code FROM form WHERE F_id= ?) AND Admin_email= ?";
             $stmt = $this->connect()->prepare($query);
             $stmt->execute([$Form_name, $F_id, $admin_email ]);
             return "Update successfull";
@@ -423,7 +423,48 @@ class Model extends Dbh {
         }
         return $data;
     }
+
+    public function fetchShareDetails($F_id,$admin_email) {
+        $data = null;
+        $query = "SELECT * FROM shared_forms WHERE F_id = ? AND Admin_email = ?";
+        $result = $this->connect()->prepare($query);
+        if ($result->execute([$F_id,$admin_email])){
+            while ($row = $result->fetch()){
+                $data[] = $row;
+            }
+        }
+        return $data;
+    }
+
+    public function sendSharedFormDetails($F_id,$admin_email,$shared_id,$num){
+        $query = "SELECT * FROM shared_forms WHERE F_id = ? AND num = ? ";
+        $result = $this->connect()->prepare($query);
+        $result->execute([$F_id,$num]);
+        $rows = $result->fetchAll();
+
+        if(!empty($rows)){
+            $query1 = "UPDATE shared_forms SET shared_with = ? WHERE F_id = ? AND num = ?";
+            $result1 = $this->connect()->prepare($query1);
+            $result1->execute([$shared_id,$F_id,$num]);
+        }
+        else{
+            $query1 = "INSERT INTO shared_forms(F_id,Admin_email,shared_with,num) VALUES (?,?,?,?)";
+            $result1 = $this->connect()->prepare($query1);
+            $result1->execute([$F_id,$admin_email,$shared_id,$num]);
+        }
+    }
     
+    public function fetchSharedRecords($admin_email) {
+        $data = null;
+        $query = "SELECT * FROM shared_forms INNER JOIN form ON shared_forms.F_id=form.F_id WHERE shared_with = ? ";
+        $result = $this->connect()->prepare($query);
+        if ($result->execute([$admin_email])){
+            while ($row = $result->fetch()){
+                $data[] = $row;
+            }
+        }
+        return $data;
+    }
 }
 
 // $testing = new Model();

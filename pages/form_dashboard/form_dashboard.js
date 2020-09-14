@@ -1,6 +1,7 @@
 $(document).ready(function () {
   loadFormdata();
   createForm();
+  loadSharedFormdata();
   // shareModal();
 });
 
@@ -14,6 +15,19 @@ function loadFormdata() {
     success: function (data, status) {
       $("#form-content").html(data);
       console.log("Form data render is working");
+    },
+  });
+}
+
+function loadSharedFormdata() {
+  var read = 'read';
+  $.ajax({
+    url: "frontend/renderSharedFormData.php",
+    method: "post",
+    data: { read: read },
+    success: function (data, status) {
+      $("#shared_content").html(data);
+      console.log("Shared data render is working");
     },
   });
 }

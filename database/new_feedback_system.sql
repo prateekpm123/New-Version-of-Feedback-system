@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 12, 2020 at 01:09 PM
+-- Generation Time: Sep 14, 2020 at 05:44 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -86,6 +86,17 @@ CREATE TABLE `form` (
   `DELETED` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `form`
+--
+
+INSERT INTO `form` (`F_id`, `Admin_id`, `Admin_email`, `Form_code`, `Form_name`, `Form_version`, `Form_Desc`, `Published`, `Expired`, `created_on`, `updated_on`, `DELETED`) VALUES
+(1, 'ANI', 'aniketkumar.singh@sakec.ac.in', 1, 'This form is for prateek', '1', 'hello prateek', 0, 0, '2020-09-13 14:46:28', '2020-09-13 14:46:28', 0),
+(2, 'PRA', 'prateek.manta@sakec.ac.in', 2, 'This Form is for Aniket', '1', 'ani', 0, 0, '2020-09-13 14:47:54', '2020-09-13 14:47:54', 0),
+(3, 'ANI', 'aniketkumar.singh@sakec.ac.in', 3, 'this is the second form for prateek', '1', 'yo', 0, 0, '2020-09-13 15:03:31', '2020-09-13 15:03:32', 0),
+(4, 'ANI', 'aniketkumar.singh@sakec.ac.in', 1, 'This form is for prateek', '2', 'hello prateek', 0, 0, '2020-09-13 15:05:50', '2020-09-13 15:05:50', 0),
+(5, 'PRA', 'prateek.manta@sakec.ac.in', 2, 'This Form is for Aniket', '2', 'ani', 0, 0, '2020-09-13 15:06:44', '2020-09-13 15:06:44', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -105,6 +116,15 @@ CREATE TABLE `form_allotment` (
   `DELETED` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `form_allotment`
+--
+
+INSERT INTO `form_allotment` (`form_allotment_id`, `F_id`, `Admin_id`, `Admin_email`, `access_giver`, `access_receiver`, `priviliges`, `created_on`, `updated_on`, `DELETED`) VALUES
+(1, 1, 'ANI', 'aniketkumar.singh@sakec.ac.in', 'aniketkumar.singh@sakec.ac.in', 'aniketkumar.singh@sakec.ac.in', 'master', '2020-09-13 14:46:28', '2020-09-13 14:46:28', 0),
+(2, 2, 'PRA', 'prateek.manta@sakec.ac.in', 'prateek.manta@sakec.ac.in', 'prateek.manta@sakec.ac.in', 'master', '2020-09-13 14:47:54', '2020-09-13 14:47:54', 0),
+(3, 3, 'ANI', 'aniketkumar.singh@sakec.ac.in', 'aniketkumar.singh@sakec.ac.in', 'aniketkumar.singh@sakec.ac.in', 'master', '2020-09-13 15:03:31', '2020-09-13 15:03:31', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -123,6 +143,17 @@ CREATE TABLE `publish_details` (
   `Division` varchar(16) NOT NULL,
   `DELETED` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `publish_details`
+--
+
+INSERT INTO `publish_details` (`Form_details`, `F_id`, `Start_date`, `End_date`, `Validity`, `Role`, `Department`, `Year`, `Division`, `DELETED`) VALUES
+(1, 1, '0000-00-00', '0000-00-00', '', '', '', '', '', 0),
+(2, 2, '0000-00-00', '0000-00-00', '', '', '', '', '', 0),
+(3, 3, '0000-00-00', '0000-00-00', '', '', '', '', '', 0),
+(4, 4, '0000-00-00', '0000-00-00', '', '', '', '', '', 0),
+(5, 5, '0000-00-00', '0000-00-00', '', '', '', '', '', 0);
 
 -- --------------------------------------------------------
 
@@ -147,6 +178,39 @@ CREATE TABLE `questions` (
   `Default_Option` varchar(1000) NOT NULL DEFAULT 'NULL',
   `DELETED` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `questions`
+--
+
+INSERT INTO `questions` (`Q_id`, `F_id`, `Breakpoints`, `created_on`, `updated_on`, `rating_scale`, `type`, `Question_desc`, `Option1`, `Option2`, `Option3`, `Option4`, `Option5`, `Default_Option`, `DELETED`) VALUES
+(1, 2, '', '2020-09-13 14:56:36', '2020-09-13 14:56:36', '', 'radio', 'hello', '1', '2', '3', '4', '5', 'NULL', 0),
+(2, 1, '', '2020-09-13 15:02:07', '2020-09-13 15:02:07', '', 'radio', 'hiii', 'fbf', 'fbb', 'fxbx', 'bfx', '', 'NULL', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `shared_forms`
+--
+
+CREATE TABLE `shared_forms` (
+  `id` int(20) NOT NULL,
+  `F_id` int(20) NOT NULL,
+  `Admin_email` varchar(255) NOT NULL,
+  `shared_with` varchar(255) NOT NULL,
+  `num` int(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `shared_forms`
+--
+
+INSERT INTO `shared_forms` (`id`, `F_id`, `Admin_email`, `shared_with`, `num`) VALUES
+(1, 1, 'aniketkumar.singh@sakec.ac.in', 'prateek.manta@sakec.ac.in', 1),
+(2, 2, 'prateek.manta@sakec.ac.in', 'aniketkumar.singh@sakec.ac.in', 1),
+(3, 3, 'aniketkumar.singh@sakec.ac.in', 'prateek.manta@sakec.ac.in', 1),
+(4, 4, 'aniketkumar.singh@sakec.ac.in', 'prateek.manta@sakec.ac.in', 1),
+(5, 5, 'prateek.manta@sakec.ac.in', 'aniketkumar.singh@sakec.ac.in', 1);
 
 -- --------------------------------------------------------
 
@@ -301,6 +365,12 @@ ALTER TABLE `questions`
   ADD KEY `FOREIGN KEY` (`F_id`);
 
 --
+-- Indexes for table `shared_forms`
+--
+ALTER TABLE `shared_forms`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -352,25 +422,31 @@ ALTER TABLE `answers`
 -- AUTO_INCREMENT for table `form`
 --
 ALTER TABLE `form`
-  MODIFY `F_id` int(16) NOT NULL AUTO_INCREMENT;
+  MODIFY `F_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `form_allotment`
 --
 ALTER TABLE `form_allotment`
-  MODIFY `form_allotment_id` int(16) NOT NULL AUTO_INCREMENT;
+  MODIFY `form_allotment_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `publish_details`
 --
 ALTER TABLE `publish_details`
-  MODIFY `Form_details` int(16) NOT NULL AUTO_INCREMENT;
+  MODIFY `Form_details` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `Q_id` int(16) NOT NULL AUTO_INCREMENT;
+  MODIFY `Q_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `shared_forms`
+--
+ALTER TABLE `shared_forms`
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `user`

@@ -120,7 +120,6 @@ function renderFormVersionData() {
 								</div>
 								</div>
 			
-			
 			<tr id="'.$row['F_id'].'" class="version-row published'.$row['Published'].'">
 				<td align="center" style="width: 10%;"><b>'.$row['Form_version'].'</b></th>
 				<td align="center" style="width: 60%;">'.$row['Form_name'].'</th>
@@ -128,17 +127,18 @@ function renderFormVersionData() {
 					<button class="btn btn-sm btn-warning" onclick="sendFormDetails('.$row['F_id'].')">Edit</button>
 				</td>
 				<td align="center" style="width: 15%;">
-				<!-- Example single danger button -->
-				<div class="btn-group">
-				<button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Action
-				</button>
-				<div class="dropdown-menu">
-					<button class="dropdown-item" onclick="createVersion('.$row['F_id'].')">Create Version</button>
-					<button class="dropdown-item" type="button" class="btn btn-primary" data-toggle="modal" data-target="#publishModal'.$row['F_id'].'">Publish</button>
-				</div>
-				</div>
-                </td>
+					<div class="btn-group">
+						<button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Action
+						</button>
+						<div class="dropdown-menu">
+							<button class="dropdown-item" onclick="createVersion('.$row['F_id'].')">Create Version</button>
+							<button class="dropdown-item" type="button" data-toggle="modal" 
+							data-target="#publishModal'.$row['F_id'].'">Publish</button>
+							<button class="dropdown-item" type="button" onclick="shareDetails('.$row['F_id'].')">Share</button>
+						</div>
+					</div>
+        </td>
 				</tr>';
 		}
 	} else {
@@ -146,7 +146,7 @@ function renderFormVersionData() {
 	}
 
 	$data .= '</table>';
-	
+
 	echo $data;
 
 }

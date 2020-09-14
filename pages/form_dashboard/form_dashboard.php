@@ -42,6 +42,16 @@ session_start();
         <div class="row">
         <div class="col-12 col-sm-2"></div>
         <div class="col-12 col-sm-8">
+        <div class="row">
+            <div class="col-lg-6">
+            <h2>Shared Forms</h2>
+            </div>
+            <div class="col-lg-6"></div>
+            
+            <div id="shared_content" class="col-12">
+            </div>
+            
+        </div>
             <div class="row">
                 <div class="col-lg-6">
                     <h2 class="">Forms</h2>
@@ -204,6 +214,24 @@ function publishChange2(F_id){
     else{
         z.style.display = "block";
     }
+}
+
+function shareDetails(F_id){
+    $.ajax({
+    url: "test.php",
+    method: "post",
+    data: {
+      F_id: F_id,
+    },
+    success: function (data, success) {
+      if (success == "success") {
+        console.log(data);
+
+        // alert("nothing delte");
+        window.open("shareForm.php", "_blank");
+      }
+    },
+  });
 }
 
     </script>

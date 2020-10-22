@@ -7,7 +7,6 @@
   $view = new Model();
   $count = $view->fetchUserResponseDetails($F_id);
   $data = '<div class="card">
-              <h3 class="card-header bg-primary text-white">Form Statistics</h3>
               <div class="card-body">
                 <dl class="row">
                   <dt class="col-5">Total Response</dt>

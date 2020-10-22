@@ -14,10 +14,9 @@ function renderFormVersionData() {
 
 
 		$data = '<table class="table table-borderless table-hover version">
-		<thead class="thead-dark">
+		<thead>
 				<tr align="center">
 					<th>Versions</th>
-					<th>Form Name</th>
 					<th>Edit</th>
 					<th>Options</th>
 		</thead>
@@ -27,7 +26,7 @@ function renderFormVersionData() {
 		$number = 1;
 		foreach($formVersionData as $row ){
 
-			$data .= '<div class="modal fade" id="publishModal'.$row['F_id'].'" data-backdrop="static" data-keyboard="false" 	  tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+			$data .= '<div class="modal fade" id="publishModal'.$row['F_id'].'" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 								<div class="modal-dialog modal-dialog-centered">
 										<div class="modal-content">
 										<div class="modal-header">
@@ -120,9 +119,8 @@ function renderFormVersionData() {
 								</div>
 								</div>
 			
-			<tr id="'.$row['F_id'].'" class="version-row published'.$row['Published'].'">
+			<tr id="tableRow'.$row['F_id'].'" class="version-row published'.$row['Published'].'">
 				<td align="center" style="width: 10%;"><b>'.$row['Form_version'].'</b></th>
-				<td align="center" style="width: 60%;">'.$row['Form_name'].'</th>
 				<td align="center" style="width: 15%;">
 					<button class="btn btn-sm btn-warning" onclick="sendFormDetails('.$row['F_id'].')">Edit</button>
 				</td>

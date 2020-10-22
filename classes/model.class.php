@@ -190,13 +190,13 @@ class Model extends Dbh {
         }
     }
 
-    protected function updateFormName($F_id, $Form_name) {
+    public function updateFormNameAndDescription($F_id, $FormName, $FormDescription) {
         try {
             session_start();
             $admin_email = $_SESSION['admin_username'];
-            $query = "UPDATE `form` SET `Form_name`=? WHERE Form_code IN (SELECT Form_code FROM form WHERE F_id= ?) AND Admin_email= ?";
+            $query = "UPDATE `form` SET `Form_name`=?, `Form_Desc`=? WHERE Form_code IN (SELECT Form_code FROM form WHERE F_id= ?) AND Admin_email= ?";
             $stmt = $this->connect()->prepare($query);
-            $stmt->execute([$Form_name, $F_id, $admin_email ]);
+            $stmt->execute([$FormName, $FormDescription, $F_id, $admin_email ]);
             return "Update successfull";
         }
         catch(Exception $e) { 
@@ -402,6 +402,7 @@ class Model extends Dbh {
     }
 
     public function fetchUsersResponse($F_id) {
+        $data = null;
         $query = " SELECT * FROM user_response WHERE F_id = ? ";
         $result = $this->connect()->prepare($query);
         if ($result->execute([$F_id])){

@@ -25,7 +25,7 @@ session_start();
                     <a class="nav-link navbar-brand" href="#"><span><i class="fa fa-list-ul"></i></span> Form Control</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link navbar-brand" href="form_stats.php"><span><i class="fa fa-area-chart"></i></span> Form Statistics</a>
+                    <a class="nav-link navbar-brand" href="#"><span><i class="fa fa-area-chart"></i></span> Form Statistics</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link navbar-brand" href="#">
@@ -33,6 +33,9 @@ session_start();
                             echo $username; 
                         ?>
                     </a>
+                </li>
+                <li class="nav-item">
+                <button id="modal-button" type="button" class="btn btn-primary rounded-pill" data-toggle="modal" data-target=".bd-example-modal-test">+ Create Form</button>
                 </li>
             </ul>
             <a class="navbar-brand ml-auto" href="../admin_login/admin_login.php"><span><i class="fa fa-sign-in"></i></span> Logout</a>
@@ -56,11 +59,10 @@ session_start();
                 <div class="col-lg-6">
                     <h2 class="">Forms</h2>
                 </div>
-                <div class="col-lg-6">
-                    <!-- <button class="btn btn-primary" onclick="createForm()"><b>Create before</b></button> -->
+                 <div class="col-lg-6">
                     <div class="row">
                     <div class="col-3 offset-9">
-                    <button id="modal-button" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-test">Create</button>
+                    
                     </div>
                     </div>
                     <div id="modal-area">
@@ -69,29 +71,20 @@ session_start();
                 </div>
             </div>
             <div id="form-content"></div>
-            <div class="row">
-                <div class="col-lg-6">
-                    <h2>Versions</h2>
-                </div>
-                <div class="col-lg-6">
-                    <!-- <button id="create-version" type="button" class="btn btn-primary">Create Version</button> -->
-                </div>
-                <div id="publish-modal">
-                    
-                </div>
-                <div id="sharing-modal">
-                                    
-                </div>
-            </div>
-            <div id="form-version-content">
+            <!-- <div id="form-version-content">
                 
-            </div>
+            </div> -->
         </div>
         
 
+        <div class="col-12 col-sm-2 sticky-top">
+        <!-- <button id="modal-button" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-test">Create</button> -->
+        </div>
         
-        <div class="col-12 col-sm-2"></div>
     </div>
+    </div>
+    <div class="col-12 col-sm-6" id="form-version-content" >
+        
     </div>
     
 
@@ -102,6 +95,7 @@ session_start();
     ?>
     <script src="form_dashboard.js"></script>
     <script>
+
     function publishForm(F_id) {
     var a = document.getElementById("publishModal"+F_id+"").querySelector(".publishClass1").value; 
     var b = document.getElementById("publishModal"+F_id+"").querySelector(".publishClass2").value;
@@ -135,7 +129,7 @@ session_start();
            table[i].style.background = "white";
        }
    }
-   var publish_color = document.getElementById(F_id);
+   var publish_color = document.getElementById("tableRow"+F_id);
    publish_color.style.color = "red";
    publish_color.style.background = "#ffcccb";
     $.ajax({

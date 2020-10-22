@@ -2,13 +2,12 @@
 
 $F_id = htmlentities($_POST['F_id']);
 $FormName = htmlentities($_POST['FormName']);
-$column = htmlentities($_POST['column']);
+$FormDescription = htmlentities($_POST['FormDescription']);
 
 
-require_once "../../../classes/Controller.class.php";
+//require_once "../../../classes/Controller.class.php";
 
-if( $column == 1 ) {
-    $controllerObj = new Controller();
+include '../../../classes/model.class.php';
 
-    $controllerObj->updateFormNameControl($F_id, $FormName);
-}
+$edit = new Model();
+$edit->updateFormNameAndDescription($F_id, $FormName, $FormDescription);

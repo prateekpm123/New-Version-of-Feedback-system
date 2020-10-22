@@ -1,12 +1,21 @@
-
 .align-center {
-    text-align: center;
+  text-align: center;
 }
 
 .align-right {
-    text-align: right;
+  text-align: right;
 }
 
 .align-left {
-    align-items: left;
+  align-items: left;
+}
+
+#modal-button {
+  color: #007bff;
+  background-color: white;
+}
+
+#modal-button:hover {
+  color: white;
+  background-color: #007bff;
 }

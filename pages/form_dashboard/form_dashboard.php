@@ -24,9 +24,9 @@ session_start();
                 <li class="nav-item active">
                     <a class="nav-link navbar-brand" href="#"><span><i class="fa fa-list-ul"></i></span> Form Control</a>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link navbar-brand" href="#"><span><i class="fa fa-area-chart"></i></span> Form Statistics</a>
-                </li>
+                </li> -->
                 <li class="nav-item">
                     <a class="nav-link navbar-brand" href="#">
                         <?php 
@@ -35,7 +35,7 @@ session_start();
                     </a>
                 </li>
                 <li class="nav-item">
-                <button id="modal-button" type="button" class="btn btn-primary rounded-pill" data-toggle="modal" data-target=".bd-example-modal-test">+ Create Form</button>
+                    <button id="modal-button"  type="button" class="btn btn-primary rounded-pill" data-toggle="modal" data-target=".bd-example-modal-test">+ Create Form</button>
                 </li>
             </ul>
             <a class="navbar-brand ml-auto" href="../admin_login/admin_login.php"><span><i class="fa fa-sign-in"></i></span> Logout</a>
@@ -43,49 +43,33 @@ session_start();
     <br>
     <div class="container-fluid">
         <div class="row">
-        <div class="col-12 col-sm-2"></div>
-        <div class="col-12 col-sm-8">
+            <div class="col-12 col-sm-2"></div>
+            <div class="col-12 col-sm-8">
+                <div class="row">
+                    <div class="col-12">
+                        <h2>Shared Forms</h2>
+                    </div>
+                    <div id="shared_content" class="col-12"></div> 
+                </div>    
+            </div>
+        </div>
         <div class="row">
-            <div class="col-lg-6">
-            <h2>Shared Forms</h2>
-            </div>
-            <div class="col-lg-6"></div>
-            
-            <div id="shared_content" class="col-12">
-            </div>
-            
-        </div>
-            <div class="row">
-                <div class="col-lg-6">
-                    <h2 class="">Forms</h2>
-                </div>
-                 <div class="col-lg-6">
-                    <div class="row">
-                    <div class="col-3 offset-9">
-                    
-                    </div>
-                    </div>
-                    <div id="modal-area">
-                    </div>
-                    
+            <div class="col-12 col-sm-2"></div>
+            <div class="col-12 col-sm-8">
+                <div class="row">
+                    <div class="col-12">
+                        <h2>Forms</h2>
+                    </div>  
+                    <div id="form-content" class="col-12"></div>
                 </div>
             </div>
-            <div id="form-content"></div>
-            <!-- <div id="form-version-content">
-                
-            </div> -->
         </div>
-        
-
-        <div class="col-12 col-sm-2 sticky-top">
-        <!-- <button id="modal-button" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-test">Create</button> -->
-        </div>
-        
     </div>
+    <div id="modal-area">
     </div>
-    <div class="col-12 col-sm-6" id="form-version-content" >
+    <!-- <div class="col-12 col-sm-6" id="form-version-content" > -->
         
-    </div>
+    <!-- </div> -->
     
 
     <!-- Bootstrap js and jquery links from constants folder -->
@@ -122,7 +106,7 @@ session_start();
    }
 
    var table = document.getElementsByClassName("version-row");
-   console.log(table);
+   //console.log(table);
    for (var i=0; i<table.length; i++){
        if(table[i].style.color == "red"){
            table[i].style.color = "black";
@@ -219,7 +203,7 @@ function shareDetails(F_id){
     },
     success: function (data, success) {
       if (success == "success") {
-        console.log(data);
+     //   console.log(data);
 
         // alert("nothing delte");
         window.open("shareForm.php", "_blank");

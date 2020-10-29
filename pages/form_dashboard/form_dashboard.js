@@ -14,7 +14,7 @@ function loadFormdata() {
     data: {},
     success: function (data, status) {
       $('#form-content').html(data);
-      console.log('Form data render is working');
+      //console.log('Form data render is working');
     },
   });
 }
@@ -27,7 +27,7 @@ function loadSharedFormdata() {
     data: { read: read },
     success: function (data, status) {
       $('#shared_content').html(data);
-      console.log('Shared data render is working');
+      //console.log('Shared data render is working');
     },
   });
 }
@@ -35,7 +35,7 @@ function loadSharedFormdata() {
 // This Renders Version table in the frontend
 // runs: When VIEW button is clicked
 function getFormVersions(F_id) {
-  console.log('dynamic button is working');
+  //console.log('dynamic button is working');
 
   $.ajax({
     url: 'frontend/renderFormVersionData.php',
@@ -46,13 +46,17 @@ function getFormVersions(F_id) {
     success: function (data, success) {
       //$('#form-version-content').html(data);
       var parent = document.getElementById(F_id);
-      var child = document.getElementById('form-version-content');
+      var child = document.getElementById('form_version_content' + F_id);
       parent.appendChild(child);
       $(child).html(data);
+      //$('form_version_content' + F_id).html(data);
       var x = document.getElementsByClassName('published1')[0];
-      console.log(x);
-      x.style.color = 'red';
-      x.style.background = '#ffcccb';
+      if (x == null) {
+      } else {
+        x.style.color = 'red';
+        x.style.background = '#ffcccb';
+      }
+      //console.log(x);
     },
   });
 }
@@ -60,7 +64,7 @@ function getFormVersions(F_id) {
 // THIS ECHO'S A MODAL FORM TO THE FRONT END
 // runs: onload
 function createForm() {
-  console.log('working');
+  //console.log('working');
 
   $.ajax({
     url: 'frontend/createModal.php',
@@ -86,7 +90,7 @@ function insertNewForm() {
       formDesc: formDescription,
     },
     success: function (data, success) {
-      console.log(data);
+      //console.log(data);
       $('#close-modal').click();
       loadFormdata();
       $('#form-name').html();
@@ -105,7 +109,7 @@ function deleteForms(F_id) {
         F_id: F_id,
       },
       success: function (data, success) {
-        console.log(data);
+        //console.log(data);
         if (success == 'success') {
           loadFormdata();
           $('#form-version-content').html('Form is deleted');
@@ -135,7 +139,7 @@ function deleteFormVersion(F_id) {
 }
 
 function createVersion(F_id) {
-  console.log('version button asdf working');
+  //console.log('version button asdf working');
   $.ajax({
     url: 'backend/createNewFormVersion.php',
     method: 'post',
@@ -143,8 +147,11 @@ function createVersion(F_id) {
       F_id: F_id,
     },
     success: function (data, status) {
-      console.log(data);
-      getFormVersions(F_id);
+      // var x = parseInt(data);
+      var str = data;
+      var matches = str.match(/(\d+)/);
+      // console.log(matches[0]);
+      getFormVersions(matches[0]);
     },
   });
 }
@@ -185,8 +192,6 @@ function publishForm(F_id) {
   });
 }
 
-function otherSettings(F_id) {}
-
 function editFormDetails(F_id) {
   // let value = element.innerText;
   var x = document.getElementById('editFormName' + F_id).value;
@@ -210,25 +215,6 @@ function editFormDetails(F_id) {
   });
 }
 
-// function GetFormDetails(F_id) {
-//     alert(F_id)
-//     let Form_id = F_id
-//     $.ajax({
-//         url: "backend/set_form_id.php",
-//         method: "post",
-//         data: {
-//             F_id : Form_id,
-//         },
-//         success: function(data, success) {
-//             if(success == "success") {
-//                 // window.location.href = "../form_creation/form_creation.php";
-//                 window.location.href = "backend/set_form_id.php";
-
-//             }
-//         }
-//     });
-// }
-
 function sendFormDetails(F_id) {
   let test = F_id;
   // alert(test)
@@ -243,7 +229,7 @@ function sendFormDetails(F_id) {
         console.log(data);
 
         // alert("nothing delte");
-        window.open('../form_creation/form_creation.php', '_blank');
+        window.open('../form_creation/form_creation.php', '_self');
       }
     },
   });
@@ -263,19 +249,19 @@ function shareModal(F_id) {
   });
 }
 
-function getResponse(F_id) {
-  $.ajax({
-    url: 'backend/getFormResponse.php',
-    method: 'post',
-    data: {
-      F_id: F_id,
-    },
-    success: function (data, success) {
-      $('#response_content' + F_id).html(data);
-      //console.log(data);
-    },
-  });
-}
+// function getResponse(F_id) {
+//   $.ajax({
+//     url: 'backend/getFormResponse.php',
+//     method: 'post',
+//     data: {
+//       F_id: F_id,
+//     },
+//     success: function (data, success) {
+//       $('#response_content' + F_id).html(data);
+//       //console.log(data);
+//     },
+//   });
+// }
 
 function getUserNames(F_id) {
   $.ajax({
@@ -286,6 +272,20 @@ function getUserNames(F_id) {
     },
     success: function (data, success) {
       window.location = 'form_stats_user.php';
+      //console.log(data);
+    },
+  });
+}
+
+function goToStatsPage(F_id) {
+  $.ajax({
+    url: '../form_statistics/backend/getFormDetails.php',
+    method: 'post',
+    data: {
+      F_id: F_id,
+    },
+    success: function (data, success) {
+      window.location = '../form_statistics/form_statistics.php';
       //console.log(data);
     },
   });

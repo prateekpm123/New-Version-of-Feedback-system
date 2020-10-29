@@ -55,11 +55,10 @@ function renderData($username) {
                     <div class="card" id="'.$row['F_id'].'">
                         <div class="card-header">
                             <div class="row">
-                                <div class="col-6">
+                                <div class="col-8">
                                     <h5>'.$number.'. '.$Form_name.'</h5>
                                 </div>
-                                <div class="col-6">
-                                    <button style="float: right;" onclick="getResponse('.$row['F_id'].')" class="btn btn-sm btn-primary">Check Response</button>
+                                <div class="col-4">
                                 </div>
                             </div>
                         </div>
@@ -71,17 +70,18 @@ function renderData($username) {
                                     <button class="btn btn-sm btn-danger" onclick="deleteForms('.$row['F_id'].')" >Delete</button>
                                     <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#formModal'.$row['F_id'].'">Edit</button>
                                 </div>
-                                <div class="col-12 col-sm-6" id="response_content'.$row['F_id'].'">
-
-                                </div>
-                                </div>
+                            </div>
+                            <hr />
+                            <div class="row">
+                                <div class="col-12" id="form_version_content'.$row['F_id'].'" ></div> 
+                            </div>
                         </div>
                     </div><br>';
 				$number++;
 		}
     }
     else {
-        echo "<h2>OOPS! You have no Forms to work with wanna create one ?</h2>";
+        echo "<p>You have not created any form. Please create one to view here.</p>";
     }
     $data .= '';
     echo $data;

@@ -30,7 +30,7 @@ if(isset($_POST['read'])){
   echo $data;
 }
 else{
-  echo "No Form Shared With You";
+  echo "<p>No Form Shared With You</p>";
 }
 }
 

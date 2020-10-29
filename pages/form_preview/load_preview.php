@@ -65,23 +65,23 @@ if(!empty($rows)){
 				<div class="question"><label>'.$number.'.</label>
 				'.$row['Question_desc'].'</div>
 					<div class="option row">
-						<div class="option1class col-12 col-sm-4 col-md-3 col-lg-2">
+						<div class="option1class col-12 col-sm-4 col-md-3 col-lg">
 						<input type="radio" value="'.$row['Option1'].'" class="option1" name="option">
 						<label for="option1">'.$row['Option1'].'</label><br> 
 						</div>
-						<div class="option2class col-12 col-sm-4 col-md-3 col-lg-2">
+						<div class="option2class col-12 col-sm-4 col-md-3 col-lg">
 						<input type="radio" value="'.$row['Option2'].'" class="option2" name="option">
 						<label for="option2">'.$row['Option2'].'</label><br>
 						</div>
-						<div class="option3class col-12 col-sm-4 col-md-3 col-lg-2">
+						<div class="option3class col-12 col-sm-4 col-md-3 col-lg">
 						<input type="radio" value="'.$row['Option3'].'" class="option3" name="option">
 						<label for="option3">'.$row['Option3'].'</label><br>
 						</div>
-						<div class="option4class col-12 col-sm-4 col-md-3 col-lg-2">
+						<div class="option4class col-12 col-sm-4 col-md-3 col-lg">
 						<input type="radio" value="'.$row['Option4'].'" class="option4" name="option">
 						<label for="option4">'.$row['Option4'].'</label><br>
 						</div>
-						<div class="option5class col-12 col-sm-4 col-md-3 col-lg-2">
+						<div class="option5class col-12 col-sm-4 col-md-3 col-lg">
 						<input type="radio" value="'.$row['Option5'].'" class="option5" name="option">
 						<label for="option5">'.$row['Option5'].'</label><br>
 						</div>

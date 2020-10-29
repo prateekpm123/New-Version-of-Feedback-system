@@ -127,8 +127,7 @@
 		$.ajax({
           url:"send_data.php",
           type:"post",
-          data: { id: id,
-									value: valueStr },
+          data: { id: id, value: valueStr },
           success:function(data,status){
           }
         });

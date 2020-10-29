@@ -13,13 +13,13 @@ function renderFormVersionData() {
     $formVersionData = $formInfoObj->giveFormVersionToRender($F_id);
 
 
-		$data = '<table class="table table-borderless table-hover version">
-		<thead>
+		$data = '<table class="table table-borderless table-hover table-responsive version">
 				<tr align="center">
 					<th>Versions</th>
 					<th>Edit</th>
 					<th>Options</th>
-		</thead>
+					<th>Statistics</th>
+					<th>Answers</th>
 				</tr>';
 
 	if(!empty($formVersionData)){
@@ -120,11 +120,11 @@ function renderFormVersionData() {
 								</div>
 			
 			<tr id="tableRow'.$row['F_id'].'" class="version-row published'.$row['Published'].'">
-				<td align="center" style="width: 10%;"><b>'.$row['Form_version'].'</b></th>
-				<td align="center" style="width: 15%;">
+				<td align="center"><b>'.$row['Form_version'].'</b></th>
+				<td align="center">
 					<button class="btn btn-sm btn-warning" onclick="sendFormDetails('.$row['F_id'].')">Edit</button>
 				</td>
-				<td align="center" style="width: 15%;">
+				<td align="center">
 					<div class="btn-group">
 						<button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							Action
@@ -136,7 +136,13 @@ function renderFormVersionData() {
 							<button class="dropdown-item" type="button" onclick="shareDetails('.$row['F_id'].')">Share</button>
 						</div>
 					</div>
-        </td>
+				</td>
+				<td align="center">
+					<button class="btn btn-success btn-sm" onClick="goToStatsPage('.$row['F_id'].')">Statistics</button>
+				</td>
+				<td align="center">
+					<button class="btn btn-sm btn-secondary" onclick="getUserNames('.$row['F_id'].')">Check</button>
+				</td>
 				</tr>';
 		}
 	} else {

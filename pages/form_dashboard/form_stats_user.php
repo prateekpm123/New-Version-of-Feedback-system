@@ -16,18 +16,29 @@ $F_id = $_SESSION['F_id'];
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="form_dashboard.css">
 </head>
+<style>
+  #leftDiv {
+    border-right: 5px solid blue;
+  }
+</style>
 <body>
+  <nav class="navbar navbar-light bg-light sticky-top">
+		<div class="col-12">
+	    	<button class="btn btn-outline-danger" type="button" onClick="getRemaining(<?php echo $F_id; ?>)" style="float: right;">Remaining</button>
+	  	</div>
+	</nav>
   <h3 align="center"><?php echo $_SESSION['Form_name']; ?></h3>
   <div class="container-fluid" id="records_content">
     <div class="row">
+      <div class="col-12 col-sm-7">
+        <input type="text" name="" class="form-control" id="myInput" placeholder="Search" onkeyup="searchFun()" style="width: 50%;">
+      </div>
+    </div>
+    <div class="row">
     <?php
-      $data = '<div class="col-12 col-sm-7">
-                  <div style="padding: 5px;">
-                    <input type="text" name="" class="form-control" id="myInput" placeholder="Search" onkeyup="searchFun()" style="width: 50%">
-                  </div>
-                  
-                <table class="table table-hover table-borderless table-striped" id="myTable">
-                <thead align="center" class="thead-dark">
+      $data = '<div class="col-12 col-sm-7" id="leftDiv">     
+                <table class="table table-hover table-borderless" id="myTable">
+                <thead align="center">
                   <tr>
                     <th style="width: 10%;">Sr No.</th>
                     <th style="width: 40%;">User Name</th>
@@ -97,7 +108,7 @@ $F_id = $_SESSION['F_id'];
 
   function getUserResponseDetails(F_id,num){
     x = document.getElementById(num).textContent;
-    console.log(x);
+    //console.log(x);
     $.ajax({
     url: "backend/getUserResponseDetails.php",
     method: "post",
@@ -108,6 +119,19 @@ $F_id = $_SESSION['F_id'];
     success: function (data, success) {
     $("#response_card").html(data);
     //console.log(data);
+    },
+  });
+  }
+
+  function getRemaining(F_id) {
+    $.ajax({
+    url: "backend/getRemainingUsers.php",
+    method: "post",
+    data: {
+      F_id: F_id,
+    },
+    success: function (data, success) {
+      $("#response_card").html(data);
     },
   });
   }

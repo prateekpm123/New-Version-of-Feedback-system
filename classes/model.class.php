@@ -204,7 +204,7 @@ class Model extends Dbh {
         }
     }
 
-    protected function getFormQuestionData($F_id) {
+    public function getFormQuestionData($F_id) {
         $query = "SELECT * FROM `questions` WHERE `F_id`=$F_id AND `DELETED`=0";
         try {
             $stmt = $this->connect()->prepare($query);
@@ -256,15 +256,15 @@ class Model extends Dbh {
         $stmt6 = $this->connect()->prepare($query6);
         $stmt6->execute([ $previousFormVersionId ] );
         $previousFormVersionData = $stmt6->FetchAll();  
-        echo $previousFormVersionId;
-        echo var_dump($previousFormVersionData);
+        //echo $previousFormVersionId;
+        //echo var_dump($previousFormVersionData);
 
         $questionCounter = 1;
         $arrayStart = 0;
         foreach($previousFormVersionData as $row) {
-            $query7 = "INSERT INTO `questions` (`Q_no`, `F_id`, `Breakpoints`, `rating_scale`, `type`, `Question_desc`, `Option1`, `Option2`, `Option3`, `Option4`, `Option5`, `Default_Option`, `DELETED`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $query7 = "INSERT INTO `questions` (`F_id`, `Breakpoints`, `rating_scale`, `type`, `Question_desc`, `Option1`, `Option2`, `Option3`, `Option4`, `Option5`, `Default_Option`, `DELETED`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt7 = $this->connect()->prepare($query7);
-            $stmt7->execute([$questionCounter, $latestFormVersionId, $previousFormVersionData[$arrayStart]["Breakpoints"], $previousFormVersionData[$arrayStart]["rating_scale"] , $previousFormVersionData[$arrayStart]["type"] , $previousFormVersionData[$arrayStart]["Question_desc"], $previousFormVersionData[$arrayStart]["Option1"], $previousFormVersionData[$arrayStart]["Option2"], $previousFormVersionData[$arrayStart]["Option3"], $previousFormVersionData[$arrayStart]["Option4"], $previousFormVersionData[$arrayStart]["Option5"],  $previousFormVersionData[$arrayStart]["Default_Option"],  $previousFormVersionData[$arrayStart]["DELETED"]]);
+            $stmt7->execute([$latestFormVersionId, $previousFormVersionData[$arrayStart]["Breakpoints"], $previousFormVersionData[$arrayStart]["rating_scale"] , $previousFormVersionData[$arrayStart]["type"] , $previousFormVersionData[$arrayStart]["Question_desc"], $previousFormVersionData[$arrayStart]["Option1"], $previousFormVersionData[$arrayStart]["Option2"], $previousFormVersionData[$arrayStart]["Option3"], $previousFormVersionData[$arrayStart]["Option4"], $previousFormVersionData[$arrayStart]["Option5"],  $previousFormVersionData[$arrayStart]["Default_Option"],  $previousFormVersionData[$arrayStart]["DELETED"]]);
             $arrayStart++;
             $questionCounter++;
         }
@@ -277,6 +277,7 @@ class Model extends Dbh {
         $query5 = "UPDATE form SET Form_code = ? WHERE F_id = ?";
         $result = $this->connect()->prepare($query5);
         $result->execute([$formcodeData["F_id"],$latestFormVersionId]);
+        echo $formcodeData["F_id"];
    
     }
 
@@ -466,8 +467,171 @@ class Model extends Dbh {
         }
         return $data;
     }
-}
 
-// $testing = new Model();
-// $data = $testing->validateUser('prateek.manta@sakec.ac.in', '123456789');
-// var_dump($data);
+    public function getResponseData($Q_id) {
+        $data = array();
+        $query = " SELECT * FROM questions WHERE Q_id = ? ";
+        $result = $this->connect()->prepare($query);
+        $result->execute([$Q_id]);
+        $row = $result->fetchAll();
+        array_push($data, $row[0]["Option1"]);
+        array_push($data, $row[0]["Option2"]);
+        array_push($data, $row[0]["Option3"]);
+        array_push($data, $row[0]["Option4"]);
+        array_push($data, $row[0]["Option5"]);
+
+        $count = array();
+        
+        $query1 = " SELECT * FROM answers WHERE Q_id = ? AND Answer_desc = ? ";
+        $result1 = $this->connect()->prepare($query1);
+        $count_op1 = 0;
+        if ($result1->execute([$Q_id,$data[0]])) {
+            while ($row1 = $result1->fetch()) {
+                $count_op1 = $count_op1 + 1;
+            }
+        }
+
+        $query2 = " SELECT * FROM answers WHERE Q_id = ? AND Answer_desc = ? ";
+        $result2 = $this->connect()->prepare($query2);
+        $count_op2 = 0;
+        if ($result2->execute([$Q_id,$data[1]])) {
+            while ($row2 = $result2->fetch()) {
+                $count_op2 = $count_op2 + 1;
+            }
+        }
+
+        $query3 = " SELECT * FROM answers WHERE Q_id = ? AND Answer_desc = ? ";
+        $result3 = $this->connect()->prepare($query3);
+        $count_op3 = 0;
+        if ($result3->execute([$Q_id,$data[2]])) {
+            while ($row3 = $result3->fetch()) {
+                $count_op3 = $count_op3 + 1;
+            }
+        }
+
+        $query4 = " SELECT * FROM answers WHERE Q_id = ? AND Answer_desc = ? ";
+        $result4 = $this->connect()->prepare($query4);
+        $count_op4 = 0;
+        if ($result4->execute([$Q_id,$data[3]])) {
+            while ($row4 = $result4->fetch()) {
+                $count_op4 = $count_op4 + 1;
+            }
+        }
+
+        $query5 = " SELECT * FROM answers WHERE Q_id = ? AND Answer_desc = ? ";
+        $result5 = $this->connect()->prepare($query5);
+        $count_op5 = 0;
+        if ($result5->execute([$Q_id,$data[4]])) {
+            while ($row5 = $result5->fetch()) {
+                $count_op5 = $count_op5 + 1;
+            }
+        }
+
+        array_push($count, $count_op1);
+        array_push($count, $count_op2);
+        array_push($count, $count_op3);
+        array_push($count, $count_op4);
+        array_push($count, $count_op5);
+
+        return $count;
+
+    }
+
+    public function getResponseDataForRating($Q_id) {
+        $data = [0, 0, 0, 0, 0];
+        $query = " SELECT * FROM answers WHERE Q_id = ? ";
+        $result = $this->connect()->prepare($query);
+        $result->execute([$Q_id]);
+        $rowCount = $result->rowCount();
+        $rows = $result->fetchAll();
+        for ($i = 0; $i < $rowCount; $i++){
+            if ($rows[$i]['Answer_desc'] == '1') {
+                $data[0] = $data[0] + 1;
+            }
+            else if ($rows[$i]['Answer_desc'] == '2') {
+                $data[1] = $data[1] + 1;
+            }
+            else if ($rows[$i]['Answer_desc'] == '3') {
+                $data[2] = $data[2] + 1;
+            }
+            else if ($rows[$i]['Answer_desc'] == '4') {
+                $data[3] = $data[3] + 1;
+            }
+            else if ($rows[$i]['Answer_desc'] == '5') {
+                $data[4] = $data[4] + 1;
+            }
+        }
+        return $data;
+    }
+
+    public function getResponseDataForMulti($Q_id) {
+        $data = array();
+        $query = " SELECT * FROM questions WHERE Q_id = ? ";
+        $result = $this->connect()->prepare($query);
+        $result->execute([$Q_id]);
+        $row = $result->fetchAll();
+        array_push($data, $row[0]["Option1"]);
+        array_push($data, $row[0]["Option2"]);
+        array_push($data, $row[0]["Option3"]);
+        array_push($data, $row[0]["Option4"]);
+        array_push($data, $row[0]["Option5"]);
+        
+        //$dataStr = implode(",", $data);
+
+        $count = array();
+
+        $count_op1 = 0;
+        $count_op2 = 0;
+        $count_op3 = 0;
+        $count_op4 = 0;
+        $count_op5 = 0;
+        
+        $query1 = " SELECT * FROM answers WHERE Q_id = ? ";
+        $result1 = $this->connect()->prepare($query1);
+        $result1->execute([$Q_id]);
+        $rows = $result1->fetchAll();
+        $rowCount = $result1->rowCount();
+
+        for($i=0; $i<$rowCount; $i++) {
+            $ansArr = explode(',', $rows[$i]['Answer_desc']);
+            $resultofDiff = count(array_diff($data,$ansArr));
+            $diff = 5 - $resultofDiff;
+            for ($j=0; $j<$diff; $j++) {
+                $index = array_search($ansArr[$j], $data);
+                if ($index == 0) {
+                    $count_op1 = $count_op1 + 1;
+                }
+                if ($index == 1) {
+                    $count_op2 = $count_op2 + 1;
+                }
+                if ($index == 2) {
+                    $count_op3 = $count_op3 + 1;
+                }
+                if ($index == 3) {
+                    $count_op4 = $count_op4 + 1;
+                }
+                if ($index == 4) {
+                    $count_op5 = $count_op5 + 1;
+                }
+            }
+        }
+
+        array_push($count, $count_op1);
+        array_push($count, $count_op2);
+        array_push($count, $count_op3);
+        array_push($count, $count_op4);
+        array_push($count, $count_op5);
+        array_push($count, $rowCount);
+
+        return $count;
+    }
+
+    public function getRemainingUsers($F_id) {
+        $data = null;
+        $query = " SELECT * FROM user_form_access WHERE F_id = ? ";
+        $result = $this->connect()->prepare($query);
+        $result->execute([$F_id]);
+        $data = $result->fetchAll();
+        return $data;
+    }
+}

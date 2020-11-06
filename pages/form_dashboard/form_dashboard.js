@@ -2,6 +2,9 @@ $(document).ready(function () {
   loadFormdata();
   createForm();
   loadSharedFormdata();
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+  });
   // shareModal();
 });
 

@@ -13,32 +13,29 @@ session_start();
         include_once __DIR__.'/../../includes/constants/bootstrapcss.php';
     ?>
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="form_dashboard.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 </head>
+<style>
+    a:hover {
+        cursor: pointer;
+    }
+
+    a .material-icons:hover {
+        color: blue;
+    }
+</style>
 <body>
     <?php 
         $username = $_SESSION['admin_username'];
     ?>
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link navbar-brand" href="#"><span><i class="fa fa-list-ul"></i></span> Form Control</a>
-                </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link navbar-brand" href="#"><span><i class="fa fa-area-chart"></i></span> Form Statistics</a>
-                </li> -->
-                <li class="nav-item">
-                    <a class="nav-link navbar-brand" href="#">
-                        <?php 
-                            echo $username; 
-                        ?>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <button id="modal-button"  type="button" class="btn btn-primary rounded-pill" data-toggle="modal" data-target=".bd-example-modal-test">+ Create Form</button>
-                </li>
-            </ul>
-            <a class="navbar-brand ml-auto" href="../admin_login/admin_login.php"><span><i class="fa fa-sign-in"></i></span> Logout</a>
+                <div class="col-12 text-center">
+                    
+                    <button id="modal-button"  type="button" class="btn btn-outline-primary " data-toggle="modal" data-target=".bd-example-modal-test">+ Create Form</button>
+                    <a class="navbar-brand" href="../admin_login/admin_login.php" style="float: right;"><span><i class="fa fa-sign-in"></i></span> Logout</a>
+                
+                </div>     
     </nav>
     <br>
     <div class="container-fluid">

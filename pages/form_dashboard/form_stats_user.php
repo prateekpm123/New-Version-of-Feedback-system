@@ -14,19 +14,20 @@ $F_id = $_SESSION['F_id'];
         include_once __DIR__.'/../../includes/constants/bootstrapcss.php';
     ?>
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="form_dashboard.css">
 </head>
-<style>
-  #leftDiv {
-    border-right: 5px solid blue;
-  }
-</style>
 <body>
   <nav class="navbar navbar-light bg-light sticky-top">
-		<div class="col-12">
-	    	<button class="btn btn-outline-danger" type="button" onClick="getRemaining(<?php echo $F_id; ?>)" style="float: right;">Remaining</button>
+		<div class="col-12 text-center">
+	    	<button class="btn btn-outline-danger" type="button" onClick="getRemaining(<?php echo $F_id; ?>)" >Remaining</button>
+        <button class="btn btn-outline-primary" type="button" onClick="getMail(<?php echo $F_id; ?>)" >Send Mail</button>
+        <div class="d-flex align-items-center" style="float: right;">
+          <strong style="margin-right: 10px; display: none;" id="spinnerText">Sending Mails...</strong>
+          <div class="spinner-border" role="status" style="display: none;" id="spinner">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
 	  	</div>
-	</nav>
+  </nav>
   <h3 align="center"><?php echo $_SESSION['Form_name']; ?></h3>
   <div class="container-fluid" id="records_content">
     <div class="row">
@@ -38,7 +39,7 @@ $F_id = $_SESSION['F_id'];
     <?php
       $data = '<div class="col-12 col-sm-7" id="leftDiv">     
                 <table class="table table-hover table-borderless" id="myTable">
-                <thead align="center">
+                <thead class="thead-dark" align="center">
                   <tr>
                     <th style="width: 10%;">Sr No.</th>
                     <th style="width: 40%;">User Name</th>
@@ -85,6 +86,7 @@ $F_id = $_SESSION['F_id'];
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://smtpjs.com/v3/smtp.js"></script>
 <script>
   function searchFun(){
     let filter = document.getElementById('myInput').value;
@@ -134,6 +136,41 @@ $F_id = $_SESSION['F_id'];
       $("#response_card").html(data);
     },
   });
+  }
+
+  function getMail(RF_id) {
+    document.getElementById('spinnerText').style.display = "block";
+    document.getElementById('spinner').style.display = "block";
+    $.ajax({
+    url: "backend/getRemainingUsers.php",
+    method: "post",
+    data: {
+      RF_id: RF_id,
+    },
+    success: function (data, success) {
+      //var mail_ids = data.split(",");
+      sendMail(data);
+      //console.log(data);
+    },
+  });
+  }
+
+  function sendMail(mail_id) {
+    
+  Email.send({ 
+        Host: "smtp.gmail.com", 
+        Username: "singh.aniket0408@gmail.com", 
+        Password: "aaryasingh264538", 
+        To: mail_id, 
+        From: "singh.aniket0408@gmail.com", 
+        Subject: "Sending Email using javascript", 
+        Body: "Well that was easy!!", 
+      }) 
+        .then(function (message) { 
+          //alert("mail sent successfully") 
+          document.getElementById('spinnerText').style.display = "none";
+          document.getElementById('spinner').style.display = "none";
+        }); 
   }
 </script>
 </body>

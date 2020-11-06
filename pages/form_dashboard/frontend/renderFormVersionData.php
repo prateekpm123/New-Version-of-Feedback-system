@@ -17,9 +17,11 @@ function renderFormVersionData() {
 				<tr align="center">
 					<th>Versions</th>
 					<th>Edit</th>
-					<th>Options</th>
+					<th>Publish</th>
+					<th>Share</th>
+					<th>Create</th>
 					<th>Statistics</th>
-					<th>Answers</th>
+					<th>Response</th>
 				</tr>';
 
 	if(!empty($formVersionData)){
@@ -122,26 +124,22 @@ function renderFormVersionData() {
 			<tr id="tableRow'.$row['F_id'].'" class="version-row published'.$row['Published'].'">
 				<td align="center"><b>'.$row['Form_version'].'</b></th>
 				<td align="center">
-					<button class="btn btn-sm btn-warning" onclick="sendFormDetails('.$row['F_id'].')">Edit</button>
+					<a onclick="sendFormDetails('.$row['F_id'].')"><span class="material-icons">create</span></a>
 				</td>
 				<td align="center">
-					<div class="btn-group">
-						<button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Action
-						</button>
-						<div class="dropdown-menu">
-							<button class="dropdown-item" onclick="createVersion('.$row['F_id'].')">Create Version</button>
-							<button class="dropdown-item" type="button" data-toggle="modal" 
-							data-target="#publishModal'.$row['F_id'].'">Publish</button>
-							<button class="dropdown-item" type="button" onclick="shareDetails('.$row['F_id'].')">Share</button>
-						</div>
-					</div>
+					<a data-toggle="modal" data-target="#publishModal'.$row['F_id'].'"><span class="material-icons">event_note</span></a>
 				</td>
 				<td align="center">
-					<button class="btn btn-success btn-sm" onClick="goToStatsPage('.$row['F_id'].')">Statistics</button>
+					<a onclick="shareDetails('.$row['F_id'].')"><span class="material-icons">share</span></a>
 				</td>
 				<td align="center">
-					<button class="btn btn-sm btn-secondary" onclick="getUserNames('.$row['F_id'].')">Check</button>
+					<a onclick="createVersion('.$row['F_id'].')"><span class="material-icons">add_circle_outline</span></a>
+				</td>
+				<td align="center">
+					<a onClick="goToStatsPage('.$row['F_id'].')"><span class="material-icons">bar_chart</span></a>
+				</td>
+				<td align="center">
+					<a onclick="getUserNames('.$row['F_id'].')"><span class="material-icons">open_in_new</span></a>
 				</td>
 				</tr>';
 		}
@@ -156,3 +154,17 @@ function renderFormVersionData() {
 }
 
 ?>
+
+<!-- <td align="center">
+					<div class="btn-group">
+						<button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Action
+						</button>
+						<div class="dropdown-menu">
+							<button class="dropdown-item" onclick="createVersion('.$row['F_id'].')">Create Version</button>
+							<button class="dropdown-item" type="button" data-toggle="modal" 
+							data-target="#publishModal'.$row['F_id'].'">Publish</button>
+							<button class="dropdown-item" type="button" onclick="shareDetails('.$row['F_id'].')">Share</button>
+						</div>
+					</div>
+				</td> -->

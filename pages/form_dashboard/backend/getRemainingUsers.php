@@ -27,5 +27,20 @@ if(isset($_POST['F_id'])) {
     echo $data;
 }
 
+if(isset($_POST['RF_id'])) {
+    include '../../../classes/model.class.php';
+    $F_id = $_POST['RF_id'];
+    $view = new Model();
+    $rows = $view->getRemainingUsers($F_id);
+    if(!empty($rows)) {
+        $data = array();
+        foreach ($rows as $row) {
+            array_push($data, $row['user_email']);
+        }
+    }
+    $dataStr = implode(",", $data);
+    echo $dataStr;
+}
+
 
 ?>

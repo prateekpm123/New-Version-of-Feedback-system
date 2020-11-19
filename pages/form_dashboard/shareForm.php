@@ -15,54 +15,31 @@ session_start();
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="form_dashboard.css">
 </head>
-<body>
-<div class="container">
+<body onload="formRenderData()">
+<div class="container"> 
 <br><br>
   <div class="row">
     <div class="col-lg-3"></div>
       <div class="col-lg-6">
-      <?php
-      error_reporting(0);
-        $F_id = $_SESSION['F_id'];
-        $admin_email = $_SESSION['Admin_email'];
-        include '../../classes/model.class.php';
-        $view = new Model();
-        $rows = $view->fetchShareDetails($F_id,$admin_email);
-        $data = '<div class="card">
-                    <h3 class="card-header bg-primary text-white">Form Collaborate</h3>
-                    <div class="card-body">
-                    <form>
-                      <dl class="row">
-                        <dt class="col-4">Recipient 1: </dt>
-                        <dd class="col-8"><input type="text" id="text1" onchange="formSubmit(this,1)" class="form-control" 
-                        value="'.$rows[0]['shared_with'].'"</dd>
-                      </dl>
-                      <dl class="row">
-                        <dt class="col-4">Recipient 2: </dt>
-                        <dd class="col-8"><input type="text" id="text2" onchange="formSubmit(this,2)" class="form-control" 
-                        value="'.$rows[1]['shared_with'].'"</dd>
-                      </dl>
-                      <dl class="row">
-                        <dt class="col-4">Recipient 3: </dt>
-                        <dd class="col-8"><input type="text" id="text3" onchange="formSubmit(this,3)" class="form-control" 
-                        value="'.$rows[2]['shared_with'].'"</dd>
-                      </dl>
-                      <dl class="row">
-                        <dt class="col-4">Recipient 4: </dt>
-                        <dd class="col-8"><input type="text" id="text4" onchange="formSubmit(this,4)" class="form-control" 
-                        value="'.$rows[3]['shared_with'].'"</dd>
-                      </dl>
-                      <dl class="row">
-                        <dt class="col-4"></dt>
-                        <dd class="col-8"><button class="btn btn-primary" onclick="formSubmit()">Save</button>
-                          <button type="button" class="btn btn-danger" onclick="formClear()">Clear</button>
-                        </dd>
-                      </dl>
-                      </form>
-                    </div>
-                  </div>';
-        echo $data;
-      ?>
+        <div class="card">
+          <h3 class="card-header bg-primary text-white">Form Collaborate</h3>
+          <div class="card-body">
+            <input type="text" class="form-control" id="shareEmail" placeholder="Enter email id of the person you wanna share with">
+            <button class="btn btn-primary" onclick="formSubmit()">Share</button>
+            <p>
+              <?php  
+                echo $_SESSION['F_id'];
+                $F_id = $_SESSION['F_id'];
+                $admin_email = $_SESSION['Admin_email'];
+                include '../../classes/model.class.php';
+                $view = new Model();
+                $formData = $view->fetchShareDetails($F_id,$admin_email);
+                var_dump($formData);
+              ?>
+            </p>
+            <div id="shareFormData"></div>
+          </div>
+        </div>
       </div>
     <div class="col-lg-3"></div>
   </div>
@@ -84,19 +61,35 @@ function formClear(){
   d.value = null;
 }
 
-function formSubmit(element,num) {
-  var a = element.value;
-  //console.log(a);
+function formSubmit() {
+  a = $("#shareEmail").val();
+  // var a = "testing";
+  // num = 3
+  // alert(a);
   $.ajax({
     url: "backend/sendShareDetails.php",
     method: "post",
     data: {
       shared_id: a,
-      num: num
     },
     success: function (data, success) {
-    //alert("Data Successfully Saved")
+    // alert("Data Successfully Saved")
     //console.log(data);
+    formRenderData();
+    $("#shareEmail").val() = "";
+    document.getElementById("shareEmail").value = '';
+    },
+  });
+}
+
+function formRenderData() {
+  $.ajax({
+    url: 'renderShareFormData.php',
+    method: 'post',
+    data: {},
+    success: function (data, status) {
+      $('#shareFormData').html(data);
+      //console.log('Form data render is working');
     },
   });
 }

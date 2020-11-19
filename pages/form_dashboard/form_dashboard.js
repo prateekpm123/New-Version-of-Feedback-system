@@ -35,6 +35,11 @@ function loadSharedFormdata() {
   });
 }
 
+
+function deleteSharedForms() {
+  
+}
+
 // This Renders Version table in the frontend
 // runs: When VIEW button is clicked
 function getFormVersions(F_id) {

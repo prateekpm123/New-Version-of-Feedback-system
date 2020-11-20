@@ -166,10 +166,10 @@ $F_id = $_SESSION['F_id'];
         Subject: "Sending Email using javascript", 
         Body: "Well that was easy!!", 
       }) 
-        .then(function (message) { 
-          //alert("mail sent successfully") 
+        .then(function (message) {  
           document.getElementById('spinnerText').style.display = "none";
           document.getElementById('spinner').style.display = "none";
+          alert("mail sent successfully");
         }); 
   }
 </script>

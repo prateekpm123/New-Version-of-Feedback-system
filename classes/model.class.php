@@ -281,31 +281,84 @@ class Model extends Dbh {
    
     }
 
-    public function publishForm($F_id,$role,$department,$year,$division,$start,$end){
+    public function publishForm($F_id,$role,$department,$year,$division){
 
-        $query = "UPDATE publish_details SET Role='$role',Department='$department',Year='$year',Division='$division',Start_date='$start',End_date='$end' WHERE F_id=$F_id ";
+        $query = "UPDATE publish_details SET Role='$role',Department='$department',Year='$year',Division='$division' WHERE F_id=$F_id ";
         $result=$this->connect()->prepare($query);
-        $result->execute([$role,$department,$year,$division,$start,$end,$F_id]);
+        $result->execute([$role,$department,$year,$division,$end,$F_id]);
 
-        if ($role == 'Teacher'){
-            $query1 = "SELECT * FROM user WHERE Role='$role'AND Department='$department' AND Year='' AND 
-            Division='' ";
+        if ($role == 'Everyone') {
+            $query1 = "SELECT * FROM user";
             $result1=$this->connect()->prepare($query1);
-            if ($result1->execute([$role,$department])){
+            if ($result1->execute()){
                 while ($rows = $result1->fetch()){
                     $data[] = $rows;
                 }
             }
         }
-        else {
-        $query1 = "SELECT * FROM user WHERE Role='$role'AND Department='$department' AND Year='$year' AND 
-        Division='$division' ";
-        $result1=$this->connect()->prepare($query1);
-        if ($result1->execute([$role,$department,$year,$division])){
-            while ($rows = $result1->fetch()){
-                $data[] = $rows;
+        else if ($role == 'Teacher'){
+            if ($department == 'All Departments'){
+                $query1 = "SELECT * FROM user WHERE Role='$role' ";
+                $result1=$this->connect()->prepare($query1);
+                if ($result1->execute([$role])){
+                    while ($rows = $result1->fetch()){
+                        $data[] = $rows;
+                    }
+                }
             }
+            else {
+                $query1 = "SELECT * FROM user WHERE Role='$role'AND Department='$department' AND Year='' AND 
+                Division='' ";
+                $result1=$this->connect()->prepare($query1);
+                if ($result1->execute([$role,$department])){
+                    while ($rows = $result1->fetch()){
+                        $data[] = $rows;
+                    }
+                }
+            }    
         }
+        else if ($role == 'Student') {
+            if ($department == 'All Departments') {
+                $query1 = "SELECT * FROM user WHERE Role='$role' ";
+                $result1=$this->connect()->prepare($query1);
+                if ($result1->execute([$role])){
+                    while ($rows = $result1->fetch()){
+                        $data[] = $rows;
+                    }
+                }
+            }
+            else {
+                if ($year == 'All years') {
+                    $query1 = "SELECT * FROM user WHERE Role='$role'AND Department='$department' ";
+                    $result1=$this->connect()->prepare($query1);
+                    if ($result1->execute([$role,$department])){
+                        while ($rows = $result1->fetch()){
+                            $data[] = $rows;
+                        }
+                    }
+                }
+                else {
+                    if ($division == 'All Divisions') {
+                        $query1 = "SELECT * FROM user WHERE Role='$role'AND Department='$department' AND Year='$year' ";
+                        $result1=$this->connect()->prepare($query1);
+                        if ($result1->execute([$role,$department,$year])){
+                            while ($rows = $result1->fetch()){
+                                $data[] = $rows;
+                            }
+                        }
+                    }
+                    else {
+                        $query1 = "SELECT * FROM user WHERE Role='$role'AND Department='$department' AND Year='$year' AND 
+                        Division='$division' ";
+                        $result1=$this->connect()->prepare($query1);
+                        if ($result1->execute([$role,$department,$year,$division])){
+                            while ($rows = $result1->fetch()){
+                                $data[] = $rows;
+                            }
+                        }
+                    }                 
+                }  
+            }     
         }
 
         $query4 = "SELECT Form_code FROM form WHERE F_id = $F_id";
@@ -331,8 +384,6 @@ class Model extends Dbh {
         $query3 = "UPDATE form SET published = 1 WHERE F_id = ?";
         $result3 = $this->connect()->prepare($query3);
         $result3->execute([$F_id]);
-
-
 
     }
 
@@ -633,5 +684,30 @@ class Model extends Dbh {
         $result->execute([$F_id]);
         $data = $result->fetchAll();
         return $data;
+    }
+
+    public function checkForPublish($F_id) {
+        $data = null;
+        $query = " SELECT Published FROM form WHERE Form_code = ? ";
+        $result = $this->connect()->prepare($query);
+        $result->execute([$F_id]);
+        $data = $result->fetchAll();
+        $rowCount = $result->rowCount();
+        for($i=0; $i<$rowCount; $i++) {
+            if($data[$i]['Published'] == 1) {
+                return 1;
+            }
+        }
+        return 0;
+    }
+
+    public function unPublishForm($F_id) {
+        $query = " UPDATE form SET Published = 0 WHERE Form_code = ? ";
+        $result = $this->connect()->prepare($query);
+        $result->execute([$F_id]);
+
+        $query1 = "DELETE FROM user_form_access WHERE Form_code = ? ";
+        $result1 = $this->connect()->prepare($query1);
+        $result1->execute([$F_id]);
     }
 }

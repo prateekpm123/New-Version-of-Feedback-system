@@ -10,7 +10,9 @@ if(isset($_POST['read'])){
   $number = 1;
   foreach($rows as $row ) {
     $data .= '<div class="card">
-                <h5 class="card-header">'.$number.'. '.$row['Form_name'].'</h5>
+                  <div class="card-header">
+                    <h5>'.$row['Form_name'].' <span class="badge badge-danger">Shared</span></h5>
+                  </div>
                 <div class="card-body">
                   <div class="row">
                     <div class="col-12 col-md-6">
@@ -28,9 +30,6 @@ if(isset($_POST['read'])){
   }
   $data .= '';
   echo $data;
-}
-else{
-  echo "<p>No Form Shared With You</p>";
 }
 }
 

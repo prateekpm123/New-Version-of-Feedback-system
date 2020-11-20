@@ -100,18 +100,6 @@ function renderFormVersionData() {
 										</select>		
 									</div>
 									</div>
-									<div class="input-group mb-3">
-									<div class="input-group-prepend">
-										<span class="input-group-text" id="basic-addon4">Start Date (YYYY-MM-DD)</span>
-									</div>
-									<input class="form-control publishClass5" aria-describedby="basic-addon4" type="text" value="'.$row['Start_date'].'">		
-								</div>
-								<div class="input-group mb-3">
-									<div class="input-group-prepend">
-										<span class="input-group-text" id="basic-addon4">End Date (YYYY-MM-DD)</span>
-									</div>
-									<input class="form-control publishClass6" aria-describedby="basic-addon4" type="text" value="'.$row['End_date'].'">		
-								</div>
 										</div>
 										<div class="modal-footer">
 												<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -154,17 +142,3 @@ function renderFormVersionData() {
 }
 
 ?>
-
-<!-- <td align="center">
-					<div class="btn-group">
-						<button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Action
-						</button>
-						<div class="dropdown-menu">
-							<button class="dropdown-item" onclick="createVersion('.$row['F_id'].')">Create Version</button>
-							<button class="dropdown-item" type="button" data-toggle="modal" 
-							data-target="#publishModal'.$row['F_id'].'">Publish</button>
-							<button class="dropdown-item" type="button" onclick="shareDetails('.$row['F_id'].')">Share</button>
-						</div>
-					</div>
-				</td> -->

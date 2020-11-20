@@ -22,6 +22,22 @@ function loadFormdata() {
   });
 }
 
+function checkForPublish(F_id) {
+  $.ajax({
+    url: 'backend/checkForPublish.php',
+    method: 'post',
+    data: { F_id: F_id },
+    success: function (data, status) {
+      //console.log(data);
+      if (parseInt(data) === 1) {
+        $('#stopResponse' + F_id).modal('show');
+      } else {
+        $('#notPublished' + F_id).modal('show');
+      }
+    },
+  });
+}
+
 function loadSharedFormdata() {
   var read = 'read';
   $.ajax({
@@ -60,6 +76,19 @@ function getFormVersions(F_id) {
         x.style.background = '#ffcccb';
       }
       //console.log(x);
+    },
+  });
+}
+
+function unPublishForm(F_id) {
+  $.ajax({
+    url: 'backend/checkForPublish.php',
+    method: 'post',
+    data: { publish_F_id: F_id },
+    success: function (data, status) {
+      //$('#form-content').html(data);
+      //console.log('Form data render is working');
+      getFormVersions(F_id);
     },
   });
 }

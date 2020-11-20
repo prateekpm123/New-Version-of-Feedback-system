@@ -24,17 +24,28 @@ session_start();
     a .material-icons:hover {
         color: blue;
     }
+
+    body {
+        background-color: #f0ebf8;
+    }
+
+    .card {
+        box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
+    }
+
+    nav {
+        background-color: white;
+    }
+
 </style>
 <body>
     <?php 
         $username = $_SESSION['admin_username'];
     ?>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+    <nav class="navbar navbar-expand-lg sticky-top">
                 <div class="col-12 text-center">
-                    
                     <button id="modal-button"  type="button" class="btn btn-outline-primary " data-toggle="modal" data-target=".bd-example-modal-test">+ Create Form</button>
                     <a class="navbar-brand" href="../admin_login/admin_login.php" style="float: right;"><span><i class="fa fa-sign-in"></i></span> Logout</a>
-                
                 </div>     
     </nav>
     <br>
@@ -43,9 +54,6 @@ session_start();
             <div class="col-12 col-sm-2"></div>
             <div class="col-12 col-sm-8">
                 <div class="row">
-                    <div class="col-12">
-                        <h2>Shared Forms</h2>
-                    </div>
                     <div id="shared_content" class="col-12"></div> 
                 </div>    
             </div>
@@ -53,10 +61,7 @@ session_start();
         <div class="row">
             <div class="col-12 col-sm-2"></div>
             <div class="col-12 col-sm-8">
-                <div class="row">
-                    <div class="col-12">
-                        <h2>Forms</h2>
-                    </div>  
+                <div class="row">  
                     <div id="form-content" class="col-12"></div>
                 </div>
             </div>
@@ -70,10 +75,9 @@ session_start();
     
 
     <!-- Bootstrap js and jquery links from constants folder -->
-    <?php 
-        include_once __DIR__.'/../../includes/constants/bootstrapjs.php';
-        include_once __DIR__.'/../../includes/constants/jqueryLinks.php';
-    ?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="form_dashboard.js"></script>
     <script>
 
@@ -82,9 +86,7 @@ session_start();
     var b = document.getElementById("publishModal"+F_id+"").querySelector(".publishClass2").value;
     var c = document.getElementById("publishModal"+F_id+"").querySelector(".publishClass3").value;
     var d = document.getElementById("publishModal"+F_id+"").querySelector(".publishClass4").value;
-    var e = document.getElementById("publishModal"+F_id+"").querySelector(".publishClass5").value;
-    var f = document.getElementById("publishModal"+F_id+"").querySelector(".publishClass6").value;
-   // console.log(a);
+   
    if (a == 'Everyone'){
         b = null;
         c = null;
@@ -122,8 +124,6 @@ session_start();
       Department: b,
       Year: c,
       Division: d,
-      Start: e,
-      End: f
     },
     success: function (data, status) {
       

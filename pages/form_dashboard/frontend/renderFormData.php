@@ -47,7 +47,44 @@ function renderData($username) {
                         </div>
                     </div>
                     
-            
+                    <div class="modal fade" id="stopResponse'.$row['F_id'].'" data-keyword="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-sm modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel">Confirm</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Do you want to stop taking responses for this form?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-success" data-dismiss="modal" onclick="unPublishForm('.$row['F_id'].')">Yes</button>
+                                    <button class="btn btn-danger" data-dismiss="modal">No</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal fade" id="notPublished'.$row['F_id'].'" data-keyword="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-sm modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel">Confirm</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>This form has not been publised.</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-success" data-dismiss="modal">OK</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
             
             
             
@@ -69,6 +106,7 @@ function renderData($username) {
                                     <button onclick="getFormVersions('.$row['F_id'].')" class="btn btn-sm btn-info">View</button>
                                     <button class="btn btn-sm btn-danger" onclick="deleteForms('.$row['F_id'].')" >Delete</button>
                                     <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#formModal'.$row['F_id'].'">Edit</button>
+                                    <button class="btn btn-primary btn-sm" onclick="checkForPublish('.$row['F_id'].')">Stop Response</button>
                                 </div>
                             </div>
                             <hr />
@@ -80,10 +118,9 @@ function renderData($username) {
 				$number++;
 		}
     }
-    else {
-        echo "<p>You have not created any form. Please create one to view here.</p>";
-    }
     $data .= '';
     echo $data;
 
 }
+
+// data-toggle="modal" data-target="#stopResponse'.$row['F_id'].'"

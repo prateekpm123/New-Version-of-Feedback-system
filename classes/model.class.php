@@ -489,22 +489,22 @@ class Model extends Dbh {
         return $data;
     }
 
-    public function sendSharedFormDetails($F_id,$admin_email,$shared_id,$num){
-        $query = "SELECT * FROM shared_forms WHERE F_id = ? AND num = ? ";
-        $result = $this->connect()->prepare($query);
-        $result->execute([$F_id,$num]);
-        $rows = $result->fetchAll();
+    public function sendSharedFormDetails($F_id,$admin_email,$shared_id){
+        // $query = "SELECT * FROM shared_forms WHERE F_id = ? ";
+        // $result = $this->connect()->prepare($query);
+        // $result->execute([$F_id]);
+        // $rows = $result->fetchAll();
 
-        if(!empty($rows)){
-            $query1 = "UPDATE shared_forms SET shared_with = ? WHERE F_id = ? AND num = ?";
+        // if(!empty($rows)){
+        //     $query1 = "UPDATE shared_forms SET shared_with = ? WHERE F_id = ? ";
+        //     $result1 = $this->connect()->prepare($query1);
+        //     $result1->execute([$shared_id,$F_id]);
+        // }
+        // else{
+            $query1 = "INSERT INTO shared_forms(F_id,Admin_email,shared_with) VALUES (?,?,?)";
             $result1 = $this->connect()->prepare($query1);
-            $result1->execute([$shared_id,$F_id,$num]);
-        }
-        else{
-            $query1 = "INSERT INTO shared_forms(F_id,Admin_email,shared_with,num) VALUES (?,?,?,?)";
-            $result1 = $this->connect()->prepare($query1);
-            $result1->execute([$F_id,$admin_email,$shared_id,$num]);
-        }
+            $result1->execute([$F_id,$admin_email,$shared_id]);
+        // /}
     }
     
     public function fetchSharedRecords($admin_email) {

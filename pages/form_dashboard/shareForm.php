@@ -24,17 +24,17 @@ session_start();
         <div class="card">
           <h3 class="card-header bg-primary text-white">Form Collaborate</h3>
           <div class="card-body">
-            <input type="text" class="form-control" id="shareEmail" placeholder="Enter email id of the person you wanna share with">
+            <input type="text" class="form-control" style="margin-bottom:10px;" id="shareEmail" placeholder="Enter email id of the person you wanna share with">
             <button class="btn btn-primary" onclick="formSubmit()">Share</button>
             <p>
               <?php  
-                echo $_SESSION['F_id'];
+                // echo $_SESSION['F_id'];
                 $F_id = $_SESSION['F_id'];
                 $admin_email = $_SESSION['Admin_email'];
                 include '../../classes/model.class.php';
                 $view = new Model();
                 $formData = $view->fetchShareDetails($F_id,$admin_email);
-                var_dump($formData);
+                // var_dump($formData);
               ?>
             </p>
             <div id="shareFormData"></div>
@@ -78,6 +78,21 @@ function formSubmit() {
     formRenderData();
     $("#shareEmail").val() = "";
     document.getElementById("shareEmail").value = '';
+    },
+  });
+}
+
+function deleteSharedForms(ShareId) {
+  console.log("Shared form ID is ",ShareId);
+  $.ajax({
+    url: 'deleteSharedForm.php',
+    method: 'post',
+    data: {
+      shareId :ShareId,
+    },
+    success: function(data, status) {
+      // alert(data);
+      formRenderData();
     },
   });
 }

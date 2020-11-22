@@ -27,4 +27,9 @@ class Controller extends Model {
         return $result;
     }
 
+    public function deleteSharedFormContributor($sharedFormId) {
+        $result = $this->deleteSharedFormContributorModal($sharedFormId);
+        return $result;
+    }
+
 }

@@ -710,4 +710,11 @@ class Model extends Dbh {
         $result1 = $this->connect()->prepare($query1);
         $result1->execute([$F_id]);
     }
+
+    protected function deleteSharedFormContributorModal($sharedFormId) {
+        $query = "DELETE FROM `shared_forms` WHERE `shared_forms`.`id` =?";
+        $result = $this->connect()->prepare($query);
+        $result->execute([$sharedFormId]);
+        return 1;
+    }
 }

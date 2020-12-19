@@ -30,6 +30,16 @@ Class View extends Dbh {
         }
         return $data;
     }
+
+    public function fetchFormNameAndDesc($F_id) {
+        $data = null;
+        $query = "SELECT * FROM `form` WHERE F_id = ?";
+        $result = $this->connect()->prepare($query);
+        $result->execute([$F_id]);
+        $row = $result->fetch();
+        $data[] = $row;
+        return $data;
+    }
 }
 
  ?>

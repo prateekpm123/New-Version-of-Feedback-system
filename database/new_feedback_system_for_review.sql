@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 19, 2020 at 10:57 AM
+-- Generation Time: Dec 19, 2020 at 11:13 AM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.1.33
 
@@ -151,9 +151,9 @@ INSERT INTO `form` (`F_id`, `Admin_id`, `Admin_email`, `Form_code`, `Form_name`,
 (5, 'PRA', 'prateek.manta@sakec.ac.in', 5, 'Infrastructure Feedback', '1', 'This is to test the sharing of forms.', 1, 0, '2020-11-06 06:09:03', '2020-12-19 09:44:21', 0),
 (6, 'PRA', 'prateek.manta@sakec.ac.in', 5, 'Infrastructure Feedback', '2', 'This is to test the sharing of forms.', 0, 0, '2020-12-19 05:51:07', '2020-12-19 08:01:29', 0),
 (7, 'ANI', 'aniketkumar.singh@sakec.ac.in', 7, 'LockDown Review from Students', '1', 'Students, experience while studying from home ! ', 0, 0, '2020-12-19 06:07:35', '2020-12-19 06:07:36', 0),
-(8, 'PRA', 'prateek.manta@sakec.ac.in', 8, 'testing the new formt', '1', 'delete after the testing', 0, 0, '2020-12-19 06:43:04', '2020-12-19 08:01:33', 0),
-(9, 'PRA', 'prateek.manta@sakec.ac.in', 9, 'testing', '1', 'dlelte after testing', 0, 0, '2020-12-19 06:46:08', '2020-12-19 06:46:08', 0),
-(10, 'PRA', 'prateek.manta@sakec.ac.in', 10, 'testing 2', '1', 'dlelte after testing', 0, 0, '2020-12-19 06:47:22', '2020-12-19 06:47:22', 0);
+(8, 'PRA', 'prateek.manta@sakec.ac.in', 8, 'Teachers experience in Lockdown', '1', 'Teacher view in this lockdown', 1, 0, '2020-12-19 06:43:04', '2020-12-19 10:05:02', 0),
+(9, 'PRA', 'prateek.manta@sakec.ac.in', 9, 'Parents View of College in COVID', '1', 'Parents ', 0, 0, '2020-12-19 06:46:08', '2020-12-19 10:11:47', 0),
+(10, 'PRA', 'prateek.manta@sakec.ac.in', 10, 'Student test', '1', 'Form to show delete functionality', 0, 0, '2020-12-19 06:47:22', '2020-12-19 10:12:16', 0);
 
 -- --------------------------------------------------------
 
@@ -214,7 +214,7 @@ INSERT INTO `publish_details` (`Form_details`, `F_id`, `Role`, `Department`, `Ye
 (5, 5, 'Everyone', '', '', '', 0),
 (6, 6, '', '', '', '', 0),
 (7, 7, '', '', '', '', 0),
-(8, 8, '', '', '', '', 0),
+(8, 8, 'Everyone', '', '', '', 0),
 (9, 9, '', '', '', '', 0),
 (10, 10, '', '', '', '', 0);
 
@@ -269,7 +269,9 @@ INSERT INTO `questions` (`Q_id`, `F_id`, `Breakpoints`, `created_on`, `updated_o
 (20, 5, '', '2020-12-19 09:40:16', '2020-12-19 09:40:16', '', 'text', 'Where do you see yourself in 5 years ?', '', '', '', '', '', 'NULL', 0),
 (21, 5, '', '2020-12-19 09:42:27', '2020-12-19 09:47:23', '', 'radio', 'Which fruits do you like ?', 'Mango ', 'Apple ', 'Banana', 'Pineapple ', 'kiwi', 'NULL', 0),
 (22, 5, '', '2020-12-19 09:43:17', '2020-12-19 09:43:17', '', 'multiplechoice', 'What animals do you like ?', 'Dogs', 'Cats', 'Tiger', 'Girrafe', 'Camel', 'NULL', 0),
-(23, 5, '', '2020-12-19 09:43:59', '2020-12-19 09:43:59', '', 'radio', 'Do you want to serve others by volunteering ?', 'Yes', 'No', '', '', '', 'NULL', 0);
+(23, 5, '', '2020-12-19 09:43:59', '2020-12-19 09:43:59', '', 'radio', 'Do you want to serve others by volunteering ?', 'Yes', 'No', '', '', '', 'NULL', 0),
+(24, 8, '', '2020-12-19 10:03:19', '2020-12-19 10:03:19', '', 'radio', 'How is you experience so far ?', 'Very Good', 'Good', 'Just okay', 'Bad', 'Very bad', 'NULL', 0),
+(25, 8, '', '2020-12-19 10:03:54', '2020-12-19 10:03:54', '', 'text', 'What are the advantages you feel in the Lockdown teaching situation ?', '', '', '', '', '', 'NULL', 0);
 
 -- --------------------------------------------------------
 
@@ -364,6 +366,19 @@ CREATE TABLE `user_form_access` (
   `F_id` int(16) NOT NULL,
   `Form_code` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user_form_access`
+--
+
+INSERT INTO `user_form_access` (`auto_increment`, `user_email`, `F_id`, `Form_code`) VALUES
+(88, 'aniketkumar.singh@sakec.ac.in', 8, 8),
+(89, 'pooja.tripathi@sakec.ac.in', 8, 8),
+(90, 'prateek.manta@sakec.ac.in', 8, 8),
+(91, 'rishab.shetty@sakec.ac.in', 8, 8),
+(92, 'pramila@sakec.ac.in', 8, 8),
+(93, 'shwetambari@sakec.ac.in', 8, 8),
+(94, 'rohit@sakec.ac.in', 8, 8);
 
 -- --------------------------------------------------------
 
@@ -522,7 +537,7 @@ ALTER TABLE `publish_details`
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `Q_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `Q_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `shared_forms`
@@ -546,7 +561,7 @@ ALTER TABLE `user_details`
 -- AUTO_INCREMENT for table `user_form_access`
 --
 ALTER TABLE `user_form_access`
-  MODIFY `auto_increment` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+  MODIFY `auto_increment` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
 
 --
 -- AUTO_INCREMENT for table `user_response`

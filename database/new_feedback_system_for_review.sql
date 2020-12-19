@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 19, 2020 at 09:03 AM
+-- Generation Time: Dec 19, 2020 at 10:57 AM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.1.33
 
@@ -74,7 +74,49 @@ INSERT INTO `answers` (`Ans_id`, `User_email`, `F_id`, `Q_id`, `Answer_desc`, `A
 (2, 'aniketkumar.singh@sakec.ac.in', 1, 2, '40-60', '2020-10-29 07:15:44', 0),
 (3, 'aniketkumar.singh@sakec.ac.in', 1, 3, '5', '2020-10-29 07:15:46', 0),
 (4, 'aniketkumar.singh@sakec.ac.in', 1, 4, 'Data Structures and Algorithms,DBMS,Internet Programming', '2020-10-29 07:15:48', 0),
-(5, 'aniketkumar.singh@sakec.ac.in', 1, 5, 'Good', '2020-10-29 07:15:52', 0);
+(5, 'aniketkumar.singh@sakec.ac.in', 1, 5, 'Good', '2020-10-29 07:15:52', 0),
+(6, 'prateek.manta@sakec.ac.in', 5, 12, '3', '2020-12-19 09:41:19', 0),
+(7, 'prateek.manta@sakec.ac.in', 5, 13, 'Zimba', '2020-12-19 09:41:25', 0),
+(8, 'prateek.manta@sakec.ac.in', 5, 19, 'Watch Anime', '2020-12-19 09:41:33', 0),
+(9, 'prateek.manta@sakec.ac.in', 5, 20, 'Nowhere', '2020-12-19 09:41:45', 0),
+(10, 'prateek.manta@sakec.ac.in', 5, 21, 'Mango,Apple ,Banana', '2020-12-19 09:44:51', 0),
+(11, 'prateek.manta@sakec.ac.in', 5, 22, 'Cats', '2020-12-19 09:44:57', 0),
+(12, 'prateek.manta@sakec.ac.in', 5, 23, 'Yes', '2020-12-19 09:45:03', 0),
+(13, 'pooja.tripathi@sakec.ac.in', 5, 12, '2', '2020-12-19 09:46:02', 0),
+(14, 'pooja.tripathi@sakec.ac.in', 5, 13, 'Pooja', '2020-12-19 09:46:09', 0),
+(15, 'pooja.tripathi@sakec.ac.in', 5, 19, 'Some stuffs', '2020-12-19 09:46:14', 0),
+(16, 'pooja.tripathi@sakec.ac.in', 5, 20, 'some where nice', '2020-12-19 09:46:27', 0),
+(17, 'pooja.tripathi@sakec.ac.in', 5, 21, 'Apple ', '2020-12-19 09:47:54', 0),
+(18, 'pooja.tripathi@sakec.ac.in', 5, 22, 'Dogs,Cats', '2020-12-19 09:47:57', 0),
+(19, 'pooja.tripathi@sakec.ac.in', 5, 23, 'Yes', '2020-12-19 09:47:59', 0),
+(20, 'aniketkumar.singh@sakec.ac.in', 5, 12, '5', '2020-12-19 09:49:21', 0),
+(21, 'aniketkumar.singh@sakec.ac.in', 5, 13, 'Aniket', '2020-12-19 09:49:24', 0),
+(22, 'aniketkumar.singh@sakec.ac.in', 5, 19, 'Nothing much', '2020-12-19 09:49:29', 0),
+(23, 'aniketkumar.singh@sakec.ac.in', 5, 20, 'Gotta check', '2020-12-19 09:49:38', 0),
+(24, 'aniketkumar.singh@sakec.ac.in', 5, 21, 'Pineapple ', '2020-12-19 09:49:39', 0),
+(25, 'aniketkumar.singh@sakec.ac.in', 5, 22, 'Girrafe,Camel', '2020-12-19 09:49:41', 0),
+(26, 'aniketkumar.singh@sakec.ac.in', 5, 23, 'Yes', '2020-12-19 09:49:44', 0),
+(27, 'rishab.shetty@sakec.ac.in', 5, 12, '4', '2020-12-19 09:50:19', 0),
+(28, 'rishab.shetty@sakec.ac.in', 5, 13, 'Rishab', '2020-12-19 09:50:26', 0),
+(29, 'rishab.shetty@sakec.ac.in', 5, 19, 'NOhting much', '2020-12-19 09:50:32', 0),
+(30, 'rishab.shetty@sakec.ac.in', 5, 20, 'One piece', '2020-12-19 09:50:44', 0),
+(31, 'rishab.shetty@sakec.ac.in', 5, 21, 'kiwi', '2020-12-19 09:50:46', 0),
+(32, 'rishab.shetty@sakec.ac.in', 5, 22, 'Tiger', '2020-12-19 09:50:51', 0),
+(33, 'rishab.shetty@sakec.ac.in', 5, 23, 'No', '2020-12-19 09:50:53', 0),
+(34, 'pramila@sakec.ac.in', 5, 12, '4', '2020-12-19 09:51:18', 0),
+(35, 'pramila@sakec.ac.in', 5, 13, 'Pramila', '2020-12-19 09:51:21', 0),
+(36, 'pramila@sakec.ac.in', 5, 19, 'dont know', '2020-12-19 09:51:25', 0),
+(37, 'pramila@sakec.ac.in', 5, 20, 'in chicago', '2020-12-19 09:51:28', 0),
+(38, 'pramila@sakec.ac.in', 5, 21, 'Pineapple ', '2020-12-19 09:51:39', 0),
+(39, 'pramila@sakec.ac.in', 5, 22, 'Cats', '2020-12-19 09:51:42', 0),
+(40, 'pramila@sakec.ac.in', 5, 23, 'Yes', '2020-12-19 09:51:44', 0),
+(41, 'shwetambari@sakec.ac.in', 5, 12, '3', '2020-12-19 09:52:32', 0),
+(42, 'shwetambari@sakec.ac.in', 5, 13, 'Shwetambari', '2020-12-19 09:52:38', 0),
+(43, 'shwetambari@sakec.ac.in', 5, 19, 'nothing so other stuffs', '2020-12-19 09:52:49', 0),
+(44, 'shwetambari@sakec.ac.in', 5, 20, 'lets see', '2020-12-19 09:52:51', 0),
+(45, 'shwetambari@sakec.ac.in', 5, 21, 'Apple ', '2020-12-19 09:52:54', 0),
+(46, 'shwetambari@sakec.ac.in', 5, 22, 'Dogs', '2020-12-19 09:52:55', 0),
+(47, 'shwetambari@sakec.ac.in', 5, 23, 'Yes', '2020-12-19 09:52:58', 0);
 
 -- --------------------------------------------------------
 
@@ -106,7 +148,7 @@ INSERT INTO `form` (`F_id`, `Admin_id`, `Admin_email`, `Form_code`, `Form_name`,
 (2, 'ANI', 'aniketkumar.singh@sakec.ac.in', 1, 'Student Teacher Feedback Form', '2', 'This form is to get feedbacks on teachers by students.', 0, 0, '2020-10-28 07:00:26', '2020-11-08 05:34:37', 0),
 (3, 'ANI', 'aniketkumar.singh@sakec.ac.in', 1, 'Student Teacher Feedback Form', '3', 'This form is to get feedbacks on teachers by students.', 0, 0, '2020-10-28 07:09:27', '2020-10-28 07:09:28', 0),
 (4, 'ANI', 'aniketkumar.singh@sakec.ac.in', 1, 'Student Teacher Feedback Form', '4', 'This form is to get feedbacks on teachers by students.', 0, 0, '2020-11-05 14:43:48', '2020-11-09 14:01:29', 0),
-(5, 'PRA', 'prateek.manta@sakec.ac.in', 5, 'Infrastructure Feedback', '1', 'This is to test the sharing of forms.', 0, 0, '2020-11-06 06:09:03', '2020-12-19 08:02:26', 0),
+(5, 'PRA', 'prateek.manta@sakec.ac.in', 5, 'Infrastructure Feedback', '1', 'This is to test the sharing of forms.', 1, 0, '2020-11-06 06:09:03', '2020-12-19 09:44:21', 0),
 (6, 'PRA', 'prateek.manta@sakec.ac.in', 5, 'Infrastructure Feedback', '2', 'This is to test the sharing of forms.', 0, 0, '2020-12-19 05:51:07', '2020-12-19 08:01:29', 0),
 (7, 'ANI', 'aniketkumar.singh@sakec.ac.in', 7, 'LockDown Review from Students', '1', 'Students, experience while studying from home ! ', 0, 0, '2020-12-19 06:07:35', '2020-12-19 06:07:36', 0),
 (8, 'PRA', 'prateek.manta@sakec.ac.in', 8, 'testing the new formt', '1', 'delete after the testing', 0, 0, '2020-12-19 06:43:04', '2020-12-19 08:01:33', 0),
@@ -222,7 +264,12 @@ INSERT INTO `questions` (`Q_id`, `F_id`, `Breakpoints`, `created_on`, `updated_o
 (15, 6, '', '2020-12-19 05:51:08', '2020-12-19 05:51:08', '', 'text', 'What is your name', '', '', '', '', '', 'NULL', 0),
 (16, 7, '', '2020-12-19 06:11:30', '2020-12-19 06:11:30', '', 'radio', 'How is your experience so far in the Lockdown', 'Very good', 'Good', 'Not the interesting', 'Some what okay', 'Bad', 'NULL', 0),
 (17, 7, '', '2020-12-19 06:12:34', '2020-12-19 06:12:34', '', 'radio', 'Would you like to continue to take this kinda of education for the next semester ?', 'Yes ', 'No', '', '', '', 'NULL', 0),
-(18, 7, '', '2020-12-19 06:16:24', '2020-12-19 06:16:24', '', 'multiplechoice', 'What all benefits have you seen by using this online system', 'Travelling time is saved', 'Lectures can be recorded', 'They can be viewed according to our pace', 'Lectures can be viewed as many times as possible', '', 'NULL', 0);
+(18, 7, '', '2020-12-19 06:16:24', '2020-12-19 06:16:24', '', 'multiplechoice', 'What all benefits have you seen by using this online system', 'Travelling time is saved', 'Lectures can be recorded', 'They can be viewed according to our pace', 'Lectures can be viewed as many times as possible', '', 'NULL', 0),
+(19, 5, '', '2020-12-19 09:39:14', '2020-12-19 09:39:14', '', 'text', 'What extra curricular activities have you done in the lockdown ?', '', '', '', '', '', 'NULL', 0),
+(20, 5, '', '2020-12-19 09:40:16', '2020-12-19 09:40:16', '', 'text', 'Where do you see yourself in 5 years ?', '', '', '', '', '', 'NULL', 0),
+(21, 5, '', '2020-12-19 09:42:27', '2020-12-19 09:47:23', '', 'radio', 'Which fruits do you like ?', 'Mango ', 'Apple ', 'Banana', 'Pineapple ', 'kiwi', 'NULL', 0),
+(22, 5, '', '2020-12-19 09:43:17', '2020-12-19 09:43:17', '', 'multiplechoice', 'What animals do you like ?', 'Dogs', 'Cats', 'Tiger', 'Girrafe', 'Camel', 'NULL', 0),
+(23, 5, '', '2020-12-19 09:43:59', '2020-12-19 09:43:59', '', 'radio', 'Do you want to serve others by volunteering ?', 'Yes', 'No', '', '', '', 'NULL', 0);
 
 -- --------------------------------------------------------
 
@@ -276,7 +323,8 @@ INSERT INTO `user` (`User_id`, `User_email`, `User_password`, `Role`, `Mentor`, 
 (5, 'prateek.manta@sakec.ac.in', '123456789', 'Student', 'Ms. Pramila Shinde', 'CM', 'SE', '3', 0),
 (11, 'rishab.shetty@sakec.ac.in', '123456789', 'Student', '', 'ETRX', 'FE', '1', 0),
 (12, 'pramila@sakec.ac.in', '123456789', 'Teacher', '', 'IT', '', '', 0),
-(13, 'shwetambari@sakec.ac.in', '123456789', 'Teacher', '', 'CM', '', '', 0);
+(13, 'shwetambari@sakec.ac.in', '123456789', 'Teacher', '', 'CM', '', '', 0),
+(14, 'rohit@sakec.ac.in', '123456789', 'Student', 'Ms. Pramila Shinde', 'IT', '3', '6', 0);
 
 -- --------------------------------------------------------
 
@@ -335,7 +383,13 @@ CREATE TABLE `user_response` (
 --
 
 INSERT INTO `user_response` (`id`, `User_email`, `F_id`, `Timestamp`) VALUES
-(1, 'aniketkumar.singh@sakec.ac.in', 1, '0000-00-00');
+(1, 'aniketkumar.singh@sakec.ac.in', 1, '0000-00-00'),
+(2, 'prateek.manta@sakec.ac.in', 5, '2020-12-19'),
+(3, 'pooja.tripathi@sakec.ac.in', 5, '2020-12-19'),
+(4, 'aniketkumar.singh@sakec.ac.in', 5, '2020-12-19'),
+(5, 'rishab.shetty@sakec.ac.in', 5, '2020-12-19'),
+(6, 'pramila@sakec.ac.in', 5, '2020-12-19'),
+(7, 'shwetambari@sakec.ac.in', 5, '2020-12-19');
 
 --
 -- Indexes for dumped tables
@@ -444,7 +498,7 @@ ALTER TABLE `admin_credentials`
 -- AUTO_INCREMENT for table `answers`
 --
 ALTER TABLE `answers`
-  MODIFY `Ans_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `Ans_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `form`
@@ -468,7 +522,7 @@ ALTER TABLE `publish_details`
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `Q_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `Q_id` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `shared_forms`
@@ -480,7 +534,7 @@ ALTER TABLE `shared_forms`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `User_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `User_id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `user_details`
@@ -492,13 +546,13 @@ ALTER TABLE `user_details`
 -- AUTO_INCREMENT for table `user_form_access`
 --
 ALTER TABLE `user_form_access`
-  MODIFY `auto_increment` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `auto_increment` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- AUTO_INCREMENT for table `user_response`
 --
 ALTER TABLE `user_response`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables

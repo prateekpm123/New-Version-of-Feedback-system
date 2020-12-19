@@ -16,7 +16,7 @@ function renderData($username) {
     $view = new Model();
     $formData = $view->fetchShareDetails($F_id,$admin_email);
     
-    $data = '<table class="table table-borderless table-hover table-striped">
+    $data = '<table class="table table-borderless table-hover table-responsive table-striped">
                     <thead class="thead-dark">
                         <tr align="center">
                             <th>No.</th>

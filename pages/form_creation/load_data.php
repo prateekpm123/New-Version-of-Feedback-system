@@ -3,22 +3,26 @@
 	if(isset($_POST['readrecord'])) {
 		session_start();
 
+		include 'database-connection/view.class.php';
+		$model = new View();
+		$formdata = $model->fetchFormNameAndDesc($_SESSION['F_id']);
+
 		$data = '<div class=" flex-container">
 						<div class="header container-fluid">
 						<div class="row titlerow">
 						<div class="col-8 md-form">
-							<input type="text" class="title" value="'.$_SESSION['Form_name'].'" placeholder="Form Name" disabled>
+							<input type="text" class="title" value="'.$formdata[0]['Form_name'].'" placeholder="Form Name" disabled>
 						</div>
 						</div>
 						<div class="row descrow">
 						<div class="col-8 md-form">
-							<input type="text" class="desc" value="'.$_SESSION['Form_desc'].'" placeholder="Form Description" disabled>
+							<input type="text" class="desc" value="'.$formdata[0]['Form_Desc'].'" placeholder="Form Description" disabled>
 						</div>
 						</div>
 						</div>
 						<br>';
 
-		include 'database-connection/view.class.php';
+		//include 'database-connection/view.class.php';
 		$view = new View();
 		$rows = $view->fetchRecords();
 		if(!empty($rows)){

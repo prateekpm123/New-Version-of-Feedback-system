@@ -17,5 +17,5 @@ This document will provide some rules in order to make our code error and bug fr
     1. Always write what the function does in this format: 
     /**
      * @return true if the session is active
-     * otherwise @return false 
+     * otherwise @return false   
      */

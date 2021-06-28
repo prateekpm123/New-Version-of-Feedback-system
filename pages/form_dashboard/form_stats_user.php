@@ -150,7 +150,7 @@ $F_id = $_SESSION['F_id'];
     success: function (data, success) {
       //var mail_ids = data.split(",");
       sendMail(data);
-      //console.log(data);
+      console.log(data);
     },
   });
   }
@@ -159,10 +159,10 @@ $F_id = $_SESSION['F_id'];
     
   Email.send({ 
         Host: "smtp.gmail.com", 
-        Username: "singh.aniket0408@gmail.com", 
-        Password: "aaryasingh264538", 
+        Username: "",  //Enter email id in the double qoutes
+        Password: "", //Enter the password for the same
         To: mail_id, 
-        From: "singh.aniket0408@gmail.com", 
+        From: "", //Same email id
         Subject: "Sending Email using javascript", 
         Body: "Well that was easy!!", 
       }) 
